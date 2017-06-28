@@ -1,4 +1,4 @@
-package movieDB;
+package edu.cis.CIS350.MovieDB;
 
 import java.util.*;
 import info.movito.themoviedbapi.*;
@@ -10,14 +10,23 @@ import info.movito.themoviedbapi.model.people.*;
 
 public class Test {
 
+	/** Javadoc comment. **/
 	private static TmdbApi tmdbApi;
+	
+	/** Javadoc comment. **/
 	private static SessionToken sessionToken;
 	
-	public static void main(String[] args) {
+	/** Javadoc comment. **/
+	private Test() { }
+	
+	/** Javadoc comment. 
+	 * 	@param args none
+	 * **/
+	public static void main(final String[] args) {
 		tmdbApi = new TmdbApi("6615c9824f812a6fb9b8b4ea5f49a285");
 		
-		// certain methods in TMDb API require a session id as a parameter, so
-		// let's generate it and have it ready
+		// certain methods in TMDb API require a session id as a
+		// parameter, so let's generate it and have it ready
 		sessionToken = getSessionToken();
 		
 		// demo of retrieving information on movies
@@ -33,6 +42,8 @@ public class Test {
 		demoAccountFeatures();
 	}
 
+	/** Javadoc comment.
+	 * @return SessionToken **/
 	private static SessionToken getSessionToken() {
 		// There are two ways to generate a session id
 		
