@@ -15,8 +15,7 @@ public class Test {
 	
 	/** Javadoc comment. **/
 	private static SessionToken sessionToken;
-	
-	/** Javadoc comment. **/
+
 	private Test() { }
 	
 	/** Javadoc comment. 
