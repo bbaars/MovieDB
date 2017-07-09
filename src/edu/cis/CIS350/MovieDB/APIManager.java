@@ -12,7 +12,7 @@ public class APIManager {
 	public static TmdbApi tmdbApi;
 	
 	/** Session token for one session. **/
-	public static SessionToken sessionToken;
+	private static SessionToken sessionToken;
 	
 	/**
 	* Constructor for initializing the API and Session Tokens.
@@ -20,5 +20,21 @@ public class APIManager {
 	public APIManager() {
 		 tmdbApi = new TmdbApi("6615c9824f812a6fb9b8b4ea5f49a285");
 		 sessionToken = new SessionToken("21b1aa674bced210f3b99836956d47ecb1ee13e6");
+	}
+	
+	/*
+	 * Returns the tmdbapi object.
+	 * @return TmdbApi The api key that allows us to make requests.
+	 */
+	public TmdbApi getApiObject() {
+		return tmdbApi;
+	}
+	
+	/*
+	 * Returns the SessionToken object.
+	 * @return SessionToken for each session.
+	 */
+	public SessionToken getSessionToken() {
+		return sessionToken;
 	}
 }

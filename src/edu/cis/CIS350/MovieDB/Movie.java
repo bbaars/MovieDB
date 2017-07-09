@@ -1,5 +1,9 @@
 package edu.cis.CIS350.MovieDB;
 
+import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.core.SessionToken;
+
 /** Movie class that handles the the data associated with a movie. **/
 public class Movie {
 
@@ -42,17 +46,29 @@ public class Movie {
     /** The total number of votes counted **/
     private int _voteCount;
     
+    /** holds our tmbd api key. **/
+    private static TmdbApi tmdbApi;
+    
+    /** Holds our SessionToken. */
+    private static SessionToken sessionToken;
+    	
+    /** our API Manager object to hold our tmdp api key **/
+    	private APIManager api;
+    
     /** Constructor call that accepts a movie title.
     * @param title: The title of the movie.
     **/
     public Movie(final String title) {
         this._title = title;
+        tmdbApi = api.getApiObject();
+        sessionToken = api.getSessionToken();
     }
     
     /*
      * Searches the API for the movie to obtain relevant information 
      */
     private void searchMovie() {
+    		MovieResultsPage results = tmdbApi.getSearch().searchMovie(_title, 0, "en", false, 0);
     		
     }
     
