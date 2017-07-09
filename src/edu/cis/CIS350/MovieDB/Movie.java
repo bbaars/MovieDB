@@ -49,7 +49,14 @@ public class Movie {
         this._title = title;
     }
     
-
+    /*
+     * Searches the API for the movie to obtain relevant information 
+     */
+    private void searchMovie() {
+    		
+    }
+    
+    
     
     
 }
