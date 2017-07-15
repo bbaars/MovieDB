@@ -27,4 +27,6 @@ public class Controller {
 	}
 	
 	
+	/** TO GET IMAGES FROM URL : https://image.tmdb.org/t/p/w500/hmOzkHlkGvi8x24fYpFSnXvjklv.jpg (GETS OBLIVION MOVIE POSTER) **/
+	
 }
