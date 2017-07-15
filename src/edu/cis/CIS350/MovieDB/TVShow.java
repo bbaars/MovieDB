@@ -1,13 +1,20 @@
 package edu.cis.CIS350.MovieDB;
 
+
+
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TvResultsPage;
 import info.movito.themoviedbapi.model.core.SessionToken;
+import info.movito.themoviedbapi.model.tv.TvSeries;
 
-public class TVShow{
+import static java.lang.System.out;
+import java.util.List;
+
+
+public class TVShow extends APIManager{
 	
 	/** Title of the TV Show **/
-    private String _title;
+    private String title;
 	
     /** holds The Movie Database api key. **/
     private static TmdbApi tmdbApi;
@@ -23,7 +30,9 @@ public class TVShow{
     * @param title: The title of the TV show.
     **/
     public TVShow(final String title) {
-        this._title = title;
+        this.title = title;
+        api = new APIManager();
+        
         tmdbApi = api.getApiObject();
         sessionToken = api.getSessionToken();
     }
@@ -31,10 +40,38 @@ public class TVShow{
     /*
      * Searches for a TV show by name
      */
-    private TvResultsPage searchTVShow() {
-    		TvResultsPage result = tmdbApi.getSearch().searchTv(_title, "en", 0);
-    		return result;
+    public int searchTVShow() {
+    		TvResultsPage result = tmdbApi.getSearch().searchTv(title, "en", 0);
+    		
+    		int id = -1;
+    		
+    		if (!result.getResults().isEmpty())
+    			id = result.getResults().get(0).getId();
+    	
+    		
+    		return id;
     }
+    
+    public List<TvSeries> searchTVShows(String query)
+    {
+    	TvResultsPage result = tmdbApi.getSearch().searchTv(query, "en", 0);
+    	
+    	return result.getResults();
+    }
+    
+    
+    
+    
+    //Test out the TVshow class
+    public static void main(String[] args) {
+
+        TVShow show = new TVShow("Doctor Who");
+
+        
+        out.println("ID: " + show.searchTVShow());
+    }
+    
+    
     
     
 }
