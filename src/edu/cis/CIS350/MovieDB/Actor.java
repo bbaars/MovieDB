@@ -1,18 +1,15 @@
 package edu.cis.CIS350.MovieDB;
 
+//import static java.lang.System.out;
+//import org.json.*;
 
-import static java.lang.System.out;
-import org.json.*;
-import java.util.HashMap;
-import java.util.List;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Serializable;
 import java.net.URL;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /******************************************************************
@@ -25,13 +22,14 @@ public class Actor {
 	/** Name of the actor. **/
 	private String actor;
 	
+	/** ID of actor. **/
 	private int id;
 	
 
    /******************************************************************
-	 * A constructor that initializes the actor
+	 * A constructor that initializes the actor.
 	 * 
-	 * @param genre - genre of movie.
+	 * @param actor - genre of movie.
 	 *****************************************************************/
 	public Actor(final String actor) {
 		this.actor = actor;
@@ -39,17 +37,19 @@ public class Actor {
 	}
 	
 	/******************************************************************
-	 *	Returns the person ID
+	 *	Returns the person ID.
 	 * @return genreID
+	 * @throws Exception when URL can't be read
 	 *****************************************************************/
-	int getActorID() throws Exception{
+	int getActorID() throws Exception {
 		String[] splited = actor.split("\\s+");
 
 	    String firstName = splited[0];
 	    String lastName = splited[1];
 	    
 		String json = readUrl("http://api.tmdb.org/3/search/person?api_key"
-	+"=6615c9824f812a6fb9b8b4ea5f49a285&query=" + firstName + "%20" + lastName);
+		+ "=6615c9824f812a6fb9b8b4ea5f49a285&query=" 
+				+ firstName + "%20" + lastName);
 		
 		
 		JSONObject obj = new JSONObject(json);
@@ -77,8 +77,10 @@ public class Actor {
    /******************************************************************
 	 *	Returns the URL of JSON object.
 	 * @return buffer.toString()
+	 * @param urlString the URL that has the JSON object
+	 * @throws Exception when JSON object can't be retrieved
 	 *****************************************************************/
-   private static String readUrl(String urlString) throws Exception {
+   private static String readUrl(final String urlString) throws Exception {
        BufferedReader reader = null;
        try {
            URL url = new URL(urlString);
@@ -86,22 +88,17 @@ public class Actor {
            StringBuffer buffer = new StringBuffer();
            int read;
            char[] chars = new char[1024];
-           while ((read = reader.read(chars)) != -1)
+           while ((read = reader.read(chars)) != -1) {
                buffer.append(chars, 0, read); 
+           }
 
            return buffer.toString();
-       } 
+       	}
        finally {
-           if (reader != null)
+           if (reader != null) {
                reader.close();
+           }
        }
    }
 
-   //Test out the actor class
-   public static void main(String[] args) throws Exception {
-
-       Actor actor = new Actor("Tom Cruise");
-
-       out.println("ID: " + actor.getActorID());
-   }
 }
