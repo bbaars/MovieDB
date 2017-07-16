@@ -2,19 +2,39 @@ package edu.cis.CIS350.MovieDB;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
+import javafx.stage.Stage;
+import java.util.concurrent.ThreadLocalRandom;
+
+import javax.imageio.ImageIO;
 
 /**
  * Controller class to control GUI.
  */
 public class Controller {
+	
+	final String appendURL = "https://image.tmdb.org/t/p/w500";
+	final int min =1;
+	
+	final int max = 20000;
+	
+	/** Choicebox on the quiz panel variable. **/
+	@FXML private ImageView moviePoster;
 	
 	/** Choicebox on the quiz panel variable. **/
 	@FXML private ChoiceBox quizChoiceBox;
@@ -28,11 +48,17 @@ public class Controller {
 	/** Login password text field on the main panel variable. **/
 	@FXML private TextField password;
 	
+	/** List field for movies on the main panel variable. **/
+	@FXML private TextField randomMovieField;
+	
+	
 	/** New Quiz for user. **/
 	private Quiz userQuiz = new Quiz();
 	
 	/** Keeps track of what quiz question the user is on. **/
 	private int timesClicked = 0;
+	
+	
 
 	/**
 	 * Controller function for login button.
@@ -40,6 +66,41 @@ public class Controller {
 	public void loginButtonClicked() {
 		loginUsername.setText("Test");
 	}
+	
+	/**
+	 * Controller function for random movie button.
+	 * 
+	 */
+	public void randomMovieButtonClicked(){
+		boolean keepGoing = true;
+		String imagePath = new String();
+		
+		//while(keepGoing) {
+		
+			//try {
+		int movieId = ThreadLocalRandom.current().nextInt(min, max + 1);
+		Movie randomMovie = new Movie(500);
+		
+		randomMovieField.setText(randomMovie.getTitle());
+		
+		imagePath = randomMovie.getPosterPath();
+		
+		keepGoing = false;
+		imagePath = appendURL + imagePath;
+		System.out.println(imagePath);
+		
+		Image image = new Image(imagePath);
+		
+		moviePoster.setImage(image);
+		
+			}
+			//catch(Exception e){
+				//keepGoing = true;
+			//}
+			
+		//}
+		
+	//}
 	
 	/**
 	 * Controller function for filter button.
@@ -122,4 +183,5 @@ public class Controller {
 	/** TO GET IMAGES FROM URL : https://image.tmdb.org/t/p/w500/
 	 * hmOzkHlkGvi8x24fYpFSnXvjklv.jpg (GETS OBLIVION MOVIE POSTER) **/
 	
+
 }
