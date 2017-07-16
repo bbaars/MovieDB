@@ -7,10 +7,12 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
@@ -26,7 +28,7 @@ import javax.imageio.ImageIO;
 /**
  * Controller class to control GUI.
  */
-public class Controller {
+public class Controller implements Initializable{
 	
 	final String appendURL = "https://image.tmdb.org/t/p/w500";
 	final int min =1;
@@ -34,7 +36,7 @@ public class Controller {
 	final int max = 20000;
 	
 	/** Choicebox on the quiz panel variable. **/
-	@FXML private ImageView moviePoster;
+	@FXML private ImageView moviePoster;// = new ImageView();
 	
 	/** Choicebox on the quiz panel variable. **/
 	@FXML private ChoiceBox quizChoiceBox;
@@ -58,7 +60,11 @@ public class Controller {
 	/** Keeps track of what quiz question the user is on. **/
 	private int timesClicked = 0;
 	
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+	     moviePoster.setImage(new Image("https://picturethismaths.files.wordpress.com/2016/03/fig6bigforblog.png?w=419&h=364"));
+	  }
 
 	/**
 	 * Controller function for login button.
@@ -90,7 +96,6 @@ public class Controller {
 		System.out.println(imagePath);
 		
 		Image image = new Image(imagePath);
-		
 		moviePoster.setImage(image);
 		
 			}

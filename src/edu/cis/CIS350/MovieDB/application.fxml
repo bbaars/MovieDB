@@ -73,13 +73,13 @@
 		</TableView>
 	</bottom>
 	<center>
-		<ImageView fitHeight="293.0" fitWidth="327.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-			<image>
-				<Image url="@logo.png" />
-			</image>
+		<ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="327.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
 			<BorderPane.margin>
 				<Insets />
 			</BorderPane.margin>
+         <image>
+            <Image url="@logo.png" />
+         </image>
 		</ImageView>
 	</center>
 	<right>
