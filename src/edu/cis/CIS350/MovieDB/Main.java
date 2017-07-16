@@ -6,10 +6,9 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.Parent;
-import javafx.scene.layout.BorderPane;
 
-/**.
- * GUI class
+/**
+ * GUI creation function.
  */
 public class Main extends Application {
 	@Override
@@ -29,10 +28,11 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	/**.
-	 * GUI Class
+	/**
+	 * GUI Class.
+	 * @param args The arguments for the main program.
 	 */
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		launch(args);
 	}
 }
