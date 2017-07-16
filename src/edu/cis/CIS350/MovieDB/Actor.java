@@ -93,8 +93,7 @@ public class Actor {
            }
 
            return buffer.toString();
-       	}
-       finally {
+       } finally {
            if (reader != null) {
                reader.close();
            }

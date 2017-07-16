@@ -13,12 +13,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+/******************************************************************
+* Class that holds and returns different attributes of a tv show.
+* 
+*****************************************************************/
+public class TVShow extends APIManager {
 
-public class TVShow extends APIManager{
-
+	/** ID of a tv show. **/
 	private static int id;
 
-	/** Title of the TV Show **/
+	/** Title of the TV Show. **/
 	private static String title;
 
 	/** holds The Movie Database api key. **/
@@ -27,138 +31,193 @@ public class TVShow extends APIManager{
 	/** Holds the current sessionToken. */
 	private static SessionToken sessionToken;
 
-	/** API Manager object that allows the tmdb api to be used **/
+	/** API Manager object that allows the tmdb api to be used. **/
 	private APIManager api;
 
 
-	/** Constructor call that accepts a TV show title.
-	 * @param title: The title of the TV show.
-	 **/
+	/******************************************************************
+	 * Constructor call that accepts a TV show title.
+	 * 
+	 * @param title - The title of the TV show.
+	 *****************************************************************/
 	public TVShow(final String title) {
 		this.title = title;
 		api = new APIManager();
 		tmdbApi = api.getApiObject();
 		sessionToken = api.getSessionToken();
 
-		id = getID_fromString(title);
+		id = getIDfromString(title);
 	}
 
-	public int getID_fromString(String query) {
+	/******************************************************************
+	 * Get the tv show ID from the database given the title of the tv
+	 * show.
+	 * 
+	 * @param query - The title of the TV show.
+	 * @return id the ID of the tv show
+	 *****************************************************************/
+	public int getIDfromString(final String query) {
 		TvResultsPage result = tmdbApi.getSearch().searchTv(query, "en", 0);
 
 		int id = -1;
 
-		if (!result.getResults().isEmpty())
+		if (!result.getResults().isEmpty()) {
 			id = result.getResults().get(0).getId();
-
-		return id;
-	}
-
-
-	public int getID()
-	{
-		return id;
-	}
-
-	public String getBackDropPath()
-	{
-		try{
-		TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en");
-		return tv_show.getBackdropPath();
 		}
+
+		return id;
+	}
+
+
+	/******************************************************************
+	 * Get the tv show ID. 
+	 * 
+	 * @return id the ID of the tv show
+	 *****************************************************************/
+	public int getID() {
+		return id;
+	}
+
+	/******************************************************************
+	 * Get the back drop path of images for tv shows.
+	 * 
+	 * @return backDropPath the backdrop path for tv show
+	 *****************************************************************/
+	public String getBackDropPath() {
+		try {
+		String backDropPath;
+		TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
+		backDropPath = tvShow.getBackdropPath();
 		
-		catch (Exception e){
+		return backDropPath;
+		
+		} catch (Exception e) {
 		return "null";
 		}
 	}
 
-	public String getTitle()
-	{
+	/******************************************************************
+	 * Get the tv show ID. 
+	 * 
+	 * @return id the ID of the tv show
+	 *****************************************************************/
+	public String getTitle() {
 		return title;
 	}
 
-	public String getDirector()
-	{
-		try{
-		TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en");
-		return tv_show.getCreatedBy().get(0).toString();
-		}
+	/******************************************************************
+	 * Get the director of the tv show.
+	 * 
+	 * @return director director of the tv show
+	 *****************************************************************/
+	public String getDirector() {
+		try {
+		String director;	
+		TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
 		
-		catch (Exception e){
+		director = tvShow.getCreatedBy().get(0).toString();
+		return director;
+		
+		} catch (Exception e) {
 		return "null";
 		}
 
 	}
 
-	public String getRating()
-	{
-		try{
-		TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en");
-		return String.valueOf(tv_show.getVoteAverage());
-		}
+	/******************************************************************
+	 * Get the tv show rating.
+	 * 
+	 * @return rating rating of the tv show
+	 *****************************************************************/
+	public String getRating() {
 		
-		catch (Exception e){
+		try {
+		String rating;
+		TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
+		
+		rating = String.valueOf(tvShow.getVoteAverage());
+		
+		return rating;
+		} catch (Exception e) {
 			return "null";
 		}
 
 	}
 
-	public String getLeadActor()
-	{
-		try{
-			TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en", TvMethod.credits);
-			return tv_show.getCredits().getAll().get(0).toString();
-		}
+	/******************************************************************
+	 * Get the lead actor of tv show.
+	 * 
+	 * @return leadActor lead actor of the tv show
+	 *****************************************************************/
+	public String getLeadActor() {
 		
-		catch (Exception e){
+		try {
+			String leadActor;
+			TvSeries tvShow = tmdbApi.getTvSeries()
+					.getSeries(id, "en", TvMethod.credits);
+			
+			leadActor = tvShow.getCredits().getAll().get(0).toString();
+			
+			return leadActor;
+		} catch (Exception e) {
 			return "null";
 		}
 	}
 	
-	public String getAirDate()
-	{
-		try{
-			TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en");
-			return tv_show.getFirstAirDate();
-		}
-		
-		catch (Exception e){
+	/******************************************************************
+	 * Get the tv show air date.
+	 * 
+	 * @return airDate air date of the tv show
+	 *****************************************************************/
+	public String getAirDate() {
+		try {
+			String airDate;
+			TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
+			airDate = tvShow.getFirstAirDate();
+			
+			return airDate;
+		} catch (Exception e) {
 			return "null";
 		}
 	}
-
-
-
-
-
-	public List<String> getGenres()
-	{
+	
+	/******************************************************************
+	 * Get the genres of the tv show.
+	 * 
+	 * @return genres genres of the tv show
+	 *****************************************************************/
+	public List<String> getGenres() {
 		List<String> genres = new ArrayList<String>();
 		
 		try {
-		TvSeries tv_show = tmdbApi.getTvSeries().getSeries(id, "en");
+		TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
 
-		for (int i = 0; i < tv_show.getGenres().size(); i++)
-		{
-			genres.add(tv_show.getGenres().get(i).toString());
+		for (int i = 0; i < tvShow.getGenres().size(); i++) {
+			genres.add(tvShow.getGenres().get(i).toString());
 		}
-		}
-		catch (Exception e)
-		{
+		
+		} catch (Exception e) {
 		}
 		
 		return genres;
 		
 		
 	}
-
-
-
-	public List<TvSeries> searchTVShows(String query)
-	{
+	
+	/******************************************************************
+	 * Get the results of the tv shows that the user entered.
+	 * 
+	 * @param query title of the tv show
+	 * @return series results of tv shows
+	 *****************************************************************/
+	public List<TvSeries> searchTVShows(final String query) {
+		
+		List<TvSeries> series = new ArrayList<TvSeries>();
 		TvResultsPage result = tmdbApi.getSearch().searchTv(query, "en", 0);
 
-		return result.getResults();
+		series = result.getResults();
+		
+		return series;
 	}
 
 
