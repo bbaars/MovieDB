@@ -23,12 +23,10 @@ public class APIManager {
 	***********************************************************************/
 	public APIManager() {
 
-		sessionString = "21b1aa674bced210f3b998"
-		 		+ "36956d47ecb1ee13e6";
+		sessionString = "598b5da9fced4ed17e54f6956875b1198dff82ff";
 
-		 tmdbApi = new TmdbApi("6615c9824f812a6fb9b8b4ea5f49a285");
-		 sessionToken = new SessionToken("21b1aa674bced210f3b998"
-		 		+ "36956d47ecb1ee13e6");
+		 tmdbApi = new TmdbApi("ee032dd5fbbc85b55298a6d20a7f2e10");
+		 sessionToken = new SessionToken("598b5da9fced4ed17e54f6956875b1198dff82ff");
 	}
 
 	/**********************************************************************

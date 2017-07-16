@@ -2,7 +2,6 @@
 
  import java.util.ArrayList;
  import java.util.Iterator;
-
  import info.movito.themoviedbapi.TmdbApi;
  import info.movito.themoviedbapi.TmdbMovies;
  import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
@@ -162,33 +161,56 @@
       *
       * @return ArrayList of movies where each is a top movie (1 page)
       *************************************************************************/
-     public ArrayList<Movie> getPopularMovies(final int numOfPages) {
+     public ArrayList<MovieDb> getPopularMovies(final int numOfPages) {
 
      	TmdbMovies tmdbMovies = tmdbApi.getMovies();
 
-
-     	ArrayList<Movie> popularMovies = new ArrayList<Movie>();
+     	ArrayList<MovieDb> popularMovies = new ArrayList<MovieDb>();
 
      	for (int i = 1; i <= numOfPages; i++) {
      		MovieResultsPage results = tmdbMovies.getPopularMovies("en", i);
 
      		for (MovieDb mov : results) {
-         		popularMovies.add(new Movie(mov.getId()));
+         		popularMovies.add(mov);
          	}
      	}
 
      	return popularMovies;
+     }
+     
+     /**************************************************************************
+      * Get the Popular Movies .
+      * @param numOfPages The amount of pages you want to obtain top movies from
+      *
+      * @return ArrayList of movies where each is a top movie (1 page)
+      *************************************************************************/
+     public ArrayList<MovieDb> getTopRatedMovies(final int numOfPages) {
+
+     	TmdbMovies tmdbMovies = tmdbApi.getMovies();
+
+     	ArrayList<MovieDb> topRatedMovies = new ArrayList<MovieDb>();
+
+     	for (int i = 1; i <= numOfPages; i++) {
+     		MovieResultsPage results = tmdbMovies.getPopularMovies("en", i);
+
+     		for (MovieDb mov : results) {
+     			topRatedMovies.add(mov);
+         	}
+     	}
+
+     	return topRatedMovies;
      }
 
      /*************************************************************************
       * Gets a movie from the ID.
       *************************************************************************/
      private void getMovieFromID() {
+    	 
      	TmdbMovies tmdbMovies = tmdbApi.getMovies();
      	genres = new ArrayList<String>();
      	similarMovies = new ArrayList<Movie>();
 
-     	MovieDb movie = tmdbMovies.getMovie(id, "en", MovieMethod.reviews,
+     	MovieDb movie = tmdbMovies.getMovie(this.id, "en", MovieMethod.reviews,
      		MovieMethod.videos, MovieMethod.images, MovieMethod.similar);
 
      	backdropPath = movie.getBackdropPath();
@@ -209,13 +231,6 @@
      	cast = (ArrayList<PersonCast>) movie.getCast();
      	reviews = (ArrayList<Reviews>) movie.getReviews();
      	images = (ArrayList<Artwork>) movie.getImages(ArtworkType.POSTER);
-
-     	ArrayList<MovieDb> similar =
-     			(ArrayList<MovieDb>) movie.getSimilarMovies();
-
-     	for (MovieDb mov: similar) {
-     		similarMovies.add(new Movie(mov.getId()));
-     	}
 
      	ArrayList<Genre> genresList = (ArrayList<Genre>) movie.getGenres();
 
@@ -420,18 +435,5 @@
       *************************************************************************/
      public ArrayList<Video> getVides() {
      	return videos;
-     }
-
-
-     public static void main(final String args[]) {
-
-     	Movie movie = new Movie("civil war");
-
-     	ArrayList<Movie> movies = movie.getMoviesFromTitle();
-
-     	for (Movie movie2 : movies) {
-     		//System.out.println(movie2.getTitle());
-     	}
-
      }
  }
