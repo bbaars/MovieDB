@@ -12,9 +12,8 @@
  import info.movito.themoviedbapi.model.Reviews;
  import info.movito.themoviedbapi.model.Video;
  import info.movito.themoviedbapi.model.core.MovieResultsPage;
- import info.movito.themoviedbapi.model.core.SessionToken;
  import info.movito.themoviedbapi.model.people.PersonCast;
-
+	
  /** Movie class that handles the the data associated with a movie. **/
  public class Movie {
 
@@ -60,7 +59,7 @@
      /** Run time of the movie in minutes. **/
      private int runtime;
 
-     /** A one line of a 'catchphrase' from the movie. **/
+     /** A one line of a 'catch phrase' from the movie. **/
      private String tagline;
 
      /** The title of the movie. **/
@@ -72,13 +71,10 @@
      /** The amount of people who have cast a vote. **/
      private int voteCount;
 
-     /** Holds our SessionToken. */
-     private static SessionToken sessionToken;
-
      /** Holds an object of type review. */
      private ArrayList<Reviews> reviews;
 
-     /** Holds an object of type cideo. */
+     /** Holds an object of type video. */
      private ArrayList<Video> videos;
 
      /** Holds an image. */
@@ -101,8 +97,7 @@
      public Movie(final String title) {
      	this.title = title;
      	api = new APIManager();
-         tmdbApi = api.getApiObject();
-         sessionToken = new SessionToken(api.getSessionString());
+        tmdbApi = api.getApiObject();
      }
 
      /**************************************************************************
@@ -113,8 +108,7 @@
      public Movie(final int id) {
      	this.id = id;
      	api = new APIManager();
-         tmdbApi = api.getApiObject();
-         sessionToken = new SessionToken(api.getSessionString());
+        tmdbApi = api.getApiObject();
      	this.getMovieFromID();
      }
 
@@ -127,8 +121,7 @@
       *************************************************************************/
      public Movie() {
      	api = new APIManager();
-         tmdbApi = api.getApiObject();
-         sessionToken = new SessionToken(api.getSessionString());
+        tmdbApi = api.getApiObject();
      }
 
 
@@ -166,7 +159,8 @@
      	TmdbMovies tmdbMovies = tmdbApi.getMovies();
 
      	ArrayList<MovieDb> popularMovies = new ArrayList<MovieDb>();
-
+     	
+     	/* Loops through multiple pages of movies and appends to our array. */
      	for (int i = 1; i <= numOfPages; i++) {
      		MovieResultsPage results = tmdbMovies.getPopularMovies("en", i);
 
@@ -190,6 +184,7 @@
 
      	ArrayList<MovieDb> topRatedMovies = new ArrayList<MovieDb>();
 
+     	/* Loops through multiple pages of movies and appends to our array. */
      	for (int i = 1; i <= numOfPages; i++) {
      		MovieResultsPage results = tmdbMovies.getPopularMovies("en", i);
 
@@ -243,7 +238,7 @@
       * Get similar movies to the one that was passed.
       *
       * @return ArrayList of Similar movies
-      *************************************************************************/
+      ************************************************************************/
      public ArrayList<Movie> getSimilarMovie() {
      	return similarMovies;
      }
