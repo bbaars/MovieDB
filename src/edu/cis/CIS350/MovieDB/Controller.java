@@ -4,39 +4,37 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.stage.Stage;
 import java.util.concurrent.ThreadLocalRandom;
 
-import javax.imageio.ImageIO;
-
 /**
  * Controller class to control GUI.
  */
-public class Controller implements Initializable{
+public class Controller implements Initializable {
 	
-	final String appendURL = "https://image.tmdb.org/t/p/w500";
-	final int min =1;
+	/** Base URL String. **/
+	private final String appendURL = "https://image.tmdb.org/t/p/w500";
 	
-	final int max = 20000;
+	/** Lower bounds for random id. **/
+	private final int min = 1;
+	
+	/** Higher bound for random id. **/
+	private final int max = 20000;
 	
 	/** Choicebox on the quiz panel variable. **/
-	@FXML private ImageView moviePoster;// = new ImageView();
+	@FXML private ImageView moviePoster;
 	
 	/** Choicebox on the quiz panel variable. **/
 	@FXML private ChoiceBox quizChoiceBox;
@@ -61,9 +59,11 @@ public class Controller implements Initializable{
 	private int timesClicked = 0;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(final URL l, final ResourceBundle r) {
 
-	     moviePoster.setImage(new Image("https://picturethismaths.files.wordpress.com/2016/03/fig6bigforblog.png?w=419&h=364"));
+	     moviePoster.setImage(new Image("https://lh3.googleusercontent.com"
+	     	+ "/JiM3wad1iVtxOI-lfLsMvcI5sVJsKV5iVHHkK5wt1MImJwd8V_7szJm"
+	     	+ "hZDZSqRVHtw=w300"));
 	  }
 
 	/**
@@ -77,15 +77,14 @@ public class Controller implements Initializable{
 	 * Controller function for random movie button.
 	 * 
 	 */
-	public void randomMovieButtonClicked(){
+	public void randomMovieButtonClicked() {
 		boolean keepGoing = true;
 		String imagePath = new String();
 		
-		//while(keepGoing) {
-		
-			//try {
+		while (keepGoing) {
+			try {
 		int movieId = ThreadLocalRandom.current().nextInt(min, max + 1);
-		Movie randomMovie = new Movie(500);
+		Movie randomMovie = new Movie(movieId);
 		
 		randomMovieField.setText(randomMovie.getTitle());
 		
@@ -93,19 +92,17 @@ public class Controller implements Initializable{
 		
 		keepGoing = false;
 		imagePath = appendURL + imagePath;
-		System.out.println(imagePath);
 		
-		Image image = new Image(imagePath);
+		Image image = new Image(imagePath, 450, 350, true, true, false);
 		moviePoster.setImage(image);
 		
+			} catch (Exception e) {
+				keepGoing = true;
 			}
-			//catch(Exception e){
-				//keepGoing = true;
-			//}
 			
-		//}
+		}
 		
-	//}
+	}
 	
 	/**
 	 * Controller function for filter button.
@@ -183,10 +180,5 @@ public class Controller implements Initializable{
 		//https://stackoverflow.com/questions/
 		//17388866/getting-selected-item-from-a-javafx-tableview
 	}
-	
-	
-	/** TO GET IMAGES FROM URL : https://image.tmdb.org/t/p/w500/
-	 * hmOzkHlkGvi8x24fYpFSnXvjklv.jpg (GETS OBLIVION MOVIE POSTER) **/
-	
-
 }
+
