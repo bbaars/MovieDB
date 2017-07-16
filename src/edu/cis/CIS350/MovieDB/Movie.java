@@ -1,79 +1,437 @@
-package edu.cis.CIS350.MovieDB;
+ package edu.cis.CIS350.MovieDB;
 
-import info.movito.themoviedbapi.TmdbApi;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
-import info.movito.themoviedbapi.model.core.SessionToken;
+ import java.util.ArrayList;
+ import java.util.Iterator;
 
-/** Movie class that handles the the data associated with a movie. **/
-public class Movie {
+ import info.movito.themoviedbapi.TmdbApi;
+ import info.movito.themoviedbapi.TmdbMovies;
+ import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
+ import info.movito.themoviedbapi.model.Artwork;
+ import info.movito.themoviedbapi.model.ArtworkType;
+ import info.movito.themoviedbapi.model.Genre;
+ import info.movito.themoviedbapi.model.MovieDb;
+ import info.movito.themoviedbapi.model.Reviews;
+ import info.movito.themoviedbapi.model.Video;
+ import info.movito.themoviedbapi.model.core.MovieResultsPage;
+ import info.movito.themoviedbapi.model.core.SessionToken;
+ import info.movito.themoviedbapi.model.people.PersonCast;
 
-    /** Title of the movie that is wanted to obtain information on. **/
-    private String title;
-    
-    /** String of the picture of the movies backdrop path. **/
-    private String backdropPath;
-    
-    /** Budget for the movie. **/
-    private int budget;
-    
-    /** Id for the movie. **/
-    private int id;
-    
-    /** The language for the movie. **/
-    private String originalLanguage;
-    
-    /** Overview description. **/
-    private String overview;
-    
-    /** Popularity of the movie. **/
-    private double popularity; 
-    
-    /** Release date of the movie. **/
-    private String releaseDate;
-    
-    /** The total revenue of the given movie. **/
-    private int revenue;
-    
-    /** The runtime in total minutes. **/
-    private int runtime;
-    
-    /** A one-liner tagline that the movie is known for.**/
-    private String tagline;
-    
-    /** The average of all the votes cast for the movie. **/
-    private double voteAverage;
-    
-    /** The total number of votes counted. **/
-    private int voteCount;
-    
-    /** holds our tmbd api key. **/
-    private static TmdbApi tmdbApi;
-    
-    /** Holds our SessionToken. */
-    private static SessionToken sessionToken;
-    	
-    /** our API Manager object to hold our tmdp api key. **/
-    	private APIManager api;
-    
-    /** Constructor call that accepts a movie title.
-    * @param title The title of the movie.
-    **/
-    public Movie(final String title) {
-        this.title = title;
-        tmdbApi = api.getApiObject();
-        sessionToken = api.getSessionToken();
-    }
-    
-    /**
-     * Searches the API for the movie to obtain relevant information. 
-     **/
-    private void searchMovie() {
-    		MovieResultsPage results = 
-    		tmdbApi.getSearch().searchMovie(title, 0, "en", false, 0);
-    		
-    }
-    
-    
-    
-    
-}
+ /** Movie class that handles the the data associated with a movie. **/
+ public class Movie {
+
+     /** holds our tmbd api key. **/
+     private static TmdbApi tmdbApi;
+
+     /** Holds the ID of a movie. **/
+     private int id;
+
+     /** Whether or not the movie is an adult film. **/
+     private boolean adult;
+
+     /** Backdrop path to the request movie. **/
+     private String backdropPath;
+
+     /** Budget of the movie. **/
+     private long budget;
+
+     /** List of genres the movie can be classified as. **/
+     private ArrayList<String> genres;
+
+     /** Original language of the movie. **/
+     private String originalLanguage;
+
+     /** Original Title (Not always the same as the title). **/
+     private String originalTitle;
+
+     /** Brief overview of the movie. **/
+     private String overview;
+
+     /** Popularity of the movie, compared to other movies. **/
+     private float popularity;
+
+     /** Path to the poster for the movie. **/
+     private String posterPath;
+
+     /** Release date of the movie, past and future. **/
+     private String releaseDate;
+
+     /** Revenue the movie has gotten up to now. **/
+     private long revenue;
+
+     /** Run time of the movie in minutes. **/
+     private int runtime;
+
+     /** A one line of a 'catchphrase' from the movie. **/
+     private String tagline;
+
+     /** The title of the movie. **/
+     private String title;
+
+     /** Average amount of votes 1 - 10. **/
+     private float voteAverage;
+
+     /** The amount of people who have cast a vote. **/
+     private int voteCount;
+
+     /** Holds our SessionToken. */
+     private static SessionToken sessionToken;
+
+     /** Holds an object of type review. */
+     private ArrayList<Reviews> reviews;
+
+     /** Holds an object of type cideo. */
+     private ArrayList<Video> videos;
+
+     /** Holds an image. */
+     private ArrayList<Artwork> images;
+
+     /** Holds the cast of our movie we're trying to find. **/
+     private ArrayList<PersonCast> cast;
+
+     /** our API Manager object to hold our tmdp api key. **/
+     private APIManager api;
+
+     /** ArrayList of similar movies to the specified movie. **/
+     private ArrayList<Movie> similarMovies;
+
+     /*************************************************************************
+      * Movie Constructor call that accepts a movie title.
+      *
+      * @param title The title of the movie.
+      *************************************************************************/
+     public Movie(final String title) {
+     	this.title = title;
+     	api = new APIManager();
+         tmdbApi = api.getApiObject();
+         sessionToken = new SessionToken(api.getSessionString());
+     }
+
+     /**************************************************************************
+      * Movie Constructor.
+      *
+      * @param id The id of the movie you'd like to obtain
+      *************************************************************************/
+     public Movie(final int id) {
+     	this.id = id;
+     	api = new APIManager();
+         tmdbApi = api.getApiObject();
+         sessionToken = new SessionToken(api.getSessionString());
+     	this.getMovieFromID();
+     }
+
+     /**************************************************************************
+      * Empty constructor to access things like movies by genre, popular movies,
+      * top rated movies. Things that are not movie specific.
+      *
+      * What you can get back is a Array List of movies with all of the data
+      * needed.
+      *************************************************************************/
+     public Movie() {
+     	api = new APIManager();
+         tmdbApi = api.getApiObject();
+         sessionToken = new SessionToken(api.getSessionString());
+     }
+
+
+     /**************************************************************************
+      * Searches the API for the movie to obtain relevant information.
+      *
+      * @return MovieResults returns an ArrayList of individual movies where you
+      * can access every property about each movie
+      *************************************************************************/
+     public ArrayList<Movie> getMoviesFromTitle() {
+
+     	ArrayList<Movie> movies = new ArrayList<Movie>();
+
+     	MovieResultsPage results =
+     		tmdbApi.getSearch().searchMovie(title, 0, "en", false, 0);
+
+     	Iterator<MovieDb> iterator = results.iterator();
+
+     	while (iterator.hasNext()) {
+     		MovieDb movie = iterator.next();
+     		movies.add(new Movie(movie.getId()));
+     	}
+
+     	return movies;
+     }
+
+     /**************************************************************************
+      * Get the Popular Movies .
+      * @param numOfPages The amount of pages you want to obtain top movies from
+      *
+      * @return ArrayList of movies where each is a top movie (1 page)
+      *************************************************************************/
+     public ArrayList<Movie> getPopularMovies(final int numOfPages) {
+
+     	TmdbMovies tmdbMovies = tmdbApi.getMovies();
+
+
+     	ArrayList<Movie> popularMovies = new ArrayList<Movie>();
+
+     	for (int i = 1; i <= numOfPages; i++) {
+     		MovieResultsPage results = tmdbMovies.getPopularMovies("en", i);
+
+     		for (MovieDb mov : results) {
+         		popularMovies.add(new Movie(mov.getId()));
+         	}
+     	}
+
+     	return popularMovies;
+     }
+
+     /*************************************************************************
+      * Gets a movie from the ID.
+      *************************************************************************/
+     private void getMovieFromID() {
+     	TmdbMovies tmdbMovies = tmdbApi.getMovies();
+     	genres = new ArrayList<String>();
+     	similarMovies = new ArrayList<Movie>();
+
+     	MovieDb movie = tmdbMovies.getMovie(id, "en", MovieMethod.reviews,
+     		MovieMethod.videos, MovieMethod.images, MovieMethod.similar);
+
+     	backdropPath = movie.getBackdropPath();
+     	budget = movie.getBudget();
+     	originalLanguage = movie.getOriginalLanguage();
+     	originalTitle = movie.getOriginalTitle();
+     	overview = movie.getOverview();
+     	popularity = movie.getPopularity();
+     	posterPath = movie.getPosterPath();
+     	releaseDate = movie.getReleaseDate();
+     	revenue = movie.getRevenue();
+     	runtime = movie.getRuntime();
+     	tagline = movie.getTagline();
+     	title = movie.getTitle();
+     	videos = (ArrayList<Video>) movie.getVideos();
+     	voteAverage = movie.getVoteAverage();
+     	voteCount = movie.getVoteCount();
+     	cast = (ArrayList<PersonCast>) movie.getCast();
+     	reviews = (ArrayList<Reviews>) movie.getReviews();
+     	images = (ArrayList<Artwork>) movie.getImages(ArtworkType.POSTER);
+
+     	ArrayList<MovieDb> similar =
+     			(ArrayList<MovieDb>) movie.getSimilarMovies();
+
+     	for (MovieDb mov: similar) {
+     		similarMovies.add(new Movie(mov.getId()));
+     	}
+
+     	ArrayList<Genre> genresList = (ArrayList<Genre>) movie.getGenres();
+
+     	for (Genre genre: genresList) {
+     		genres.add(genre.getName());
+     	}
+     }
+
+     /*************************************************************************
+      * Get similar movies to the one that was passed.
+      *
+      * @return ArrayList of Similar movies
+      *************************************************************************/
+     public ArrayList<Movie> getSimilarMovie() {
+     	return similarMovies;
+     }
+
+     /*************************************************************************
+      * Get the genres associated with the movie.
+      *
+      * @return ArrayList of strings of the genres.
+      *************************************************************************/
+     public ArrayList<String> getGenres() {
+     	return genres;
+     }
+
+     /*************************************************************************
+      * Get the artwork associated with the movie.
+      *
+      * @return ArrayList of artwork for the movie
+      *************************************************************************/
+     public ArrayList<Artwork> getImages() {
+     	return images;
+     }
+
+     /*************************************************************************
+      * Get the Reviews from the movie.
+      *
+      * @return ArrayList of reviews of what people are saying about the movie.
+      *************************************************************************/
+     public ArrayList<Reviews> getReviews() {
+     	return reviews;
+     }
+
+     /*************************************************************************
+      * Get the cast from the associated movie.
+      *
+      * @return ArrayList of the cast of the movie.
+      *************************************************************************/
+     public ArrayList<PersonCast> getCast() {
+     	return cast;
+     }
+
+     /*************************************************************************
+      * Get the vote count of the movie.
+      *
+      * @return VoteCount as an integer of how many people voted.
+      *************************************************************************/
+     public int getVoteCount() {
+     	return voteCount;
+     }
+
+     /*************************************************************************
+      * Get the vote average 1 - 10 for what the movie received.
+      *
+      * @return float of the vote Average.
+      *************************************************************************/
+     public float getVoteAverage() {
+     	return voteAverage;
+     }
+
+     /*************************************************************************
+      * Get the videos from the movie.
+      *
+      * @return Videos associated with the movie
+      *************************************************************************/
+     public ArrayList<Video> getVideos() {
+     	return videos;
+     }
+
+     /*************************************************************************
+      * Get the tag line associated with the movie.
+      *
+      * @return String of the tag line of the movie.
+      *************************************************************************/
+     public String getTagline() {
+     	return tagline;
+     }
+
+     /*************************************************************************
+      * Get the runtime of the movie.
+      *
+      * @return int of the runtime of the movie in minutes.
+      *************************************************************************/
+     public int getRuntime() {
+     	return runtime;
+     }
+
+     /*************************************************************************
+      * Get the poster path of the movie.
+      *
+      * @return String for the poster path of the movie.
+      *************************************************************************/
+     public String getPosterPath() {
+     	return posterPath;
+     }
+
+     /*************************************************************************
+      * Get the revenue of the movie.
+      *
+      * @return long of the revenue of what the movie made.
+      *************************************************************************/
+     public long getRevenue() {
+     	return revenue;
+     }
+
+     /*************************************************************************
+      * Get the release date of the movie.
+      *
+      * @return String of the release date.
+      *************************************************************************/
+     public String getReleaseDate() {
+     	return releaseDate;
+     }
+
+     /*************************************************************************
+      * Get the popularity of the movie compared to every other one.
+      *
+      * @return float of the popularity of the movie.
+      *************************************************************************/
+     public float getPopularity() {
+     	return popularity;
+     }
+
+     /*************************************************************************
+      * Get the overview of the movie.
+      *
+      * @return String of the overview of the move.
+      *************************************************************************/
+     public String getOverview() {
+     	return overview;
+     }
+
+     /*************************************************************************
+      * Get the original title of the movie.
+      *
+      * @return Original title of the movie.
+      *************************************************************************/
+     public String getOriginalTitle() {
+     	return originalTitle;
+     }
+
+     /*************************************************************************
+      * Get the original language for the movie.
+      *
+      * @return the original language of the movie.
+      *************************************************************************/
+     public String getOriginalLanguage() {
+     	return originalLanguage;
+     }
+
+     /*************************************************************************
+      * Get the budget for the movie.
+      *
+      * @return The budget for the movie.
+      *************************************************************************/
+     public long getBudget() {
+     	return budget;
+     }
+
+     /*************************************************************************
+      * Get the backdrop path of the movie.
+      *
+      * @return String of the backdrop path of the movie
+      *************************************************************************/
+     public String getBackdropPath() {
+     	return backdropPath;
+     }
+
+     /*************************************************************************.
+      * Get the title of the movie.
+      *
+      * @return title Title of the movie.
+      *************************************************************************/
+     public String getTitle() {
+     	return title;
+     }
+
+     /*************************************************************************.
+      * Get whether the film is an adult film.
+      *
+      * @return adult Title of the movie.
+      *************************************************************************/
+     public Boolean getAdult() {
+     	return adult;
+     }
+
+     /*************************************************************************.
+      *  Get all the available links to the videos for the movie
+      *
+      * @return All the Videos of the movie
+      *************************************************************************/
+     public ArrayList<Video> getVides() {
+     	return videos;
+     }
+
+
+     public static void main(final String args[]) {
+
+     	Movie movie = new Movie("civil war");
+
+     	ArrayList<Movie> movies = movie.getMoviesFromTitle();
+
+     	for (Movie movie2 : movies) {
+     		//System.out.println(movie2.getTitle());
+     	}
+
+     }
+ }
