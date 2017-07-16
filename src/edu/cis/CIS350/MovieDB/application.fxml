@@ -34,7 +34,7 @@
 				</MenuBar>
 				<HBox spacing="10.0">
 					<children>
-						<TextField alignment="CENTER" layoutX="10.0" layoutY="10.0" promptText="Username">
+						<TextField fx:id="longinUsername" alignment="CENTER" layoutX="10.0" layoutY="10.0" promptText="Username">
 							<HBox.margin>
 								<Insets left="10.0" />
 							</HBox.margin>

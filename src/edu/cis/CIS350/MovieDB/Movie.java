@@ -8,43 +8,43 @@ import info.movito.themoviedbapi.model.core.SessionToken;
 public class Movie {
 
     /** Title of the movie that is wanted to obtain information on. **/
-    private String _title;
+    private String title;
     
     /** String of the picture of the movies backdrop path. **/
-    private String _backdrop_Path;
+    private String backdropPath;
     
     /** Budget for the movie. **/
-    private int _budget;
+    private int budget;
     
     /** Id for the movie. **/
-    private int _id;
+    private int id;
     
     /** The language for the movie. **/
-    private String _originalLanguage;
+    private String originalLanguage;
     
     /** Overview description. **/
-    private String _overview;
+    private String overview;
     
     /** Popularity of the movie. **/
-    private double _popularity; 
+    private double popularity; 
     
-    /** Release date of the movie **/
-    private String _releaseDate;
+    /** Release date of the movie. **/
+    private String releaseDate;
     
-    /** The total revenue of the given movie **/
-    private int _revenue;
+    /** The total revenue of the given movie. **/
+    private int revenue;
     
-    /** The runtime in total minutes **/
-    private int _runtime;
+    /** The runtime in total minutes. **/
+    private int runtime;
     
-    /** A one-liner tagline that the movie is known for**/
-    private String _tagline;
+    /** A one-liner tagline that the movie is known for.**/
+    private String tagline;
     
-    /** The average of all the votes cast for the movie **/
-    private double _voteAverage;
+    /** The average of all the votes cast for the movie. **/
+    private double voteAverage;
     
-    /** The total number of votes counted **/
-    private int _voteCount;
+    /** The total number of votes counted. **/
+    private int voteCount;
     
     /** holds our tmbd api key. **/
     private static TmdbApi tmdbApi;
@@ -52,23 +52,24 @@ public class Movie {
     /** Holds our SessionToken. */
     private static SessionToken sessionToken;
     	
-    /** our API Manager object to hold our tmdp api key **/
+    /** our API Manager object to hold our tmdp api key. **/
     	private APIManager api;
     
     /** Constructor call that accepts a movie title.
-    * @param title: The title of the movie.
+    * @param title The title of the movie.
     **/
     public Movie(final String title) {
-        this._title = title;
+        this.title = title;
         tmdbApi = api.getApiObject();
         sessionToken = api.getSessionToken();
     }
     
-    /*
-     * Searches the API for the movie to obtain relevant information 
-     */
+    /**
+     * Searches the API for the movie to obtain relevant information. 
+     **/
     private void searchMovie() {
-    		MovieResultsPage results = tmdbApi.getSearch().searchMovie(_title, 0, "en", false, 0);
+    		MovieResultsPage results = 
+    		tmdbApi.getSearch().searchMovie(title, 0, "en", false, 0);
     		
     }
     
