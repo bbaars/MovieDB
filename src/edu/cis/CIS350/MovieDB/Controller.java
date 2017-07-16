@@ -33,6 +33,9 @@ public class Controller implements Initializable {
 	/** Higher bound for random id. **/
 	private final int max = 20000;
 	
+	/** flag. **/
+	private boolean firstWindow = true;
+	
 	/** Choicebox on the quiz panel variable. **/
 	@FXML private ImageView moviePoster;
 	
@@ -49,7 +52,7 @@ public class Controller implements Initializable {
 	@FXML private TextField password;
 	
 	/** List field for movies on the main panel variable. **/
-	@FXML private TextField randomMovieField;
+	@FXML private TextArea randomMovieField;
 	
 	
 	/** New Quiz for user. **/
@@ -61,9 +64,12 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(final URL l, final ResourceBundle r) {
 
+		if (!firstWindow) {
 	     moviePoster.setImage(new Image("https://lh3.googleusercontent.com"
 	     	+ "/JiM3wad1iVtxOI-lfLsMvcI5sVJsKV5iVHHkK5wt1MImJwd8V_7szJm"
 	     	+ "hZDZSqRVHtw=w300"));
+	     firstWindow = true; 
+	     }
 	  }
 
 	/**

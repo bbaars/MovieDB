@@ -10,6 +10,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -131,14 +132,11 @@
                   <Insets left="50.0" top="50.0" />
                </VBox.margin>
             </Button>
-            <TextField fx:id="randomMovieField" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="131.0">
+            <TextArea fx:id="randomMovieField" editable="false" prefHeight="55.0" prefWidth="210.0" wrapText="true">
                <VBox.margin>
                   <Insets left="10.0" top="30.0" />
                </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextField>
+            </TextArea>
          </children>
 		</VBox>
 	</left>
