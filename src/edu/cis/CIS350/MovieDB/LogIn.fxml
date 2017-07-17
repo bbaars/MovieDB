@@ -3,13 +3,14 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="1022.0" style="-fx-background-color: #003300;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.LoginController">
+<Pane fx:id="closeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="1022.0" style="-fx-background-color: #003300;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.LoginController">
    <children>
       <Pane layoutX="511.0" layoutY="53.0" prefHeight="459.0" prefWidth="437.0" style="-fx-background-color: #001a00;">
          <children>
@@ -27,6 +28,9 @@
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <Label alignment="CENTER" layoutX="116.0" layoutY="32.0" prefHeight="34.0" prefWidth="215.0" text="Sign In" textFill="#f2eeee">
                <font>
@@ -40,10 +44,13 @@
             <Image url="@MovieDBLogo@3x.png" />
          </image>
       </ImageView>
-      <Label layoutX="972.0" layoutY="14.0" onMouseClicked="#cancelButtonClicked" opacity="0.84" text="X" textFill="#f8f8f8">
+      <Label fx:id="closeButton" layoutX="972.0" layoutY="14.0" onMouseClicked="#cancelButtonClicked" opacity="0.84" text="X" textFill="#f8f8f8">
          <font>
             <Font name="Avenir Oblique" size="28.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
    </children>
 </Pane>

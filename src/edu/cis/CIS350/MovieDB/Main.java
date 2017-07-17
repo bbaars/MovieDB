@@ -14,11 +14,17 @@ public class Main extends Application {
 	@Override
 	public void start(final Stage primaryStage) {
 		
+		/** Tries to load our first FXML File. **/
 		try {
 			Parent root = FXMLLoader.load(getClass()
 					.getResource("LogIn.fxml"));
 			Scene scene = new Scene(root, 1020, 550);
-			primaryStage.setTitle("MovieDB Application");
+			
+			primaryStage.getIcons().add(
+			new Image(Main.class.getResourceAsStream(
+					"MovieDBLogo@3x.png")));
+			
+			primaryStage.setTitle(" Log In MovieDB Application");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
