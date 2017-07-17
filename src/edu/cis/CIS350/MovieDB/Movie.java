@@ -405,7 +405,7 @@
      	return backdropPath;
      }
 
-     /*************************************************************************.
+     /*************************************************************************
       * Get the title of the movie.
       *
       * @return title Title of the movie.
@@ -414,7 +414,7 @@
      	return title;
      }
 
-     /*************************************************************************.
+     /*************************************************************************
       * Get whether the film is an adult film.
       *
       * @return adult Title of the movie.
@@ -423,8 +423,8 @@
      	return adult;
      }
 
-     /*************************************************************************.
-      *  Get all the available links to the videos for the movie
+     /*************************************************************************
+      *  Get all the available links to the videos for the movie.
       *
       * @return All the Videos of the movie
       *************************************************************************/

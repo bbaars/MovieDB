@@ -13,15 +13,12 @@ import javafx.scene.Parent;
 public class Main extends Application {
 	@Override
 	public void start(final Stage primaryStage) {
+		
 		try {
 			Parent root = FXMLLoader.load(getClass()
-					.getResource("application.fxml"));
-			Scene scene = new Scene(root, 900, 700);
-		//	scene.getStylesheets().add(getClass()
-		//	.getResource("application.css").toExternalForm());
+					.getResource("LogIn.fxml"));
+			Scene scene = new Scene(root, 1020, 550);
 			primaryStage.setTitle("MovieDB Application");
-			primaryStage.getIcons().add(
-			new Image(Main.class.getResourceAsStream("logo.png")));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

@@ -2,14 +2,8 @@ package edu.cis.CIS350.MovieDB;
 
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
@@ -22,7 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Controller class to control GUI.
  */
-public class Controller implements Initializable {
+public class Controller {
 	
 	/** Base URL String. **/
 	private final String appendURL = "https://image.tmdb.org/t/p/w500";
@@ -58,14 +52,6 @@ public class Controller implements Initializable {
 	/** Keeps track of what quiz question the user is on. **/
 	private int timesClicked = 0;
 	
-	@Override
-	public void initialize(final URL l, final ResourceBundle r) {
-
-	     moviePoster.setImage(new Image("https://lh3.googleusercontent.com"
-	     	+ "/JiM3wad1iVtxOI-lfLsMvcI5sVJsKV5iVHHkK5wt1MImJwd8V_7szJm"
-	     	+ "hZDZSqRVHtw=w300"));
-	  }
-
 	/**
 	 * Controller function for login button.
 	 */
