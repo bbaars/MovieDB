@@ -26,7 +26,8 @@ public class APIManager {
 		sessionString = "598b5da9fced4ed17e54f6956875b1198dff82ff";
 
 		 tmdbApi = new TmdbApi("ee032dd5fbbc85b55298a6d20a7f2e10");
-		 sessionToken = new SessionToken("598b5da9fced4ed17e54f6956875b1198dff82ff");
+		 sessionToken = new 
+		SessionToken("598b5da9fced4ed17e54f6956875b1198dff82ff");
 	}
 
 	/**********************************************************************

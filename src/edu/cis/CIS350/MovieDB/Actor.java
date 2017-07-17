@@ -47,7 +47,8 @@ public class Actor {
 	    String firstName = splited[0];
 	    String lastName = splited[1];
 	    
-		String json = readUrl("http://api.tmdb.org/3/search/person?api_key"
+		String json = 
+			readUrl("http://api.tmdb.org/3/search/person?api_key"
 		+ "=6615c9824f812a6fb9b8b4ea5f49a285&query=" 
 				+ firstName + "%20" + lastName);
 		

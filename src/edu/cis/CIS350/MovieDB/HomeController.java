@@ -52,6 +52,9 @@ public class HomeController implements Initializable {
 	/** Label for the genre of the movie. **/
 	@FXML private javafx.scene.control.Label genre3Label;
 	
+	/** Label for the vote score of the movie. **/
+	@FXML private javafx.scene.control.Label voteLabel;
+	
 	/** Label for the overview of the movie. **/
 	@FXML private javafx.scene.control.Label overviewLabel;
 	
@@ -59,7 +62,7 @@ public class HomeController implements Initializable {
 	@FXML private ImageView moviePoster;
 	
 	/** Choicebox on the quiz panel variable. **/
-	@FXML private ChoiceBox quizChoiceBox;
+	@FXML private ChoiceBox<String> quizChoiceBox;
 	
 	/** TextArea on the quiz panel variable. **/
 	@FXML private TextArea quizQuestionBox;
@@ -223,6 +226,8 @@ public class HomeController implements Initializable {
 		toRuntime = runtime / 60 + " hr " + runtime % 60 + " min";
 		runTimeLabel.setText(toRuntime);
 		
+		voteLabel.setText("" + movie2.getVoteAverage() + "/10");
+		
 		ArrayList<String> genres = 
 				movie2.getGenres();
 		
@@ -317,6 +322,8 @@ public class HomeController implements Initializable {
 		System.out.println(runtime);
 		toRuntime = runtime / 60 + " hr " + runtime % 60 + " min";
 		runTimeLabel.setText(toRuntime);
+		
+		voteLabel.setText("" + randomMovie.getVoteAverage() + "/10");
 		
 		ArrayList<String> genres = 
 				randomMovie.getGenres();

@@ -5,7 +5,6 @@ package edu.cis.CIS350.MovieDB;
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbTV.TvMethod;
 import info.movito.themoviedbapi.TvResultsPage;
-import info.movito.themoviedbapi.model.core.SessionToken;
 import info.movito.themoviedbapi.model.tv.TvSeries;
 
 import static java.lang.System.out;
@@ -23,13 +22,10 @@ public class TVShow extends APIManager {
 	private static int id;
 
 	/** Title of the TV Show. **/
-	private static String title;
+	private String title;
 
 	/** holds The Movie Database api key. **/
 	private static TmdbApi tmdbApi;
-
-	/** Holds the current sessionToken. */
-	private static SessionToken sessionToken;
 
 	/** API Manager object that allows the tmdb api to be used. **/
 	private APIManager api;
@@ -44,8 +40,6 @@ public class TVShow extends APIManager {
 		this.title = title;
 		api = new APIManager();
 		tmdbApi = api.getApiObject();
-		sessionToken = api.getSessionToken();
-
 		id = getIDfromString(title);
 	}
 
@@ -57,7 +51,8 @@ public class TVShow extends APIManager {
 	 * @return id the ID of the tv show
 	 *****************************************************************/
 	public int getIDfromString(final String query) {
-		TvResultsPage result = tmdbApi.getSearch().searchTv(query, "en", 0);
+		TvResultsPage result = 
+				tmdbApi.getSearch().searchTv(query, "en", 0);
 
 		int id = -1;
 
@@ -156,7 +151,8 @@ public class TVShow extends APIManager {
 			TvSeries tvShow = tmdbApi.getTvSeries()
 					.getSeries(id, "en", TvMethod.credits);
 			
-			leadActor = tvShow.getCredits().getAll().get(0).toString();
+			leadActor = 
+				tvShow.getCredits().getAll().get(0).toString();
 			
 			return leadActor;
 		} catch (Exception e) {
@@ -172,7 +168,8 @@ public class TVShow extends APIManager {
 	public String getAirDate() {
 		try {
 			String airDate;
-			TvSeries tvShow = tmdbApi.getTvSeries().getSeries(id, "en");
+			TvSeries tvShow =
+				tmdbApi.getTvSeries().getSeries(id, "en");
 			airDate = tvShow.getFirstAirDate();
 			
 			return airDate;
@@ -213,7 +210,8 @@ public class TVShow extends APIManager {
 	public List<TvSeries> searchTVShows(final String query) {
 		
 		List<TvSeries> series = new ArrayList<TvSeries>();
-		TvResultsPage result = tmdbApi.getSearch().searchTv(query, "en", 0);
+		TvResultsPage result = 
+			tmdbApi.getSearch().searchTv(query, "en", 0);
 
 		series = result.getResults();
 		
@@ -223,8 +221,11 @@ public class TVShow extends APIManager {
 
 
 
-	//Test out the TVshow class
-	public static void main(String[] args) {
+	/** 
+	 * 	Test out Actor class.	
+	 *  @param args For running main function. 
+	 *  **/
+	public static void main(final String[] args) {
 
 		TVShow show = new TVShow("Doctor Who");
 
@@ -233,8 +234,7 @@ public class TVShow extends APIManager {
 		
 		List<String> list = show.getGenres();
 
-		for (String n: list)
-		{
+		for (String n: list) {
 			out.println("Genre:" + n);
 		}
 

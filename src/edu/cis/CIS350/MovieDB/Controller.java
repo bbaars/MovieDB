@@ -31,7 +31,7 @@ public class Controller {
 	@FXML private ImageView moviePoster;
 	
 	/** Choicebox on the quiz panel variable. **/
-	@FXML private ChoiceBox quizChoiceBox;
+	@FXML private ChoiceBox<String> quizChoiceBox;
 	
 	/** TextArea on the quiz panel variable. **/
 	@FXML private TextArea quizQuestionBox;

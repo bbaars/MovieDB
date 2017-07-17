@@ -42,13 +42,14 @@ public class Genre {
 		private String genre;
 
 		/**A hashmap that holds string and number ID. **/
-	    private HashMap<String, Integer> hmap = new HashMap<String, Integer>();
+	    private HashMap<String, Integer> hmap = 
+	    		new HashMap<String, Integer>();
 
-	    /******************************************************************
-		 * A constructor that initializes the genre, genre ID, and hashmap.
+	    /**************************************************************
+		 * Constructor that initializes the genre genre ID and hashmap.
 		 * 
 		 * @param genre - genre of movie.
-		 *****************************************************************/
+		 **************************************************************/
 		GenreID(final String genre) {
 			this.genre = genre;
 			this.id = 0;
@@ -75,10 +76,10 @@ public class Genre {
 		      hmap.put("Western", 37);
 		}
 
-		/******************************************************************
+		/*************************************************************
 		 *	Returns the Genre ID of the Genre.
 		 * @return id
-		 *****************************************************************/
+		 *************************************************************/
 		int getID() { 
 			id = hmap.get(genre);
 		    return id;
