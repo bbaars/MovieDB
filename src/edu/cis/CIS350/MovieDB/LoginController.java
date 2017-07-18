@@ -3,7 +3,6 @@ package edu.cis.CIS350.MovieDB;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,7 +33,8 @@ public class LoginController {
 
 		try {
 
-			APIManager account = new APIManager(loginUsername.getText(),
+			APIManager account = new APIManager(
+					loginUsername.getText(),
 					password.getText());
 
 			if (account.logIn() == 1) {
@@ -47,17 +47,18 @@ public class LoginController {
 //				/* Stupid Line Length */
 //				primaryStage.getIcons().add(
 //						new Image(Main.class.
-//								getResourceAsStream("MovieDBLogo@3x.png")));
+//				getResourceAsStream("MovieDBLogo@3x.png")));
 //
 //				primaryStage.setScene(scene);
 //				primaryStage.show();
 //
 //				/* Hide our window when they log in FOR NOW */
 				javafx.stage.Window source = 
-						loginUsername.getScene().getWindow();
+					loginUsername.getScene().getWindow();
 				
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("Home.fxml"));
+				loader.setLocation(getClass().getResource(
+						"Home.fxml"));
 				
 				try {
 					loader.load();

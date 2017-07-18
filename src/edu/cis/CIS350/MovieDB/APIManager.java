@@ -74,9 +74,10 @@ public class APIManager {
 		
 		try {
 			TokenSession tokenSession = 
-					tmdbAuth.getSessionLogin(username, password);
+				tmdbAuth.getSessionLogin(username, password);
 			
-			sessionToken = new SessionToken(tokenSession.getSessionId());
+			sessionToken = 
+				new SessionToken(tokenSession.getSessionId());
 			
 			return 1;
 		} catch (Exception e) {
@@ -101,7 +102,7 @@ public class APIManager {
 		Iterator<MovieDb> iterator = resultsPage.iterator();
 		
 		if (iterator.next() == null) {
-			System.out.println("The user currently has no favorites");
+		     System.out.println("The user currently has no favorites");
 		} else {
 			
 			while (iterator.hasNext()) {
@@ -129,7 +130,7 @@ public class APIManager {
 		Iterator<MovieDb> iterator = resultsPage.iterator();
 		
 		if (iterator.next() == null) {
-			System.out.println("The user currently has no favorites");
+		    System.out.println("The user currently has no favorites");
 		} else {
 			
 			while (iterator.hasNext()) {
@@ -143,20 +144,23 @@ public class APIManager {
 	/***********************************************************************
 	*	Add a movie Favorite.
 	*
-	*  @param movieID The current id of the movie you'd wish to add to the user.
+	*  @param movieID The current id of the movie you'd wish to add to the
+	*   user.
 	***********************************************************************/
 	public void addMovieFavorite(final int movieID) {
 		
 		TmdbAccount tmdbAccount = tmdbApi.getAccount();
 		Account act = tmdbAccount.getAccount(sessionToken);
 		AccountID actId = new AccountID(act.getId());
-		tmdbAccount.addFavorite(sessionToken, actId, movieID, MediaType.MOVIE);
+		tmdbAccount.addFavorite(
+				sessionToken, actId, movieID, MediaType.MOVIE);
 	}
 	
 	/***********************************************************************
 	*	Add a movie Favorite.
 	*
-	*  @param movieID The current id of the movie you'd wish to add to the user.
+	*  @param movieID The current id of the movie you'd wish to add to the
+	*   user.
 	***********************************************************************/
 	public void addMovieToWatchList(final int movieID) {
 		

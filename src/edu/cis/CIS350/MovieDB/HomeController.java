@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.awt.print.Printable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -90,7 +89,7 @@ public class HomeController implements Initializable {
 	/** stores our current movie ID. **/
 	private int currentID;
 	
-//	/** if the user is currently signed in or not **/
+	/** if the user is currently signed in or not. **/
 	private boolean isSignedIn = false;
 	
 	/**
@@ -224,10 +223,12 @@ public class HomeController implements Initializable {
 		
 		if (isSignedIn) {
 			account.addMovieToWatchList(currentID);
-			System.out.println("Added " + currentID + " to watchlist");
+			System.out.println(
+					"Added " + currentID + " to watchlist");
 		} else {
-			// TO DO POP UP THAT TELLS THE USER THEY NEED TO LOG IN FOR THAT
-			// FEATURE
+			System.out.println("Must log in for this");
+			// TO DO POP UP THAT TELLS THE USER THEY NEED 
+			//TO LOG IN FOR THAT FEATURE
 		}
 	}
 	
