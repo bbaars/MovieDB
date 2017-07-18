@@ -27,7 +27,8 @@ import javafx.fxml.Initializable;
 public class HomeController implements Initializable {
 	
 	/** Base URL String. **/
-	private final String appendURL = "https://image.tmdb.org/t/p/w500";
+	private static final String URL =
+			"https://image.tmdb.org/t/p/w500";
 	
 	/** Field for searching. **/
 	@FXML private TextField search1;
@@ -78,10 +79,10 @@ public class HomeController implements Initializable {
 	private int currentPopularMovie = 0;
 	
 	/** Lower bounds for random id. **/
-	private final int min = 1;
+	private static final int MIN = 1;
 	
 	/** Higher bound for random id. **/
-	private final int max = 20000;
+	private static final int MAX = 20000;
 	
 	/** handles the user account information. **/
 	private APIManager account;
@@ -241,8 +242,8 @@ public class HomeController implements Initializable {
 		
 		Movie movie = new Movie();
 		int runtime;
-		String toRuntime = new String();
-		String imagePath = new String();
+		String toRuntime;
+		String imagePath;
 		
 		ArrayList<MovieDb> popularMovies = movie.getPopularMovies(1);
 		
@@ -250,7 +251,7 @@ public class HomeController implements Initializable {
 		overviewLabel.setText(popularMovies.get(index).getOverview());
 	
 		imagePath = popularMovies.get(index).getPosterPath();
-		imagePath = appendURL + imagePath;
+		imagePath = URL + imagePath;
 		
 		Image image = new Image(imagePath, 650, 350, true, true, false);
 		moviePoster.setImage(image);
@@ -338,13 +339,13 @@ public class HomeController implements Initializable {
 	 */
 	public void randomMovieButtonClicked() {
 		boolean keepGoing = true;
-		String imagePath = new String();
-		String toRuntime = new String();
+		String imagePath;
+		String toRuntime;
 		int runtime;
 		
 		while (keepGoing) {
 			try {
-		int movieId = ThreadLocalRandom.current().nextInt(min, max + 1);
+		int movieId = ThreadLocalRandom.current().nextInt(MIN, MAX + 1);
 		Movie randomMovie = new Movie(movieId);
 		
 		currentID = movieId;
@@ -354,7 +355,7 @@ public class HomeController implements Initializable {
 		imagePath = randomMovie.getPosterPath();
 		
 		keepGoing = false;
-		imagePath = appendURL + imagePath;
+		imagePath = URL + imagePath;
 		
 		overviewLabel.setText(randomMovie.getOverview());
 		
@@ -391,7 +392,9 @@ public class HomeController implements Initializable {
 		Image image = new Image(imagePath, 450, 350, true, true, false);
 		moviePoster.setImage(image);
 		
-			} catch (Exception e) {
+			} catch (RuntimeException e) {
+				keepGoing = true;
+			} catch (Exception InvocationTargetException) {
 				keepGoing = true;
 			}
 		}

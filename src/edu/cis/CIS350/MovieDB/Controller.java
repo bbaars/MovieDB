@@ -19,13 +19,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Controller {
 	
 	/** Base URL String. **/
-	private final String appendURL = "https://image.tmdb.org/t/p/w500";
+	private static final String URL =
+			"https://image.tmdb.org/t/p/w500";
 	
 	/** Lower bounds for random id. **/
-	private final int min = 1;
+	private static final int MIN = 1;
 	
 	/** Higher bound for random id. **/
-	private final int max = 20000;
+	private static final int MAX = 20000;
 	
 	/** Choicebox on the quiz panel variable. **/
 	@FXML private ImageView moviePoster;
@@ -65,11 +66,11 @@ public class Controller {
 	 */
 	public void randomMovieButtonClicked() {
 		boolean keepGoing = true;
-		String imagePath = new String();
+		String imagePath;
 		
 		while (keepGoing) {
 			try {
-		int movieId = ThreadLocalRandom.current().nextInt(min, max + 1);
+		int movieId = ThreadLocalRandom.current().nextInt(MIN, MAX + 1);
 		Movie randomMovie = new Movie(movieId);
 		
 		randomMovieField.setText(randomMovie.getTitle());
@@ -77,7 +78,7 @@ public class Controller {
 		imagePath = randomMovie.getPosterPath();
 		
 		keepGoing = false;
-		imagePath = appendURL + imagePath;
+		imagePath = URL + imagePath;
 		
 		Image image = new Image(imagePath, 450, 350, true, true, false);
 		moviePoster.setImage(image);

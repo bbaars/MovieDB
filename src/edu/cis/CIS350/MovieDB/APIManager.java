@@ -21,10 +21,10 @@ import info.movito.themoviedbapi.model.core.SessionToken;
 public class APIManager {
 
 	/** Handles the API Manager. **/
-	private static TmdbApi tmdbApi;
+	private TmdbApi tmdbApi;
 
 	/** Session token for one session. **/
-	private static SessionToken sessionToken;
+	private SessionToken sessionToken;
 
 	/** Session string. **/
 	private String sessionString;

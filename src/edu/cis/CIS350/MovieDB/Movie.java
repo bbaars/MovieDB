@@ -18,7 +18,7 @@
  public class Movie {
 
      /** holds our tmbd api key. **/
-     private static TmdbApi tmdbApi;
+     private TmdbApi tmdbApi;
 
      /** Holds the ID of a movie. **/
      private int id;

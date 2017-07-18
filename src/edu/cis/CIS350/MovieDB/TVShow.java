@@ -19,13 +19,13 @@ import java.util.ArrayList;
 public class TVShow extends APIManager {
 
 	/** ID of a tv show. **/
-	private static int id;
+	private int id;
 
 	/** Title of the TV Show. **/
 	private String title;
 
 	/** holds The Movie Database api key. **/
-	private static TmdbApi tmdbApi;
+	private TmdbApi tmdbApi;
 
 	/** API Manager object that allows the tmdb api to be used. **/
 	private APIManager api;
@@ -209,7 +209,7 @@ public class TVShow extends APIManager {
 	 *****************************************************************/
 	public List<TvSeries> searchTVShows(final String query) {
 		
-		List<TvSeries> series = new ArrayList<TvSeries>();
+		List<TvSeries> series; // = new ArrayList<TvSeries>();
 		TvResultsPage result = 
 			tmdbApi.getSearch().searchTv(query, "en", 0);
 
