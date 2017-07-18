@@ -2,7 +2,9 @@
 
  import java.util.ArrayList;
  import java.util.Iterator;
- import info.movito.themoviedbapi.TmdbApi;
+import java.util.List;
+
+import info.movito.themoviedbapi.TmdbApi;
  import info.movito.themoviedbapi.TmdbMovies;
  import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
  import info.movito.themoviedbapi.model.Artwork;
@@ -13,6 +15,7 @@
  import info.movito.themoviedbapi.model.Video;
  import info.movito.themoviedbapi.model.core.MovieResultsPage;
  import info.movito.themoviedbapi.model.people.PersonCast;
+import javafx.scene.input.KeyCombination.ModifierValue;
 	
  /** Movie class that handles the the data associated with a movie. **/
  public class Movie {
@@ -87,7 +90,7 @@
      private APIManager api;
 
      /** ArrayList of similar movies to the specified movie. **/
-     private ArrayList<Movie> similarMovies;
+     private ArrayList<MovieDb> similarMovies;
 
      /*************************************************************************
       * Movie Constructor call that accepts a movie title.
@@ -203,10 +206,12 @@
     	 
      	TmdbMovies tmdbMovies = tmdbApi.getMovies();
      	genres = new ArrayList<String>();
-     	similarMovies = new ArrayList<Movie>();
+     	similarMovies = new ArrayList<MovieDb>();
 
      	MovieDb movie = tmdbMovies.getMovie(this.id, "en", MovieMethod.reviews,
      		MovieMethod.videos, MovieMethod.images, MovieMethod.similar);
+     	
+     	movie.getSimilarMovies();
 
      	backdropPath = movie.getBackdropPath();
      	budget = movie.getBudget();
@@ -239,7 +244,23 @@
       *
       * @return ArrayList of Similar movies
       ************************************************************************/
-     public ArrayList<Movie> getSimilarMovie() {
+     public ArrayList<MovieDb> getSimilarMovie() {
+    	 
+    	TmdbMovies tmdbMovies = tmdbApi.getMovies();
+    	 
+      	MovieResultsPage similar =
+      			tmdbMovies.getSimilarMovies(this.id, "en", 0);
+      	Iterator<MovieDb> iterator = similar.iterator();
+      	
+      	if (iterator == null) {
+      		System.out.println("No similar Movies");
+      	} else {
+      		
+      		while (iterator.hasNext()) {
+      			similarMovies.add(iterator.next());
+      			System.out.println(iterator.next().getTitle());
+      		}
+      	}
      	return similarMovies;
      }
 

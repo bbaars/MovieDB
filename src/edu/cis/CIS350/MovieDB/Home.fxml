@@ -29,7 +29,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="184.0" onMousePressed="#topRatedActorButtonClicked" pickOnBounds="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="102.0" onMousePressed="#topRatedActorButtonClicked" pickOnBounds="true">
                <image>
                   <Image url="@Actor@3x.png" />
                </image>
@@ -37,7 +37,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="105.0" onMousePressed="#popularMovieButtonClicked" pickOnBounds="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="182.0" onMousePressed="#popularMovieButtonClicked" pickOnBounds="true">
                <image>
                   <Image url="@Movie@3x.png" />
                </image>
@@ -128,11 +128,7 @@
                         <Image url="@Timer@3x.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@movie" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="overviewLabel" alignment="TOP_LEFT" layoutX="65.0" layoutY="138.0" prefHeight="170.0" prefWidth="445.0" text="Label" textAlignment="JUSTIFY" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="15.0" />
@@ -205,7 +201,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="127.0" layoutY="424.0" onMousePressed="#topRatedMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="816.0" layoutY="424.0" onMousePressed="#topRatedMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
          <children>
             <Label alignment="CENTER" layoutX="15.0" layoutY="25.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Movies" textFill="#fffafa">
                <font>
@@ -228,16 +224,16 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="815.0" layoutY="424.0" onMousePressed="#topRatedActorButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="455.0" layoutY="424.0" onMousePressed="#popularMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
          <children>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Actors" textFill="#fffafa">
+            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Popular Movies" textFill="#fffafa">
                <font>
                   <Font name="Avenir Roman" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="126.0" fitWidth="118.0" layoutX="81.0" layoutY="77.0">
+            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="81.0" layoutY="81.0">
                <image>
-                  <Image url="@Actor@3x.png" />
+                  <Image url="@Movie@3x.png" />
                </image>
             </ImageView>
          </children>
@@ -248,16 +244,16 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="472.0" layoutY="424.0" onMousePressed="#popularMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="102.0" layoutY="424.0" onMousePressed="#topRatedActorButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
          <children>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Popular Movies" textFill="#fffafa">
+            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Actors" textFill="#fffafa">
                <font>
                   <Font name="Avenir Roman" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="81.0" layoutY="81.0">
+            <ImageView fitHeight="126.0" fitWidth="118.0" layoutX="81.0" layoutY="77.0">
                <image>
-                  <Image url="@Movie@3x.png" />
+                  <Image url="@Actor@3x.png" />
                </image>
             </ImageView>
          </children>
