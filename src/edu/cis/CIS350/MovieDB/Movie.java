@@ -2,9 +2,7 @@
 
  import java.util.ArrayList;
  import java.util.Iterator;
-import java.util.List;
-
-import info.movito.themoviedbapi.TmdbApi;
+ import info.movito.themoviedbapi.TmdbApi;
  import info.movito.themoviedbapi.TmdbMovies;
  import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
  import info.movito.themoviedbapi.model.Artwork;
@@ -15,8 +13,7 @@ import info.movito.themoviedbapi.TmdbApi;
  import info.movito.themoviedbapi.model.Video;
  import info.movito.themoviedbapi.model.core.MovieResultsPage;
  import info.movito.themoviedbapi.model.people.PersonCast;
-import javafx.scene.input.KeyCombination.ModifierValue;
-	
+ 
  /** Movie class that handles the the data associated with a movie. **/
  public class Movie {
 
@@ -263,6 +260,16 @@ import javafx.scene.input.KeyCombination.ModifierValue;
       	}
      	return similarMovies;
      }
+     
+     /*************************************************************************
+      * Get the movies unique identifier.
+      *
+      * @return long integer of the movies unique identifier
+      *************************************************************************/
+     public int getID() {
+     	return id;
+     }
+     
 
      /*************************************************************************
       * Get the genres associated with the movie.

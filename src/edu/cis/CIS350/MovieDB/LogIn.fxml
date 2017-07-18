@@ -14,7 +14,7 @@
    <children>
       <Pane layoutX="511.0" layoutY="53.0" prefHeight="459.0" prefWidth="437.0" style="-fx-background-color: #001a00;">
          <children>
-            <JFXTextField id="text" fx:id="loginUsername" alignment="CENTER" focusColor="#00d377" labelFloat="true" layoutX="50.0" layoutY="108.0" prefHeight="34.0" prefWidth="347.0" promptText="Email" unFocusColor="#78cca5">
+            <JFXTextField id="text" fx:id="loginUsername" alignment="CENTER" focusColor="#00d377" labelFloat="true" layoutX="50.0" layoutY="108.0" prefHeight="34.0" prefWidth="347.0" promptText="Username" unFocusColor="#78cca5">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>

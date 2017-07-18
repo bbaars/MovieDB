@@ -48,10 +48,10 @@ public class Test {
 		
 		// Method 1: Generating session id using API calls (requires username and password)
 		
-//		TmdbAuthentication tmdbAuth = tmdbApi.getAuthentication();
-//		TokenSession tokenSession = tmdbAuth.getSessionLogin("","");
-//		System.out.println("Session ID: " + tokenSession.getSessionId());
-//		SessionToken sessionToken = new SessionToken(tokenSession.getSessionId());
+		TmdbAuthentication tmdbAuth = tmdbApi.getAuthentication();
+		TokenSession tokenSession = tmdbAuth.getSessionLogin("bbaar","waverly2011");
+		System.out.println("Session ID: " + tokenSession.getSessionId());
+		SessionToken sessionToken = new SessionToken(tokenSession.getSessionId());
 		
 		
 		// Method 2: Generating session id via the website (user interaction involved)
@@ -65,7 +65,7 @@ public class Test {
 		//		(use session-id value in the response to set the value for sessionId variable in the code below
 		
 		// hard-coded session id generated from Method 1 above
-		SessionToken sessionToken = new SessionToken("21b1aa674bced210f3b99836956d47ecb1ee13e6");
+//		SessionToken sessionToken = new SessionToken("21b1aa674bced210f3b99836956d47ecb1ee13e6");
 		return sessionToken;
 	}
 	

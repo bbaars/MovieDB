@@ -25,6 +25,7 @@ public class Main extends Application {
 					"MovieDBLogo@3x.png")));
 			
 			primaryStage.setTitle(" Log In MovieDB Application");
+			primaryStage.centerOnScreen();
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

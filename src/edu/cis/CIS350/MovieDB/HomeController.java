@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.awt.print.Printable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -82,12 +84,35 @@ public class HomeController implements Initializable {
 	/** Higher bound for random id. **/
 	private final int max = 20000;
 	
-
+	/** handles the user account information. **/
+	private APIManager account;
+	
+	/** stores our current movie ID. **/
+	private int currentID;
+	
+//	/** if the user is currently signed in or not **/
+	private boolean isSignedIn = false;
+	
+	/**
+	 * Method is called when the controller is initialized.
+	 **/
 	@Override
 	public void initialize(final URL location,
 			final ResourceBundle resources) {
 		
 		loadMovieInfo(currentPopularMovie);
+	}
+	
+	/**
+	 * When the controller is created, it passed in the account information
+	 * for us to this controller.
+	 * 
+	 * @param account API Manager that deals with the users account info.
+	 **/
+	public void setMyData(final APIManager account) {
+		this.account = account;
+		System.out.println(account);
+		isSignedIn = true;
 	}
 	
 	/**
@@ -180,6 +205,7 @@ public class HomeController implements Initializable {
 	 **/
 	public void watchlistClicked() {
 		System.out.println("WatchList Button Clicked");
+		
 	}
 	
 	/**
@@ -194,6 +220,15 @@ public class HomeController implements Initializable {
 	 **/
 	public void addToWatchListButtonClicked() {
 		System.out.println("Add to WatchList Button Clicked");
+		System.out.println(isSignedIn);
+		
+		if (isSignedIn) {
+			account.addMovieToWatchList(currentID);
+			System.out.println("Added " + currentID + " to watchlist");
+		} else {
+			// TO DO POP UP THAT TELLS THE USER THEY NEED TO LOG IN FOR THAT
+			// FEATURE
+		}
 	}
 	
 	/**
@@ -220,6 +255,8 @@ public class HomeController implements Initializable {
 		moviePoster.setImage(image);
 		
 		Movie movie2 = new Movie(popularMovies.get(index).getId());
+		
+		currentID = movie2.getID();
 		
 		runtime = movie2.getRuntime();
 		System.out.println(runtime);
@@ -308,6 +345,8 @@ public class HomeController implements Initializable {
 			try {
 		int movieId = ThreadLocalRandom.current().nextInt(min, max + 1);
 		Movie randomMovie = new Movie(movieId);
+		
+		currentID = movieId;
 		
 		titleLabel.setText(randomMovie.getTitle());
 		
