@@ -120,7 +120,7 @@
             </Pane>
             <JFXTextField fx:id="search2" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="309.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Movie/Actor/Genre" />
             <JFXTextField fx:id="search3" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="604.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Movie/Actor/Genre" />
-            <Pane layoutY="69.0" prefHeight="327.0" prefWidth="948.0" style="-fx-background-color: #cfcfcf;">
+            <Pane layoutY="69.0" prefHeight="374.0" prefWidth="948.0" style="-fx-background-color: #cfcfcf;">
                <children>
                   <Label fx:id="titleLabel" alignment="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="63.0" prefWidth="556.0" text="TITLE">
                      <font>
@@ -137,9 +137,15 @@
                         <Image url="@Timer@3x.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
-                  <Circle fx:id="circle" fill="#00d373" layoutX="776.0" layoutY="280.0" onMousePressed="#plusButtonClicked" pickOnBounds="true" radius="24.0" stroke="BLACK" strokeType="INSIDE" translateZ="10.0" />
-                  <ImageView fx:id="favorite" fitHeight="34.0" fitWidth="33.0" focusTraversable="true" layoutX="733.0" layoutY="236.0" onMouseReleased="#addToFavoritesButtonClickd" pickOnBounds="true">
+                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image></ImageView>
+                  <Circle fx:id="circle" fill="#00d373" layoutX="773.0" layoutY="308.0" onMousePressed="#plusButtonClicked" pickOnBounds="true" radius="24.0" stroke="BLACK" strokeType="INSIDE" translateZ="10.0" />
+                  <ImageView fx:id="favorite" fitHeight="34.0" fitWidth="33.0" focusTraversable="true" layoutX="730.0" layoutY="264.0" onMouseReleased="#addToFavoritesButtonClickd" pickOnBounds="true">
                      <image>
                         <Image url="@Favorite@3x.png" />
                      </image>
@@ -152,7 +158,7 @@
                         <Font name="Avenir Roman" size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="plus" fitHeight="19.0" fitWidth="19.0" focusTraversable="true" layoutX="766.0" layoutY="270.0" onMouseReleased="#plusButtonClicked" pickOnBounds="true">
+                  <ImageView fx:id="plus" fitHeight="19.0" fitWidth="19.0" focusTraversable="true" layoutX="763.0" layoutY="298.0" onMouseReleased="#plusButtonClicked" pickOnBounds="true">
                      <image>
                         <Image url="@Plus@3x.png" />
                      </image>
@@ -165,7 +171,7 @@
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="genre1Label" alignment="CENTER" layoutX="200.0" layoutY="100.0" prefHeight="26.0" prefWidth="130.0" text="Genre">
+                  <Label fx:id="genre1Label" alignment="CENTER" layoutX="199.0" layoutY="102.0" prefHeight="26.0" prefWidth="118.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Genre">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
@@ -194,12 +200,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Label fx:id="genre2Label" alignment="CENTER" layoutX="330.0" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Genre">
+                  <Label fx:id="genre2Label" alignment="CENTER" layoutX="336.0" layoutY="101.0" prefHeight="26.0" prefWidth="118.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Genre">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="genre3Label" alignment="CENTER" layoutX="460.0" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Genre">
+                  <Label fx:id="genre3Label" alignment="CENTER" layoutX="474.0" layoutY="101.0" prefHeight="26.0" prefWidth="118.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Genre">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
@@ -214,7 +220,7 @@
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="eye" fitHeight="42.0" fitWidth="33.0" focusTraversable="true" layoutX="785.0" layoutY="232.0" onMouseReleased="#addToWatchListButtonClicked" pickOnBounds="true">
+                  <ImageView fx:id="eye" fitHeight="42.0" fitWidth="33.0" focusTraversable="true" layoutX="782.0" layoutY="260.0" onMouseReleased="#addToWatchListButtonClicked" pickOnBounds="true">
                      <image>
                         <Image url="@Eye@3x.png" />
                      </image>
@@ -222,18 +228,28 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
+                  <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="651.0" layoutY="336.0">
+                     <image>
+                        <Image url="@Play.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="runTimeLabel1" alignment="CENTER" layoutX="670.0" layoutY="332.0" prefHeight="26.0" prefWidth="82.0" text="Play Trailer">
+                     <font>
+                        <Font name="Avenir Roman" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="816.0" layoutY="424.0" onMousePressed="#topRatedMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="786.0" layoutY="472.0" onMousePressed="#topRatedMovieButtonClicked" prefHeight="237.0" prefWidth="240.0" style="-fx-background-color: #8e8e8e;">
          <children>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="25.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Movies" textFill="#fffafa">
+            <Label alignment="CENTER" layoutY="25.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Movies" textFill="#fffafa">
                <font>
                   <Font name="Avenir Roman" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="81.0" layoutY="88.0">
+            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="61.0" layoutY="88.0">
                <image>
                   <Image url="@Star@3x.png" />
                </image>
@@ -249,14 +265,14 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="455.0" layoutY="424.0" onMousePressed="#popularMovieButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="463.0" layoutY="468.0" onMousePressed="#popularMovieButtonClicked" prefHeight="245.0" prefWidth="240.0" style="-fx-background-color: #8e8e8e;">
          <children>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Popular Movies" textFill="#fffafa">
+            <Label alignment="CENTER" layoutX="-5.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Popular Movies" textFill="#fffafa">
                <font>
                   <Font name="Avenir Roman" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="81.0" layoutY="81.0">
+            <ImageView fitHeight="118.0" fitWidth="118.0" layoutX="61.0" layoutY="81.0">
                <image>
                   <Image url="@Movie@3x.png" />
                </image>
@@ -269,14 +285,14 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="102.0" layoutY="424.0" onMousePressed="#topRatedActorButtonClicked" prefHeight="280.0" prefWidth="280.0" style="-fx-background-color: #8e8e8e;">
+      <Pane layoutX="136.0" layoutY="468.0" onMousePressed="#topRatedActorButtonClicked" prefHeight="245.0" prefWidth="240.0" style="-fx-background-color: #8e8e8e;">
          <children>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="26.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Actors" textFill="#fffafa">
+            <Label alignment="CENTER" layoutX="-5.0" layoutY="25.0" prefHeight="63.0" prefWidth="250.0" text="Top Rated Actors" textFill="#fffafa">
                <font>
                   <Font name="Avenir Roman" size="25.0" />
                </font>
             </Label>
-            <ImageView fitHeight="126.0" fitWidth="118.0" layoutX="81.0" layoutY="77.0">
+            <ImageView fitHeight="126.0" fitWidth="118.0" layoutX="61.0" layoutY="77.0">
                <image>
                   <Image url="@Actor@3x.png" />
                </image>
