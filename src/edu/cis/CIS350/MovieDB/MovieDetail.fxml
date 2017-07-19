@@ -45,12 +45,12 @@
             </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="610.0" fitWidth="1096.0" layoutX="81.0" layoutY="-66.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-66.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@backdropTest.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="69.0" layoutY="263.0" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: white;">
+      <Pane layoutX="82.0" layoutY="263.0" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="271.0" fitWidth="212.0" layoutX="217.0" layoutY="-128.0" pickOnBounds="true" preserveRatio="true">
                <image>
