@@ -236,10 +236,13 @@
                         <Image url="@Play.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="runTimeLabel1" alignment="CENTER" layoutX="670.0" layoutY="332.0" prefHeight="26.0" prefWidth="82.0" text="Play Trailer">
+                  <Label alignment="CENTER" layoutX="670.0" layoutY="332.0" onMousePressed="#trailerClicked" prefHeight="26.0" prefWidth="82.0" text="Play Trailer">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Label>
                </children>
             </Pane>
@@ -308,7 +311,7 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="menuPane" layoutX="81.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;">
+      <Pane fx:id="menuPane" layoutX="81.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
                <font>

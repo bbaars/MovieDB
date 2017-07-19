@@ -450,13 +450,4 @@
      public Boolean getAdult() {
      	return adult;
      }
-
-     /*************************************************************************
-      *  Get all the available links to the videos for the movie.
-      *
-      * @return All the Videos of the movie
-      *************************************************************************/
-     public ArrayList<Video> getVides() {
-     	return videos;
-     }
  }

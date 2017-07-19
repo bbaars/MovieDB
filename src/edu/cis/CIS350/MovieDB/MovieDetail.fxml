@@ -46,14 +46,14 @@
             </ImageView>
          </children>
       </Pane>
-      <ImageView fx:id="backdropImage" fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-70.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backdropImage" fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-74.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@backdropTest.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="82.0" layoutY="263.0" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: white;">
+      <Pane layoutX="81.0" layoutY="263.0" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="posterImage" fitHeight="271.0" fitWidth="212.0" layoutX="217.0" layoutY="-128.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="posterImage" fitHeight="271.0" fitWidth="212.0" layoutX="177.0" layoutY="-128.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@posterTest.jpg" />
                </image>
@@ -61,47 +61,47 @@
                   <DropShadow height="21.13" offsetX="5.0" offsetY="5.0" radius="9.335" width="18.21" />
                </effect>
             </ImageView>
-            <Label fx:id="runTimeLabel" alignment="CENTER" layoutX="570.0" layoutY="53.0" prefHeight="26.0" prefWidth="82.0" text="2hr 10 min">
+            <Label fx:id="runTimeLabel" alignment="CENTER" layoutX="535.0" layoutY="56.0" prefHeight="26.0" prefWidth="82.0" text="2hr 10 min">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="554.0" layoutY="57.0">
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="519.0" layoutY="60.0">
                <image>
                   <Image url="@Timer@3x.png" />
                </image>
             </ImageView>
-            <Label fx:id="genre1Label" alignment="CENTER" layoutX="423.0" layoutY="90.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Action">
+            <Label fx:id="genre1Label" alignment="CENTER" layoutX="388.0" layoutY="93.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Action">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="genre2Label" alignment="CENTER" layoutX="551.0" layoutY="90.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Drama">
+            <Label fx:id="genre2Label" alignment="CENTER" layoutX="516.0" layoutY="93.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Drama">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="genre3Label" alignment="CENTER" layoutX="680.0" layoutY="90.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Science Fiction">
+            <Label fx:id="genre3Label" alignment="CENTER" layoutX="645.0" layoutY="93.0" prefHeight="26.0" prefWidth="120.0" style="-fx-border-color: black; -fx-border-radius: 5.0;" text="Science Fiction">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="443.0" layoutY="57.0">
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="408.0" layoutY="60.0">
                <image>
                   <Image url="@Favorite@3x.png" />
                </image>
             </ImageView>
-            <Label fx:id="voteLabel" alignment="CENTER" layoutX="462.0" layoutY="53.0" prefHeight="26.0" prefWidth="41.0" text="8.1/10">
+            <Label fx:id="voteLabel" alignment="CENTER" layoutX="427.0" layoutY="56.0" prefHeight="26.0" prefWidth="41.0" text="8.1/10">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="680.0" layoutY="55.0">
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="645.0" layoutY="58.0">
                <image>
                   <Image url="@Play.png" />
                </image>
             </ImageView>
-            <Label fx:id="runTimeLabel1" alignment="CENTER" layoutX="699.0" layoutY="51.0" prefHeight="26.0" prefWidth="82.0" text="Play Trailer">
+            <Label alignment="CENTER" layoutX="664.0" layoutY="54.0" onMousePressed="#trailerClicked" prefHeight="26.0" prefWidth="82.0" text="Play Trailer">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
@@ -109,7 +109,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="381.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="INFO" textFill="#00d373">
+            <Label alignment="CENTER" layoutX="381.0" layoutY="185.0" onMousePressed="#infoTabPressed" prefHeight="34.0" prefWidth="91.0" text="INFO" textFill="#00d373">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
@@ -117,7 +117,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="489.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="CAST">
+            <Label alignment="CENTER" layoutX="489.0" layoutY="185.0" onMousePressed="#castTabPressed" prefHeight="34.0" prefWidth="91.0" text="CAST">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="599.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="REVIEWS">
+            <Label alignment="CENTER" layoutX="599.0" layoutY="185.0" onMousePressed="#reviewTabPressed" prefHeight="34.0" prefWidth="91.0" text="REVIEWS">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
@@ -138,14 +138,107 @@
                   <Font name="Avenir Roman" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="212.0" layoutY="219.0" prefHeight="26.0" prefWidth="112.0" text="Overview">
+            <Label fx:id="titleOverviewLabel" layoutX="212.0" layoutY="219.0" prefHeight="26.0" prefWidth="112.0" text="Overview">
                <font>
                   <Font name="Avenir Black" size="15.0" />
                </font>
             </Label>
+            <Pane fx:id="castPane" layoutX="65.0" layoutY="220.0" prefHeight="255.0" prefWidth="940.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="16.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="28.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="233.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="205.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="217.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="410.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="382.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="394.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="562.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="574.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="774.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="746.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="758.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                     <font>
+                        <Font name="Avenir Roman" size="12.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </Pane>
-      <Label fx:id="titleLabel" layoutX="509.0" layoutY="263.0" prefHeight="67.0" prefWidth="644.0" text="Interstellar (2014)">
+      <Label fx:id="titleLabel" layoutX="471.0" layoutY="263.0" prefHeight="55.0" prefWidth="644.0" text="Interstellar (2014)">
          <font>
             <Font name="Avenir Roman" size="32.0" />
          </font>

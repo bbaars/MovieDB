@@ -2,12 +2,17 @@ package edu.cis.CIS350.MovieDB;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
@@ -210,7 +215,7 @@ public class HomeController implements Initializable {
 		menuPane.setVisible(true);
 		
 		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(600), menuPane);
+			fTransition = new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(0);
 		fTransition.setToValue(1.0);
 		fTransition.setCycleCount(1);
@@ -224,7 +229,7 @@ public class HomeController implements Initializable {
 		System.out.print("Dismiss Menu Clicked");
 	
 		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(600), menuPane);
+			fTransition = new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(1.0);
 		fTransition.setToValue(0);
 		fTransition.setCycleCount(1);
@@ -521,6 +526,41 @@ public class HomeController implements Initializable {
 			} catch (Exception InvocationTargetException) {
 				keepGoing = true;
 			}
+		}
+	}
+	
+	/** 
+	 * Handles the event of when the trailer is clicked.
+	 */
+	public void trailerClicked() {
+		System.out.println("Trailer Clicked");
+		
+		try {
+			WebView webView = new WebView();
+			WebEngine webEngine = webView.getEngine();
+			webEngine.load("https://www.youtube.com/embed/"
+			+ currentMovie.getVideos().get(0).getKey() + "?autoplay=1");
+			
+			Scene scene = new Scene(webView, 640, 390);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.centerOnScreen();
+			stage.show();
+			
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				
+				 @Override
+		            public void handle(final WindowEvent event) {
+		              webView.getEngine().load(null);
+		            }
+				
+			});
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Whoops");
+			alert.setHeaderText(null);
+			alert.setContentText("Could not load trailer.");
+			alert.showAndWait();
 		}
 	}
 }

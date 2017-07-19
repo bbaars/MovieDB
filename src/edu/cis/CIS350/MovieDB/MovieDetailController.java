@@ -1,26 +1,36 @@
 package edu.cis.CIS350.MovieDB;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import info.movito.themoviedbapi.model.MovieDb;
+import com.sun.javafx.event.EventHandlerManager;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 /** Detail of the movie the user wishes to view. **/
@@ -36,6 +46,9 @@ public class MovieDetailController implements Initializable {
 	
 	/** Our menu pane. **/
 	@FXML private Pane menuPane;
+	
+	/** Our top cast pane. **/
+	@FXML private Pane castPane;
 	
 	/** The plus for watch list or favorites. **/
 	@FXML private ImageView plus;
@@ -76,6 +89,9 @@ public class MovieDetailController implements Initializable {
 	/** Label for the overview of the movie. **/
 	@FXML private javafx.scene.control.Label overviewLabel;
 	
+	/** Label for the overview of the movie. **/
+	@FXML private javafx.scene.control.Label titleOverviewLabel;
+	
 	/** handles the user account information. **/
 	private APIManager account;
 	
@@ -88,6 +104,9 @@ public class MovieDetailController implements Initializable {
 	/** click events for our plus circle. **/
 	private int clickedOn = 0;
 	
+	/** keeps track of our current tabbed index. **/
+	private int tabbedIndex = 0;
+	
 	/**
 	 * Method is called when the controller is initialized.
 	 **/
@@ -96,6 +115,7 @@ public class MovieDetailController implements Initializable {
 			final ResourceBundle resources) {
 		
 		menuPane.setVisible(false);
+		castPane.setVisible(false);
 		eye.setVisible(false);
 		favorite.setVisible(false);
 		
@@ -125,7 +145,7 @@ public class MovieDetailController implements Initializable {
 		System.out.print("Dismiss Menu Clicked");
 	
 		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(600), menuPane);
+			fTransition = new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(1.0);
 		fTransition.setToValue(0);
 		fTransition.setCycleCount(1);
@@ -138,6 +158,21 @@ public class MovieDetailController implements Initializable {
 				menuPane.setVisible(false);
 			}
 		});
+	}
+	
+	/**
+	 * For menu button.
+	 **/
+	public void menuButtonClicked() {
+		System.out.println("Menu Button Clicked");
+		menuPane.setVisible(true);
+		
+		FadeTransition 
+			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		fTransition.setFromValue(0);
+		fTransition.setToValue(1.0);
+		fTransition.setCycleCount(1);
+		fTransition.play();
 	}
 	
 	/**
@@ -188,6 +223,41 @@ public class MovieDetailController implements Initializable {
 		}
 	}
 	
+	/** 
+	 * Handles the event of when the trailer is clicked.
+	 */
+	public void trailerClicked() {
+		System.out.println("Trailer Clicked");
+		
+		try {
+			WebView webView = new WebView();
+			WebEngine webEngine = webView.getEngine();
+			webEngine.load("https://www.youtube.com/embed/"
+			+ movie.getVideos().get(0).getKey() + "?autoplay=1");
+			
+			Scene scene = new Scene(webView, 640, 390);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.centerOnScreen();
+			stage.show();
+			
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				
+				 @Override
+		            public void handle(final WindowEvent event) {
+		              webView.getEngine().load(null);
+		            }
+				
+			});
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Whoops");
+			alert.setHeaderText(null);
+			alert.setContentText("Could not load trailer.");
+			alert.showAndWait();
+		}
+	}
+	
 	/**
 	 * Adds the current movie to the watch list of the account.
 	 **/
@@ -203,21 +273,6 @@ public class MovieDetailController implements Initializable {
 	public void addToFavoritesButtonClickd() {
 		System.out.println("Added to favorites");
 		account.addMovieFavorite(movie.getID());
-	}
-	
-	/**
-	 * For menu button.
-	 **/
-	public void menuButtonClicked() {
-		System.out.println("Menu Button Clicked");
-		menuPane.setVisible(true);
-		
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(600), menuPane);
-		fTransition.setFromValue(0);
-		fTransition.setToValue(1.0);
-		fTransition.setCycleCount(1);
-		fTransition.play();
 	}
 	
 	/**
@@ -297,6 +352,7 @@ public class MovieDetailController implements Initializable {
 				
 		titleLabel.setText(movie.getTitle());
 		overviewLabel.setText(movie.getOverview());
+		titleOverviewLabel.setText("Overview");
 	
 		imagePath = movie.getPosterPath();
 		imagePath = URL + imagePath;
@@ -340,5 +396,22 @@ public class MovieDetailController implements Initializable {
 			}
 		}
 	}
+	
+	
+	public void infoTabPressed() {
+		
+		
+	}
+	
+	public void castTabPressed() {
+		
+		
+	}
+	
+	public void reviewTabPressed() {
+		
+		
+	}
+	
 	
 }
