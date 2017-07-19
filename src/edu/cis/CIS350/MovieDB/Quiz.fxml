@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="318.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.Controller">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="318.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.QuizController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="195.0" prefWidth="568.0">
          <children>
@@ -27,7 +27,7 @@
 						</FXCollections>
 					</items>
 				</ChoiceBox>
-            <Button layoutX="56.0" layoutY="49.0" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" />
+            <Button layoutX="63.0" layoutY="46.0" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" />
          </children>
          </AnchorPane>
   </items>

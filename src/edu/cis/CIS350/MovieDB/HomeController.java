@@ -94,18 +94,6 @@ public class HomeController implements Initializable {
 	/** how many times the user clicks on the circle. **/
 	private int clickedOn = 0;
 	
-	/** Choice box on the quiz panel variable. **/
-	@FXML private ChoiceBox<String> quizChoiceBox;
-	
-	/** TextArea on the quiz panel variable. **/
-	@FXML private TextArea quizQuestionBox;
-	
-	/** New Quiz for user. **/
-	private Quiz userQuiz = new Quiz();
-	
-	/** Keeps track of what quiz question the user is on. **/
-	private int timesClicked = 0;
-	
 	/** Index of current Popular Movie. */
 	private int currentPopularMovie = 0;
 	
@@ -420,27 +408,6 @@ public class HomeController implements Initializable {
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Controller function for quiz next button.
-	 */
-	public void nextButtonClicked() {
-		int choiceSelected;
-		if (timesClicked < 5) {
-		choiceSelected = 
-		    (Integer.parseInt((String) quizChoiceBox.getValue()) - 1);
-		userQuiz.setAnswer(choiceSelected);
-		
-		timesClicked++;
-		if (5 <= timesClicked) {
-			quizQuestionBox.setText("Your genre is: " 
-		    + userQuiz.returnGenre()
-			+ "\nTry filtering for movies of your genre."); 
-			} else {
-				quizQuestionBox.setText(userQuiz.getQuestion(timesClicked));
-			}
 		}
 	}
 	
