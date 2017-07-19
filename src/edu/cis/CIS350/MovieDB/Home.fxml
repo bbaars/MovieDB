@@ -60,7 +60,7 @@
             </ImageView>
             <Pane layoutX="948.0" prefHeight="396.0" prefWidth="130.0" style="-fx-background-color: #616161;">
                <children>
-                  <JFXButton layoutX="20.0" layoutY="163.0" onAction="#logOutButtonClicked" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #00d373;" text="Log Out">
+                  <JFXButton fx:id="loginButton" layoutX="20.0" layoutY="163.0" onAction="#logOutButtonClicked" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #00d373;" text="Log In">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
@@ -69,31 +69,31 @@
                      </cursor>
                   </JFXButton>
                   <Circle fill="#00d373" layoutX="65.0" layoutY="85.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="nameLabel" alignment="CENTER" layoutX="13.0" layoutY="117.0" prefHeight="34.0" prefWidth="104.0" text="Brandon Baars" textFill="#fff8f8">
+                  <Label fx:id="nameLabel" alignment="CENTER" layoutX="13.0" layoutY="117.0" prefHeight="34.0" prefWidth="104.0" text="Welcome" textFill="#fff8f8">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameCharacterLabel" layoutX="61.0" layoutY="76.0" text="B">
+                  <Label fx:id="nameCharacterLabel" layoutX="50.0" layoutY="76.0" text="JIMB">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="220.0" onMousePressed="#myFavoritedClicked" prefHeight="34.0" prefWidth="90.0" text="My Favorites" textFill="#eeeded">
+                  <Label fx:id="favoriteLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="220.0" onMousePressed="#myFavoritedClicked" prefHeight="34.0" prefWidth="90.0" text="My Favorites" textFill="#eeeded">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <font>
                         <Font size="12.0" />
                      </font></Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="254.0" onMousePressed="#watchlistClicked" prefHeight="34.0" prefWidth="90.0" text="Watchlist" textFill="#eeeded">
+                  <Label fx:id="watchListLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="254.0" onMousePressed="#watchlistClicked" prefHeight="34.0" prefWidth="90.0" text="Watchlist" textFill="#eeeded">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <font>
                         <Font size="12.0" />
                      </font></Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="288.0" onMousePressed="#recommendationsClicked" prefHeight="34.0" prefWidth="118.0" text="Recommendations" textFill="#eeeded">
+                  <Label fx:id="recLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="288.0" onMousePressed="#recommendationsClicked" prefHeight="34.0" prefWidth="118.0" text="Recommendations" textFill="#eeeded">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -321,7 +321,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <JFXButton layoutX="463.0" layoutY="346.0" prefHeight="48.0" prefWidth="155.0" text="Account">
+            <JFXButton layoutX="465.0" layoutY="346.0" prefHeight="48.0" prefWidth="155.0" text="Account">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
@@ -329,26 +329,26 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton layoutX="463.0" layoutY="394.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Logout">
-               <font>
-                  <Font name="Avenir Roman" size="17.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Brandon Baars" textFill="#111010">
+            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Welcome!" textFill="#111010">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
             <Circle fill="#00d373" layoutX="544.0" layoutY="193.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="nameCharacterLabel1" layoutX="540.0" layoutY="184.0" text="B">
+            <Label fx:id="nameCharacterLabel1" layoutX="530.0" layoutY="184.0" text="JIMB">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <JFXButton layoutX="463.0" layoutY="298.0" prefHeight="48.0" prefWidth="155.0" text="Home">
+            <JFXButton layoutX="467.0" layoutY="298.0" prefHeight="48.0" prefWidth="155.0" text="Home">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="467.0" layoutY="394.0" prefHeight="48.0" prefWidth="155.0" text="Quit">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>

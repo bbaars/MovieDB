@@ -285,6 +285,29 @@ public class HomeController implements Initializable {
 	 **/
 	public void logOutButtonClicked() {
 		System.out.println("Log Out Button Clicked");
+		
+		if (!isSignedIn) {
+			javafx.stage.Window source = 
+					circle.getScene().getWindow();
+				
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(
+						"LogIn.fxml"));
+				
+				try {
+					loader.load();
+				} catch (IOException ex) {
+					System.out.println(ex.toString());
+				}
+				
+				Parent root = loader.getRoot();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.centerOnScreen();
+				stage.show();
+				
+				source.hide();
+		}
 	}
 	
 	/**

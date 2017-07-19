@@ -268,7 +268,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
+      <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;">
          <children>
             <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
                <font>
@@ -278,13 +278,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Brandon Baars" textFill="#111010">
+            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Welcome!" textFill="#111010">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
             <Circle fill="#00d373" layoutX="544.0" layoutY="193.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="nameCharacterLabel1" layoutX="540.0" layoutY="184.0" text="B">
+            <Label fx:id="nameCharacterLabel1" layoutX="529.0" layoutY="184.0" text="JIMB">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
@@ -297,7 +297,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton layoutX="466.0" layoutY="387.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Logout">
+            <JFXButton layoutX="466.0" layoutY="387.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Quit">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
