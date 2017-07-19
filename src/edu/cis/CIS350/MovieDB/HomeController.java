@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -95,6 +96,9 @@ public class HomeController implements Initializable {
 	/** Index of current Popular Movie. */
 	private int currentPopularMovie = 0;
 	
+	/** Current Movie shown. **/
+	private Movie currentMovie;
+	
 	/** Lower bounds for random id. **/
 	private static final int MIN = 1;
 	
@@ -129,12 +133,54 @@ public class HomeController implements Initializable {
 	 * for us to this controller.
 	 * 
 	 * @param account API Manager that deals with the users account info.
+	 * @param signedIn whether a user has successfully signed in.
 	 **/
-	public void setMyData(final APIManager account) {
+	public void setMyData(final APIManager account, final boolean signedIn) {
 		this.account = account;
-		System.out.println(account);
-		isSignedIn = true;
+		isSignedIn = signedIn;
 	}
+	
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked() {
+		System.out.println("Movie clicked");
+		
+		try {
+			
+			/** 
+			 * obtains the current scene by selecting any element and gett
+			 * their window.
+			 */
+			javafx.stage.Window source = circle.getScene().getWindow();
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+			
+			MovieDetailController movieDetail = loader.getController();
+			movieDetail.setMyData(account, currentMovie, isSignedIn);
+			
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+			
+			source.hide();
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	
 	
 	/**
 	 * When the previous is clicked, shows the previous popular movie.
@@ -357,6 +403,7 @@ public class HomeController implements Initializable {
 		Movie movie2 = new Movie(popularMovies.get(index).getId());
 		
 		currentID = movie2.getID();
+		currentMovie = movie2;
 		
 		runtime = movie2.getRuntime();
 		System.out.println(runtime);
@@ -425,6 +472,7 @@ public class HomeController implements Initializable {
 		Movie randomMovie = new Movie(movieId);
 		
 		currentID = movieId;
+		currentMovie = randomMovie;
 		
 		titleLabel.setText(randomMovie.getTitle());
 		

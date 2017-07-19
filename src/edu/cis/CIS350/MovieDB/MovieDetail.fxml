@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1166.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.HomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1166.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.MovieDetailController">
    <children>
       <Pane layoutY="-5.0" prefHeight="747.0" prefWidth="82.0" style="-fx-background-color: #00d373;">
          <children>
@@ -45,14 +46,14 @@
             </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-66.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backdropImage" fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-70.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@backdropTest.jpg" />
          </image>
       </ImageView>
       <Pane layoutX="82.0" layoutY="263.0" prefHeight="474.0" prefWidth="1084.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="271.0" fitWidth="212.0" layoutX="217.0" layoutY="-128.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="posterImage" fitHeight="271.0" fitWidth="212.0" layoutX="217.0" layoutY="-128.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@posterTest.jpg" />
                </image>
@@ -60,12 +61,12 @@
                   <DropShadow height="21.13" offsetX="5.0" offsetY="5.0" radius="9.335" width="18.21" />
                </effect>
             </ImageView>
-            <Label fx:id="runTimeLabel" alignment="CENTER" layoutX="570.0" layoutY="53.0" prefHeight="26.0" prefWidth="82.0" text="2 h 49 m">
+            <Label fx:id="runTimeLabel" alignment="CENTER" layoutX="570.0" layoutY="53.0" prefHeight="26.0" prefWidth="82.0" text="2hr 10 min">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="561.0" layoutY="57.0">
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="554.0" layoutY="57.0">
                <image>
                   <Image url="@Timer@3x.png" />
                </image>
@@ -90,7 +91,7 @@
                   <Image url="@Favorite@3x.png" />
                </image>
             </ImageView>
-            <Label fx:id="voteLabel" alignment="CENTER" layoutX="462.0" layoutY="53.0" prefHeight="26.0" prefWidth="41.0" text="8.7/10">
+            <Label fx:id="voteLabel" alignment="CENTER" layoutX="462.0" layoutY="53.0" prefHeight="26.0" prefWidth="41.0" text="8.1/10">
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
@@ -104,10 +105,47 @@
                <font>
                   <Font name="Avenir Roman" size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="381.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="INFO" textFill="#00d373">
+               <font>
+                  <Font name="Avenir Roman" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="489.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="CAST">
+               <font>
+                  <Font name="Avenir Roman" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label alignment="CENTER" layoutX="599.0" layoutY="185.0" prefHeight="34.0" prefWidth="91.0" text="REVIEWS">
+               <font>
+                  <Font name="Avenir Roman" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="overviewLabel" alignment="TOP_LEFT" layoutX="212.0" layoutY="248.0" prefHeight="198.0" prefWidth="660.0" text="Interstellar chronicles the adventures of a group of explorers who make use of a newly discoverd wormhole to surpass the limitations of human space travel and conquer the vast distances involved in an interstellar voyage." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font name="Avenir Roman" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="212.0" layoutY="219.0" prefHeight="26.0" prefWidth="112.0" text="Overview">
+               <font>
+                  <Font name="Avenir Black" size="15.0" />
+               </font>
             </Label>
          </children>
       </Pane>
-      <Label layoutX="509.0" layoutY="263.0" prefHeight="67.0" prefWidth="644.0" text="Interstellar (2014)">
+      <Label fx:id="titleLabel" layoutX="509.0" layoutY="263.0" prefHeight="67.0" prefWidth="644.0" text="Interstellar (2014)">
          <font>
             <Font name="Avenir Roman" size="32.0" />
          </font>
@@ -137,5 +175,52 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
+               <font>
+                  <Font name="Avenir Roman" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Brandon Baars" textFill="#111010">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Circle fill="#00d373" layoutX="544.0" layoutY="193.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="nameCharacterLabel1" layoutX="540.0" layoutY="184.0" text="B">
+               <font>
+                  <Font name="Avenir Roman" size="13.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="465.0" layoutY="339.0" prefHeight="48.0" prefWidth="155.0" text="Account">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="466.0" layoutY="387.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Logout">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="465.0" layoutY="291.0" onAction="#homeButtonClicked" onMouseReleased="#homeButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Home">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </Pane>

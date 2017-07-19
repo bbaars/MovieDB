@@ -19,7 +19,7 @@ import javafx.fxml.FXMLLoader;
 public class LoginController {
 
 
-	/** Login username text field on the main panel variable. **/
+	/** Login user name text field on the main panel variable. **/
 	@FXML private TextField loginUsername;
 
 	/** Login password text field on the main panel variable. **/
@@ -54,7 +54,7 @@ public class LoginController {
 					
 
 				HomeController home = loader.getController();
-				home.setMyData(account);
+				home.setMyData(account, true);
 				
 				
 				Parent root = loader.getRoot();

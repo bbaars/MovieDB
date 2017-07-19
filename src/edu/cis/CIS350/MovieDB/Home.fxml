@@ -137,13 +137,16 @@
                         <Image url="@Timer@3x.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster" fitHeight="293.0" fitWidth="238.0" layoutX="602.0" layoutY="27.0" onMousePressed="#movieClicked" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
                      <image>
                         <Image url="@posterTest.jpg" />
-                     </image></ImageView>
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ImageView>
                   <Circle fx:id="circle" fill="#00d373" layoutX="773.0" layoutY="308.0" onMousePressed="#plusButtonClicked" pickOnBounds="true" radius="24.0" stroke="BLACK" strokeType="INSIDE" translateZ="10.0" />
                   <ImageView fx:id="favorite" fitHeight="34.0" fitWidth="33.0" focusTraversable="true" layoutX="730.0" layoutY="264.0" onMouseReleased="#addToFavoritesButtonClickd" pickOnBounds="true">
                      <image>
@@ -305,7 +308,7 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="menuPane" layoutX="81.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
+      <Pane fx:id="menuPane" layoutX="81.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;">
          <children>
             <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
                <font>
@@ -315,7 +318,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <JFXButton layoutX="466.0" layoutY="276.0" prefHeight="48.0" prefWidth="155.0" text="Account">
+            <JFXButton layoutX="463.0" layoutY="346.0" prefHeight="48.0" prefWidth="155.0" text="Account">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
@@ -323,7 +326,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton layoutX="466.0" layoutY="394.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Logout">
+            <JFXButton layoutX="463.0" layoutY="394.0" onAction="#logOutButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Logout">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
@@ -342,7 +345,7 @@
                   <Font name="Avenir Roman" size="13.0" />
                </font>
             </Label>
-            <JFXButton layoutX="466.0" layoutY="335.0" onAction="#quizButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Quiz">
+            <JFXButton layoutX="463.0" layoutY="298.0" prefHeight="48.0" prefWidth="155.0" text="Home">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
