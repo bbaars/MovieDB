@@ -37,6 +37,14 @@
                   <Font name="Avenir Oblique" size="23.0" />
                </font>
             </Label>
+            <JFXButton layoutX="202.0" layoutY="394.0" onAction="#skipButtonPressed" ripplerFill="#eee0e0" text="Skip" textFill="#fcf6f6" underline="true">
+               <font>
+                  <Font name="Avenir Roman" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </Pane>
       <ImageView fitHeight="176.0" fitWidth="200.0" layoutX="172.0" layoutY="195.0">

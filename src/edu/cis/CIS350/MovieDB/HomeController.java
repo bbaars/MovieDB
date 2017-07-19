@@ -7,21 +7,28 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.ThreadLocalRandom;
 import info.movito.themoviedbapi.model.MovieDb;
+import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 
 /***************************************************************************
- * Handles the Log In by the user.
+ * Handles the Main Screen for the user.
  *
  ***************************************************************************/
 public class HomeController implements Initializable {
@@ -57,13 +64,37 @@ public class HomeController implements Initializable {
 	/** Label for the vote score of the movie. **/
 	@FXML private javafx.scene.control.Label voteLabel;
 	
+	/** Label for the vote score of the movie. **/
+	@FXML private javafx.scene.control.Label nameLabel;
+	
+	/** Label for the vote score of the movie. **/
+	@FXML private javafx.scene.control.Label nameCharacterLabel;
+	
 	/** Label for the overview of the movie. **/
 	@FXML private javafx.scene.control.Label overviewLabel;
+	
+	/** Our menu pane. **/
+	@FXML private Pane menuPane;
 	
 	/** Label for the genre of the movie. **/
 	@FXML private ImageView moviePoster;
 	
-	/** Choicebox on the quiz panel variable. **/
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView plus;
+	
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView favorite;
+	
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView eye;
+	
+	/** the circle that allows the user to click on it. **/
+	@FXML private Circle circle;
+	
+	/** how many times the user clicks on the circle. **/
+	private int clickedOn = 0;
+	
+	/** Choice box on the quiz panel variable. **/
 	@FXML private ChoiceBox<String> quizChoiceBox;
 	
 	/** TextArea on the quiz panel variable. **/
@@ -101,7 +132,11 @@ public class HomeController implements Initializable {
 			final ResourceBundle resources) {
 		
 		loadMovieInfo(currentPopularMovie);
+		menuPane.setVisible(false);
+		eye.setVisible(false);
+		favorite.setVisible(false);
 	}
+
 	
 	/**
 	 * When the controller is created, it passed in the account information
@@ -140,6 +175,36 @@ public class HomeController implements Initializable {
 	 **/
 	public void menuButtonClicked() {
 		System.out.println("Menu Button Clicked");
+		menuPane.setVisible(true);
+		
+		FadeTransition 
+			fTransition = new FadeTransition(Duration.millis(600), menuPane);
+		fTransition.setFromValue(0);
+		fTransition.setToValue(1.0);
+		fTransition.setCycleCount(1);
+		fTransition.play();
+	}
+	
+	/**
+	 * Dimisses the popup menu.
+	 **/
+	public void menuDismissButtonClicked() {
+		System.out.print("Dismiss Menu Clicked");
+	
+		FadeTransition 
+			fTransition = new FadeTransition(Duration.millis(600), menuPane);
+		fTransition.setFromValue(1.0);
+		fTransition.setToValue(0);
+		fTransition.setCycleCount(1);
+		fTransition.play();	
+		
+		fTransition.setOnFinished(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(final ActionEvent event) {
+				menuPane.setVisible(false);
+			}
+		});
 	}
 	
 	/**
@@ -218,19 +283,66 @@ public class HomeController implements Initializable {
 	/**
 	 * Adds to watchlist.
 	 **/
-	public void addToWatchListButtonClicked() {
-		System.out.println("Add to WatchList Button Clicked");
-		System.out.println(isSignedIn);
+	public void plusButtonClicked() {
 		
 		if (isSignedIn) {
-			account.addMovieToWatchList(currentID);
-			System.out.println(
-					"Added " + currentID + " to watchlist");
+			
+			clickedOn++;		
+			ScaleTransition st =
+					new ScaleTransition(Duration.millis(300), circle);
+			
+			RotateTransition rotate =
+					new RotateTransition(Duration.millis(300), plus);
+			
+			if (clickedOn % 2 != 0) {
+				
+				st.setByX(1.5f);
+				st.setByY(1.5f);
+				st.setCycleCount(1);
+				st.play();
+			
+				eye.setVisible(true);
+				favorite.setVisible(true);
+				
+				rotate.setFromAngle(0);
+				rotate.setToAngle(45);
+				rotate.play();
+				
+			} else {
+				st.setByX(-1.5f);
+				st.setByY(-1.5f);
+				st.setCycleCount(1);
+				st.play();
+				
+				rotate.setFromAngle(45);
+				rotate.setToAngle(0);
+				rotate.play();
+				
+				eye.setVisible(false);
+				favorite.setVisible(false);
+			}
 		} else {
 			System.out.println("Must log in for this");
 			// TO DO POP UP THAT TELLS THE USER THEY NEED 
 			//TO LOG IN FOR THAT FEATURE
 		}
+	}
+	
+	/**
+	 * Adds the current movie to the watch list of the account.
+	 **/
+	public void addToWatchListButtonClicked() {
+		System.out.println("Added " + currentID + " to watchlist");
+		account.addMovieToWatchList(currentID);
+		
+	}
+	
+	/**
+	 * Adds the current movie to the favorites of the account.
+	 **/
+	public void addToFavoritesButtonClickd() {
+		System.out.println("Added " + currentID + " to favorites");
+		account.addMovieFavorite(currentID);
 	}
 	
 	/**
@@ -301,11 +413,9 @@ public class HomeController implements Initializable {
 					.getResource("Quiz.fxml"));
 			Stage primaryStage = new Stage();
 			Scene scene = new Scene(root, 600, 300);
-		//	scene.getStylesheets().add(getClass()
-		//	.getResource("application.css").toExternalForm());
-			primaryStage.setTitle("MovieDB Application");
+			primaryStage.setTitle("MovieDB Quiz");
 			primaryStage.getIcons().add(
-			new Image(Main.class.getResourceAsStream("logo.png")));
+			new Image(Main.class.getResourceAsStream("MovieDBLogo@3x.png")));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -322,14 +432,15 @@ public class HomeController implements Initializable {
 		choiceSelected = 
 		    (Integer.parseInt((String) quizChoiceBox.getValue()) - 1);
 		userQuiz.setAnswer(choiceSelected);
+		
 		timesClicked++;
 		if (5 <= timesClicked) {
 			quizQuestionBox.setText("Your genre is: " 
 		    + userQuiz.returnGenre()
 			+ "\nTry filtering for movies of your genre."); 
 			} else {
-		quizQuestionBox.setText(userQuiz.getQuestion(timesClicked));
-		}
+				quizQuestionBox.setText(userQuiz.getQuestion(timesClicked));
+			}
 		}
 	}
 	
