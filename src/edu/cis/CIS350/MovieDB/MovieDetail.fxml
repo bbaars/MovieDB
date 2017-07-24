@@ -133,104 +133,119 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="overviewLabel" alignment="TOP_LEFT" layoutX="212.0" layoutY="248.0" prefHeight="198.0" prefWidth="660.0" text="Interstellar chronicles the adventures of a group of explorers who make use of a newly discoverd wormhole to surpass the limitations of human space travel and conquer the vast distances involved in an interstellar voyage." textAlignment="JUSTIFY" wrapText="true">
+            <Label fx:id="overviewLabel" alignment="TOP_LEFT" layoutX="212.0" layoutY="248.0" prefHeight="220.0" prefWidth="660.0" text="Interstellar chronicles the adventures of a group of explorers who make use of a newly discoverd wormhole to surpass the limitations of human space travel and conquer the vast distances involved in an interstellar voyage." textAlignment="JUSTIFY" wrapText="true">
                <font>
-                  <Font name="Avenir Roman" size="15.0" />
+                  <Font name="Avenir Roman" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="titleOverviewLabel" layoutX="212.0" layoutY="219.0" prefHeight="26.0" prefWidth="112.0" text="Overview">
+            <Label fx:id="titleOverviewLabel" layoutX="212.0" layoutY="219.0" prefHeight="26.0" prefWidth="340.0" text="Overview">
                <font>
                   <Font name="Avenir Black" size="15.0" />
                </font>
             </Label>
             <Pane fx:id="castPane" layoutX="65.0" layoutY="220.0" prefHeight="255.0" prefWidth="940.0" style="-fx-background-color: white;">
                <children>
-                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast1Image" fitHeight="156.0" fitWidth="120.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="16.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                  <Label fx:id="cast1Name" alignment="CENTER" layoutX="16.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="28.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                  <Label fx:id="cast1Character" alignment="CENTER" layoutX="28.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="233.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast2Image" fitHeight="156.0" fitWidth="120.0" layoutX="233.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="205.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                  <Label fx:id="cast2Name" alignment="CENTER" layoutX="205.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="217.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                  <Label fx:id="cast2Character" alignment="CENTER" layoutX="217.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="410.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast3Image" fitHeight="156.0" fitWidth="120.0" layoutX="410.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="382.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                  <Label fx:id="cast3Name" alignment="CENTER" layoutX="382.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="394.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                  <Label fx:id="cast3Character" alignment="CENTER" layoutX="394.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast4Image" fitHeight="156.0" fitWidth="120.0" layoutX="590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="562.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                  <Label fx:id="cast4Name" alignment="CENTER" layoutX="562.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="574.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                  <Label fx:id="cast4Character" alignment="CENTER" layoutX="574.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="156.0" fitWidth="120.0" layoutX="774.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast5Image" fitHeight="156.0" fitWidth="120.0" layoutX="774.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="746.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
+                  <Label fx:id="cast5Name" alignment="CENTER" layoutX="746.0" layoutY="183.0" prefHeight="42.0" prefWidth="161.0" text="Mathew McConaughny" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="758.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
+                  <Label fx:id="cast5Character" alignment="CENTER" layoutX="758.0" layoutY="225.0" prefHeight="26.0" prefWidth="136.0" text="Cooper" textFill="#8d8787" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
@@ -268,7 +283,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;">
+      <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
                <font>

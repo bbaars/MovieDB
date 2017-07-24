@@ -1,18 +1,19 @@
  package edu.cis.CIS350.MovieDB;
 
- import java.util.ArrayList;
+
+import java.util.ArrayList;
  import java.util.Iterator;
  import info.movito.themoviedbapi.TmdbApi;
  import info.movito.themoviedbapi.TmdbMovies;
  import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
- import info.movito.themoviedbapi.model.Artwork;
+import info.movito.themoviedbapi.model.Artwork;
  import info.movito.themoviedbapi.model.ArtworkType;
- import info.movito.themoviedbapi.model.Genre;
+import info.movito.themoviedbapi.model.Genre;
  import info.movito.themoviedbapi.model.MovieDb;
  import info.movito.themoviedbapi.model.Reviews;
  import info.movito.themoviedbapi.model.Video;
  import info.movito.themoviedbapi.model.core.MovieResultsPage;
- import info.movito.themoviedbapi.model.people.PersonCast;
+import info.movito.themoviedbapi.model.people.PersonCast;
  
  /** Movie class that handles the the data associated with a movie. **/
  public class Movie {
@@ -82,7 +83,7 @@
 
      /** Holds the cast of our movie we're trying to find. **/
      private ArrayList<PersonCast> cast;
-
+     
      /** our API Manager object to hold our tmdp api key. **/
      private APIManager api;
 
@@ -203,13 +204,10 @@
     	 
      	TmdbMovies tmdbMovies = tmdbApi.getMovies();
      	genres = new ArrayList<String>();
-     	similarMovies = new ArrayList<MovieDb>();
 
      	MovieDb movie = tmdbMovies.getMovie(this.id, "en", MovieMethod.reviews,
-     		MovieMethod.videos, MovieMethod.images, MovieMethod.similar);
+     		MovieMethod.videos, MovieMethod.images, MovieMethod.credits);
      	
-     	movie.getSimilarMovies();
-
      	backdropPath = movie.getBackdropPath();
      	budget = movie.getBudget();
      	originalLanguage = movie.getOriginalLanguage();
@@ -255,7 +253,6 @@
       		
       		while (iterator.hasNext()) {
       			similarMovies.add(iterator.next());
-      			System.out.println(iterator.next().getTitle());
       		}
       	}
      	return similarMovies;
@@ -270,7 +267,6 @@
      	return id;
      }
      
-
      /*************************************************************************
       * Get the genres associated with the movie.
       *

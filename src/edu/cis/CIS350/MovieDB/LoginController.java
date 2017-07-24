@@ -52,7 +52,6 @@ public class LoginController {
 					System.out.println(ex.toString());
 				}
 					
-
 				HomeController home = loader.getController();
 				home.setMyData(account, true);
 				

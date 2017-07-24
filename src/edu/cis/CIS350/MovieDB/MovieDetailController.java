@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import com.sun.javafx.event.EventHandlerManager;
-
+import info.movito.themoviedbapi.model.people.PersonCast;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +21,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
@@ -104,8 +99,51 @@ public class MovieDetailController implements Initializable {
 	/** click events for our plus circle. **/
 	private int clickedOn = 0;
 	
-	/** keeps track of our current tabbed index. **/
-	private int tabbedIndex = 0;
+	/**  **/
+	@FXML private ImageView cast1Image;
+	
+	/**  **/
+	@FXML private ImageView cast2Image;
+	
+	/**  **/
+	@FXML private ImageView cast3Image;
+
+	/**  **/
+	@FXML private ImageView cast4Image;
+	
+	/**  **/
+	@FXML private ImageView cast5Image;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast1Name;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast2Name;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast3Name;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast4Name;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast5Name;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast1Character;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast2Character;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast3Character;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast4Character;
+	
+	/**  **/
+	@FXML private javafx.scene.control.Label cast5Character;
+	
 	
 	/**
 	 * Method is called when the controller is initialized.
@@ -397,20 +435,82 @@ public class MovieDetailController implements Initializable {
 		}
 	}
 	
-	
+	/**
+	 * When the info tab has been pressed.
+	 **/
 	public void infoTabPressed() {
-		
+		System.out.println("Info Tab Pressed");
+		castPane.setVisible(false);
+		overviewLabel.setText(movie.getOverview());
+		titleOverviewLabel.setText("Overview");
 		
 	}
 	
+	/**
+	 * When the cast tab has been pressed.
+	 **/
 	public void castTabPressed() {
+		System.out.println("Cast Tab Pressed");
+		String imagePath;
+			
+		castPane.setVisible(true);
 		
+		ArrayList<PersonCast> casts = movie.getCast();
+		
+		if (casts.size() > 5) {
+			imagePath = casts.get(0).getProfilePath();
+			imagePath = URL + imagePath;
+			Image image = new Image(imagePath, 650, 350, true, true, false);
+			cast1Image.setImage(image);
+			cast1Name.setText(casts.get(0).getName());
+			cast1Character.setText(casts.get(0).getCharacter());
+			
+			imagePath = casts.get(1).getProfilePath();
+			imagePath = URL + imagePath;
+			Image image1 = new Image(imagePath, 650, 350, true, true, false);
+			cast2Image.setImage(image1);
+			cast2Name.setText(casts.get(1).getName());
+			cast2Character.setText(casts.get(1).getCharacter());
+			
+			imagePath = casts.get(2).getProfilePath();
+			imagePath = URL + imagePath;
+			Image image2 = new Image(imagePath, 650, 350, true, true, false);
+			cast3Image.setImage(image2);
+			cast3Name.setText(casts.get(2).getName());
+			cast3Character.setText(casts.get(2).getCharacter());
+			
+			imagePath = casts.get(3).getProfilePath();
+			imagePath = URL + imagePath;
+			Image image3 = new Image(imagePath, 650, 350, true, true, false);
+			cast4Image.setImage(image3);
+			cast4Name.setText(casts.get(3).getName());
+			cast4Character.setText(casts.get(3).getCharacter());
+			
+			imagePath = casts.get(4).getProfilePath();
+			imagePath = URL + imagePath;
+			Image image4 = new Image(imagePath, 650, 350, true, true, false);
+			cast5Image.setImage(image4);
+			cast5Name.setText(casts.get(4).getName());
+			cast5Character.setText(casts.get(4).getCharacter());
+		}
 		
 	}
 	
+	/**
+	 * When the review tab has been pressed.
+	 **/
 	public void reviewTabPressed() {
-		
-		
+		System.out.println("Review Tab Pressed");
+		castPane.setVisible(false);
+	
+		if (movie.getReviews() != null) {
+			titleOverviewLabel.setText("Review by: "
+					+ movie.getReviews().get(0).getAuthor());
+			overviewLabel.setText(movie.getReviews().get(0).getContent());
+		} else {
+			titleOverviewLabel.setText("Sorry, no reviews exist");
+			overviewLabel.setText("");
+		}
 	}
 	
 	
