@@ -1,5 +1,10 @@
 package edu.cis.CIS350.MovieDB;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXComboBox;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
@@ -7,7 +12,7 @@ import javafx.scene.control.TextArea;
 public class QuizController {
 
 	/** Choice box on the quiz panel variable. **/
-	@FXML private ChoiceBox<String> quizChoiceBox;
+	@FXML private JFXComboBox<String> quizChoiceBox;
 	
 	/** TextArea on the quiz panel variable. **/
 	@FXML private TextArea quizQuestionBox;
@@ -17,6 +22,7 @@ public class QuizController {
 	
 	/** Keeps track of what quiz question the user is on. **/
 	private int timesClicked = 0;
+	
 	
 	/**
 	 * Controller function for quiz start button.

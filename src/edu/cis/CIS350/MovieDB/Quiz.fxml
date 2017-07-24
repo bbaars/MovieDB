@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.Pane?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="318.0" prefWidth="562.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.QuizController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="195.0" prefWidth="568.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #00d373;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.QuizController">
+   <children>
+      <JFXComboBox fx:id="quizChoiceBox" focusColor="#02ab34" labelFloat="true" layoutX="211.0" layoutY="205.0" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #cfcfcf;" unFocusColor="#2cda89" value="1">
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" />
+         </effect>
+               <items>
+ 						<FXCollections fx:factory="observableArrayList">
+ 							<String fx:value="1" />
+ 							<String fx:value="2" />
+ 							<String fx:value="3" />
+ 							<String fx:value="4" />
+  						</FXCollections>
+  					</items>
+      </JFXComboBox>
+      <Pane layoutX="-7.0" prefHeight="150.0" prefWidth="507.0" style="-fx-background-color: #cfcfcf;">
          <children>
-            <TextArea fx:id="quizQuestionBox" editable="false" layoutX="142.0" layoutY="14.0" prefHeight="127.0" prefWidth="279.0" />
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <Button layoutX="451.0" layoutY="49.0" mnemonicParsing="false" onAction="#nextButtonClicked" text="Next" />
-            <ChoiceBox fx:id="quizChoiceBox" layoutX="198.0" layoutY="46.0" prefWidth="150.0" value="1">
-            <items>
-						<FXCollections fx:factory="observableArrayList">
-							<String fx:value="1" />
-							<String fx:value="2" />
-							<String fx:value="3" />
-							<String fx:value="4" />
-						</FXCollections>
-					</items>
-				</ChoiceBox>
-            <Button layoutX="63.0" layoutY="46.0" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" />
+            <Pane layoutX="78.0" layoutY="18.0" prefHeight="115.0" prefWidth="351.0" style="-fx-background-color: #8e8e8e;">
+               <children>
+                  <JFXTextArea fx:id="quizQuestionBox" editable="false" layoutX="-1.0" prefHeight="115.0" prefWidth="353.0" style="-fx-text-fill: #ffffff;" unFocusColor="#7c7c7c" wrapText="true" />
+               </children>
+            </Pane>
          </children>
-         </AnchorPane>
-  </items>
-</SplitPane>
+      </Pane>
+      <JFXButton buttonType="RAISED" layoutX="55.0" layoutY="205.0" onAction="#startButtonClicked" ripplerFill="#f20000" style="-fx-background-color: #cfcfcf;" text="Start" />
+      <JFXButton buttonType="RAISED" layoutX="386.0" layoutY="206.0" onAction="#nextButtonClicked" style="-fx-background-color: #cfcfcf;" text="Next" />
+   </children>
+</Pane>

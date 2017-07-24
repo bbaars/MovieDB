@@ -473,7 +473,7 @@ public class HomeController implements Initializable {
 			Parent root = FXMLLoader.load(getClass()
 					.getResource("Quiz.fxml"));
 			Stage primaryStage = new Stage();
-			Scene scene = new Scene(root, 600, 300);
+			Scene scene = new Scene(root, 500, 300);
 			primaryStage.setTitle("MovieDB Quiz");
 			primaryStage.getIcons().add(
 			new Image(Main.class.getResourceAsStream("MovieDBLogo@3x.png")));
