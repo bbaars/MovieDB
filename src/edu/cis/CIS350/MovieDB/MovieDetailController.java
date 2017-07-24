@@ -503,7 +503,7 @@ public class MovieDetailController implements Initializable {
 		System.out.println("Review Tab Pressed");
 		castPane.setVisible(false);
 	
-		if (movie.getReviews() != null) {
+		if (movie.getReviews().size() > 0) {
 			titleOverviewLabel.setText("Review by: "
 					+ movie.getReviews().get(0).getAuthor());
 			overviewLabel.setText(movie.getReviews().get(0).getContent());
