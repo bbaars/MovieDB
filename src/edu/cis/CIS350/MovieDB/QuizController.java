@@ -1,14 +1,11 @@
 package edu.cis.CIS350.MovieDB;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXComboBox;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 
+/** Class to control the quiz window. **/
 public class QuizController {
 
 	/** Choice box on the quiz panel variable. **/
@@ -44,12 +41,13 @@ public class QuizController {
 		userQuiz.setAnswer(choiceSelected);
 		
 		timesClicked++;
-		if (5 <= timesClicked) {
+		if (5 == timesClicked) {
 			quizQuestionBox.setText("Your genre is: " 
 		    + userQuiz.returnGenre()
 			+ "\nTry filtering for movies of your genre."); 
 			} else {
-				quizQuestionBox.setText(userQuiz.getQuestion(timesClicked));
+			quizQuestionBox.setText(
+					userQuiz.getQuestion(timesClicked));
 			}
 		}
 	}

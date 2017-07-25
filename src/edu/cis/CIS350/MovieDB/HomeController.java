@@ -272,6 +272,30 @@ public class HomeController implements Initializable {
 		System.out.println("Top Rated Actors Clicked");
 	}
 	
+	
+	/**
+	 * Tweet button.
+	 **/
+	public void twitterButtonClicked() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("Tweet.fxml"));
+		
+		try {
+			loader.load();
+		} catch (IOException ex) {
+			System.out.println(ex.toString());
+		}
+		
+		TweetController tweet = loader.getController();
+		//movieDetail.setMyData(account, currentMovie, isSignedIn);
+		
+		Parent root = loader.getRoot();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root));
+		stage.centerOnScreen();
+		stage.show();
+	}
+	
 	/**
 	 * Cancel Button.
 	 **/

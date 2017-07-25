@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003300;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.TweetController">
+   <children>
+      <JFXButton fx:id="notNowButton" layoutX="69.0" layoutY="332.0" onAction="#notNowButtonClicked" style="-fx-background-color: #ffffff;" text="Not Now" />
+      <JFXTextField fx:id="nameField" alignment="CENTER" focusColor="WHITE" layoutX="225.0" layoutY="102.0" promptText="Name" style="-fx-text-fill: #ffffff;" unFocusColor="BLACK" />
+      <JFXTextField fx:id="locationField" alignment="CENTER" focusColor="WHITE" layoutX="225.0" layoutY="149.0" promptText="Location" style="-fx-text-fill: #ffffff;" unFocusColor="BLACK" />
+      <TextArea fx:id="tweetContent" layoutX="158.0" layoutY="200.0" prefHeight="98.0" prefWidth="320.0" promptText="Message (must be 140 characters or less including &quot;Name from location says message&quot; text." wrapText="true" />
+      <JFXButton layoutX="483.0" layoutY="332.0" onAction="#tweetButtonClicked" style="-fx-background-color: #ffffff;" text="Tweet" />
+      <JFXTextField alignment="CENTER" editable="false" focusColor="#003300" layoutX="15.0" prefHeight="29.0" prefWidth="589.0" style="-fx-text-fill: #ffffff;" text="If you like our app, consider posting a review on our official twitter account." unFocusColor="#003300" />
+      <JFXTextArea editable="false" focusColor="#003300" layoutX="50.0" layoutY="29.0" prefHeight="16.0" prefWidth="550.0" style="-fx-text-fill: #ffffff;" text="                              Or consider following us @TheMovieDBApp." unFocusColor="#003300" />
+   </children>
+</Pane>
