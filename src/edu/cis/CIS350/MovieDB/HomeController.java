@@ -14,10 +14,14 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 import info.movito.themoviedbapi.model.MovieDb;
 import javafx.animation.FadeTransition;
@@ -77,8 +81,14 @@ public class HomeController implements Initializable {
 	/** Label for the overview of the movie. **/
 	@FXML private javafx.scene.control.Label overviewLabel;
 	
+	/** Label for the alert for when the user fav or adds to watchlist. **/
+	@FXML private javafx.scene.control.Label alertLabel;
+	
 	/** Our menu pane. **/
 	@FXML private Pane menuPane;
+	
+	/** Our alert pane for user function. **/
+	@FXML private Pane alertPane;
 	
 	/** Label for the genre of the movie. **/
 	@FXML private ImageView moviePoster;
@@ -130,6 +140,7 @@ public class HomeController implements Initializable {
 		menuPane.setVisible(false);
 		eye.setVisible(false);
 		favorite.setVisible(false);
+		alertPane.setVisible(false);
 	}
 
 	
@@ -413,8 +424,8 @@ public class HomeController implements Initializable {
 			}
 		} else {
 			System.out.println("Must log in for this");
-			// TO DO POP UP THAT TELLS THE USER THEY NEED 
-			//TO LOG IN FOR THAT FEATURE
+			setAlert("You must log in for this");
+			
 		}
 	}
 	
@@ -424,7 +435,7 @@ public class HomeController implements Initializable {
 	public void addToWatchListButtonClicked() {
 		System.out.println("Added " + currentID + " to watchlist");
 		account.addMovieToWatchList(currentID);
-		
+		setAlert("Added " + currentMovie.getTitle() + " to watchlist");
 	}
 	
 	/**
@@ -433,6 +444,7 @@ public class HomeController implements Initializable {
 	public void addToFavoritesButtonClickd() {
 		System.out.println("Added " + currentID + " to favorites");
 		account.addMovieFavorite(currentID);
+		setAlert("Added " + currentMovie.getTitle() + " to favorites");
 	}
 	
 	/**
@@ -615,5 +627,26 @@ public class HomeController implements Initializable {
 			alert.setContentText("Could not load trailer.");
 			alert.showAndWait();
 		}
+	}
+	
+	/**
+	 * Sets the alert to the passed string.
+	 * @param alert
+	 */
+	private void setAlert(String alert) {
+		
+		alertPane.setVisible(true);
+		alertLabel.setText(alert);
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				alertPane.setVisible(false);
+				
+			}
+		}, 5000);
+		
 	}
 }
