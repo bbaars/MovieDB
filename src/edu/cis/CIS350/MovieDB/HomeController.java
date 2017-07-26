@@ -248,7 +248,13 @@ public class HomeController implements Initializable {
 	 * Search button.
 	 **/
 	public void searchButtonClicked() {
-		System.out.println("Search Button Clicked");
+		String searchFieldOne;
+		String searchFieldTwo;
+		String searchFieldThree;
+		
+		searchFieldOne = search1.getText();
+		searchFieldTwo = search2.getText();
+		searchFieldThree = search3.getText();
 	}
 	
 	/**
