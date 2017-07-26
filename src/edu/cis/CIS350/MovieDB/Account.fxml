@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1166.0" style="-fx-background-color: #616161;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.AccountController">
+   <children>
+      <Pane prefHeight="816.0" prefWidth="82.0" style="-fx-background-color: #00d373;" />
+      <Pane layoutX="82.0" prefHeight="396.0" prefWidth="1078.0" style="-fx-background-color: gray;">
+         <children>
+            <Pane layoutX="948.0" prefHeight="816.0" prefWidth="130.0" style="-fx-background-color: #00d373;">
+               <children>
+                  <JFXButton layoutX="20.0" layoutY="97.0" opacity="0.88" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: gray;" text="Go Back">
+                     <font>
+                        <Font name="Avenir Roman" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Label alignment="CENTER" layoutX="93.0" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#fff8f8">
+                     <font>
+                        <Font name="Avenir Roman" size="23.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutY="69.0" prefHeight="374.0" prefWidth="948.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fx:id="moviePoster" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="222.0" text="Favorite Movies">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Left%20Arrow@3x.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Right%20Arrow@3x.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="moviePoster1" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="moviePoster2" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="moviePoster3" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="moviePoster4" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+                     </effect>
+                     <image>
+                        <Image url="@posterTest.jpg" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="titleLabel" alignment="CENTER" layoutX="47.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleLabel1" alignment="CENTER" layoutX="208.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleLabel2" alignment="CENTER" layoutX="374.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleLabel3" alignment="CENTER" layoutX="543.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="titleLabel4" alignment="CENTER" layoutX="717.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                     <font>
+                        <Font name="Avenir Roman" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="81.0" layoutY="442.0" prefHeight="374.0" prefWidth="948.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="moviePoster5" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+               </effect>
+               <image>
+                  <Image url="@posterTest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="34.0" prefWidth="222.0" text="Watchlist">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Left%20Arrow@3x.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Right%20Arrow@3x.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="moviePoster6" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+               </effect>
+               <image>
+                  <Image url="@posterTest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="moviePoster7" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+               </effect>
+               <image>
+                  <Image url="@posterTest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="moviePoster8" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+               </effect>
+               <image>
+                  <Image url="@posterTest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="moviePoster9" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
+               </effect>
+               <image>
+                  <Image url="@posterTest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="titleLabel5" alignment="CENTER" layoutX="43.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="titleLabel6" alignment="CENTER" layoutX="208.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="titleLabel7" alignment="CENTER" layoutX="374.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="titleLabel8" alignment="CENTER" layoutX="543.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="titleLabel9" alignment="CENTER" layoutX="717.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>
