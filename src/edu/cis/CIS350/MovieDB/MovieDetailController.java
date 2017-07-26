@@ -21,6 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -99,50 +100,59 @@ public class MovieDetailController implements Initializable {
 	/** click events for our plus circle. **/
 	private int clickedOn = 0;
 	
-	/**  **/
+	/** Image for the first cast member. **/
 	@FXML private ImageView cast1Image;
 	
-	/**  **/
+	/** Image for the second cast member. **/
 	@FXML private ImageView cast2Image;
 	
-	/**  **/
+	/** Image for the third cast member. **/
 	@FXML private ImageView cast3Image;
 
-	/**  **/
+	/** Image for the fourth cast member. **/
 	@FXML private ImageView cast4Image;
 	
-	/**  **/
+	/** Image for the fifth cast member. **/
 	@FXML private ImageView cast5Image;
 	
-	/**  **/
+	/** Name of the first cast member. **/
 	@FXML private javafx.scene.control.Label cast1Name;
 	
-	/**  **/
+	/** Name of the second cast member. **/
 	@FXML private javafx.scene.control.Label cast2Name;
 	
-	/**  **/
+	/** Name of the third cast member. **/
 	@FXML private javafx.scene.control.Label cast3Name;
 	
-	/**  **/
+	/** Name of the fourth cast member. **/
 	@FXML private javafx.scene.control.Label cast4Name;
 	
-	/**  **/
+	/** Name of the fifth cast member. **/
 	@FXML private javafx.scene.control.Label cast5Name;
 	
-	/**  **/
+	/** Character Name of the first cast member. **/
 	@FXML private javafx.scene.control.Label cast1Character;
 	
-	/**  **/
+	/** Character Name of the second cast member. **/
 	@FXML private javafx.scene.control.Label cast2Character;
 	
-	/**  **/
+	/** Character Name of the third cast member. **/
 	@FXML private javafx.scene.control.Label cast3Character;
 	
-	/**  **/
+	/** Character Name of the fourth cast member. **/
 	@FXML private javafx.scene.control.Label cast4Character;
 	
-	/**  **/
+	/** Character Name of the fifth cast member. **/
 	@FXML private javafx.scene.control.Label cast5Character;
+	
+	/** Info Label. **/
+	@FXML private javafx.scene.control.Label infoLabel;
+	
+	/** Cast Label. **/
+	@FXML private javafx.scene.control.Label castLabel;
+	
+	/** Review Label. **/
+	@FXML private javafx.scene.control.Label reviewLabel;
 	
 	
 	/**
@@ -444,6 +454,10 @@ public class MovieDetailController implements Initializable {
 		overviewLabel.setText(movie.getOverview());
 		titleOverviewLabel.setText("Overview");
 		
+		infoLabel.setTextFill(Color.rgb(0, 211, 115));
+		reviewLabel.setTextFill(Color.rgb(0, 0, 0));
+		castLabel.setTextFill(Color.rgb(0, 0, 0));
+		
 	}
 	
 	/**
@@ -452,10 +466,12 @@ public class MovieDetailController implements Initializable {
 	public void castTabPressed() {
 		System.out.println("Cast Tab Pressed");
 		String imagePath;
-			
 		castPane.setVisible(true);
-		
 		ArrayList<PersonCast> casts = movie.getCast();
+		
+		infoLabel.setTextFill(Color.rgb(0, 0, 0));
+		reviewLabel.setTextFill(Color.rgb(0, 0, 0));
+		castLabel.setTextFill(Color.rgb(0, 211, 115));
 		
 		if (casts.size() > 5) {
 			imagePath = casts.get(0).getProfilePath();
@@ -492,6 +508,9 @@ public class MovieDetailController implements Initializable {
 			cast5Image.setImage(image4);
 			cast5Name.setText(casts.get(4).getName());
 			cast5Character.setText(casts.get(4).getCharacter());
+		} else {
+			castPane.setVisible(false);
+			titleOverviewLabel.setText("Sorry, no cast available");
 		}
 		
 	}
@@ -502,6 +521,10 @@ public class MovieDetailController implements Initializable {
 	public void reviewTabPressed() {
 		System.out.println("Review Tab Pressed");
 		castPane.setVisible(false);
+		
+		infoLabel.setTextFill(Color.rgb(0, 0, 0));
+		reviewLabel.setTextFill(Color.rgb(0, 211, 115));
+		castLabel.setTextFill(Color.rgb(0, 0, 0));
 	
 		if (movie.getReviews().size() > 0) {
 			titleOverviewLabel.setText("Review by: "

@@ -109,7 +109,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="381.0" layoutY="185.0" onMousePressed="#infoTabPressed" prefHeight="34.0" prefWidth="91.0" text="INFO" textFill="#00d373">
+            <Label fx:id="infoLabel" alignment="CENTER" layoutX="381.0" layoutY="185.0" onMousePressed="#infoTabPressed" prefHeight="34.0" prefWidth="91.0" text="INFO" textFill="#00d373">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
@@ -117,7 +117,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="489.0" layoutY="185.0" onMousePressed="#castTabPressed" prefHeight="34.0" prefWidth="91.0" text="CAST">
+            <Label fx:id="castLabel" alignment="CENTER" layoutX="489.0" layoutY="185.0" onMousePressed="#castTabPressed" prefHeight="34.0" prefWidth="91.0" text="CAST">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label alignment="CENTER" layoutX="599.0" layoutY="185.0" onMousePressed="#reviewTabPressed" prefHeight="34.0" prefWidth="91.0" text="REVIEWS">
+            <Label fx:id="reviewLabel" alignment="CENTER" layoutX="599.0" layoutY="185.0" onMousePressed="#reviewTabPressed" prefHeight="34.0" prefWidth="91.0" text="REVIEWS">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font>
