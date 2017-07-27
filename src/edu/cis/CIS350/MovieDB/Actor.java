@@ -7,9 +7,17 @@ package edu.cis.CIS350.MovieDB;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbPeople.PersonResultsPage;
+import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.people.Person;
 
 
 /******************************************************************
@@ -19,8 +27,13 @@ import org.json.JSONObject;
 *****************************************************************/
 public class Actor {
 	
+	 private TmdbApi tmdbApi;
+	 
+     /** our API Manager object to hold our tmdp api key. **/
+     private APIManager api;
+	
 	/** Name of the actor. **/
-	private String actor;
+	private String name;
 	
 	/** ID of actor. **/
 	private int id;
@@ -31,8 +44,10 @@ public class Actor {
 	 * 
 	 * @param actor - genre of movie.
 	 *****************************************************************/
-	public Actor(final String actor) {
-		this.actor = actor;
+	public Actor(final String name) {
+		this.name = name;
+     	api = new APIManager();
+        tmdbApi = api.getApiObject();
 		id = 0;
 	}
 	
@@ -41,7 +56,7 @@ public class Actor {
 	 * @throws Exception when URL can't be read
 	 *****************************************************************/
 	void setActorID() throws Exception {
-		String[] splited = actor.split("\\s+");
+		String[] splited = name.split("\\s+");
 
 	    String firstName = splited[0];
 	    String lastName = splited[1];
@@ -64,6 +79,33 @@ public class Actor {
 	    id = firstResult.getInt("id");
 		
 	    
+	}
+	
+	
+    public ArrayList<Actor> getActorsFromName() {
+
+     	ArrayList<Actor> actors = new ArrayList<Actor>();
+
+     	PersonResultsPage results =
+     		tmdbApi.getSearch().searchPerson(name, false, 0);
+
+     	Iterator<Person> iterator = results.iterator();
+
+     	while (iterator.hasNext()) {
+     		Person actor = iterator.next();
+     		actors.add(new Actor(actor.getName()));
+     	}
+
+     	return actors;
+     }
+	
+	/******************************************************************
+	 *	Returns the person name.
+	 * @return actor
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	public String getName() {
+	    return name;
 	}
 	
 	/******************************************************************

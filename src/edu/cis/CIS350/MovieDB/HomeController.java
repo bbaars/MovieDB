@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -134,6 +135,10 @@ public class HomeController implements Initializable {
 	
 	/** Current Movie shown. **/
 	private Movie currentMovie;
+	
+	private boolean searchForMovie = false;
+	
+	private boolean searchForActor = false;
 	
 	/** Lower bounds for random id. **/
 	private static final int MIN = 1;
@@ -283,7 +288,7 @@ public class HomeController implements Initializable {
 		String searchFieldOne = "";
 		String searchFieldTwo = "";
 		
-		if (!search1.getText().isEmpty()) {
+		if (!search1.getText().isEmpty() && search2.getText().isEmpty()) {
 			searchFieldOne = search1.getText();
 			
 			Movie movie = new Movie(searchFieldOne);
@@ -296,12 +301,37 @@ public class HomeController implements Initializable {
 			resultsColumn.setCellValueFactory(
 					new PropertyValueFactory<>("title"));
 			resultsTable.setItems(movieList);
-
+			searchForMovie = true;
+			searchForActor = false;
 		}
-		if (!search2.getText().isEmpty()) {
+		if (!search2.getText().isEmpty() && search1.getText().isEmpty()) {
 			searchFieldTwo = search2.getText();
 			
 			Actor actor = new Actor(searchFieldTwo);
+			try {
+				ArrayList<Actor> actors = actor.getActorsFromName();
+				
+				ObservableList<Actor> actorList =
+						FXCollections.observableArrayList(actors);
+				
+				/*for(int i=0; i<actorList.size();i++)
+				{
+					System.out.println(actorList.get(i).getActorName());
+				}*/
+				
+				resultsColumn.setCellValueFactory(
+						new PropertyValueFactory<Actor, String>("name"));
+				resultsTable.setItems(actorList);
+		        
+		        
+
+				searchForActor = true;
+				searchForMovie = false;
+						
+			} catch(Exception E) {
+				System.out.println(E);
+				//search2.setText("Invalid Actor");
+			}
 		}
 	}
 	
@@ -314,6 +344,8 @@ public class HomeController implements Initializable {
 		String toRuntime;
 		int runTime;
 	   if (resultsTable.getSelectionModel().getSelectedItem() != null) {
+		   
+		   if(searchForMovie) {
 		Movie selected = 
 		(Movie) resultsTable.getSelectionModel().getSelectedItem();
 		infoFieldOne.setText(selected.getTitle());
@@ -334,7 +366,40 @@ public class HomeController implements Initializable {
 		
 		Image image = new Image(imagePath, 650, 350, true, true, false);
 		searchResultPicture.setImage(image);
-		}
+		   }
+		   if(searchForActor)
+		   {
+			   Actor selected = 
+						(Actor) resultsTable.getSelectionModel().getSelectedItem();
+			   try {
+				selected.setActorID();
+			} catch (Exception e1) {
+				infoFieldTwo.setText("No actor");
+			}
+						infoFieldOne.setText(selected.getName());
+						try {
+							infoFieldTwo.setText(selected.getBirthday());
+						} catch (Exception e) {
+							infoFieldTwo.setText("No birthday provided.");
+						}
+						
+						try {
+							infoFieldThree.setText(selected.getBirthPlace());
+						} catch (Exception e) {
+							infoFieldTwo.setText("No birthplace provided.");
+						}
+						
+						try {
+							imagePath = selected.getPic();
+							imagePath = URL + imagePath;
+							Image image = new Image(imagePath, 650, 350, true, true, false);
+							searchResultPicture.setImage(image);
+						} catch (Exception e) {
+							//infoFieldTwo.setText("No birthplace provided.");
+						}
+						
+		   }
+		   }
 	}
 	
 	/**
