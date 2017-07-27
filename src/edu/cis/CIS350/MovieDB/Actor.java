@@ -37,11 +37,10 @@ public class Actor {
 	}
 	
 	/******************************************************************
-	 *	Returns the person ID.
-	 * @return genreID
+	 *	Sets the person ID.
 	 * @throws Exception when URL can't be read
 	 *****************************************************************/
-	int getActorID() throws Exception {
+	void setActorID() throws Exception {
 		String[] splited = actor.split("\\s+");
 
 	    String firstName = splited[0];
@@ -60,18 +59,100 @@ public class Actor {
 		
 		JSONArray result = obj.getJSONArray("results");
 		JSONObject firstResult = result.getJSONObject(0);
+		
+		
 	    id = firstResult.getInt("id");
 		
-//		String str = "{ \"number\": [3, 4, 5, 6] }";
-//		JSONObject obj = new JSONObject(str);
-//		JSONArray arr = obj.getJSONArray("number");
-//		for (int i = 0; i < arr.length(); i++)
-//		    System.out.println(arr.getInt(i));
-		
-	    //Page page = gson.fromJson(json, Page.class);
-
-	    return id;
 	    
+	}
+	
+	/******************************************************************
+	 *	Returns the person ID.
+	 * @return genreID
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	int getActorID() {
+	    return id;
+	}
+	
+	/******************************************************************
+	 *	Returns the person's birthday.
+	 * @return birthday
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	String getBirthday() throws Exception {
+		String ids = Integer.toString(id);
+		String birthday;
+		
+		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
+				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		
+		JSONObject obj = new JSONObject(json);
+		
+		birthday = obj.getString("birthday");
+		
+		return birthday;
+
+	}
+	
+	/******************************************************************
+	 *	Returns the person's birth place.
+	 * @return birthPlace
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	String getBirthPlace() throws Exception {
+		String ids = Integer.toString(id);
+		String birthPlace;
+		
+		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
+				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		
+		JSONObject obj = new JSONObject(json);
+		
+		birthPlace = obj.getString("place_of_birth");
+		
+		return birthPlace;
+
+	}
+	
+	/******************************************************************
+	 *	Returns the person's biography.
+	 * @return biography
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	String getBiography() throws Exception {
+		String ids = Integer.toString(id);
+		String biography;
+		
+		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
+				+  "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		
+		JSONObject obj = new JSONObject(json);
+		
+		biography = obj.getString("biography");
+		
+		return biography;
+
+	}
+	
+	/******************************************************************
+	 *	Returns the person profile picture.
+	 * @return urlPath
+	 * @throws Exception when URL can't be read
+	 *****************************************************************/
+	String getPic() throws Exception {
+		String ids = Integer.toString(id);
+		String urlPath;
+		
+		String json = readUrl("https://api.themoviedb.org/3/person/" + ids
+				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		
+		JSONObject obj = new JSONObject(json);
+		
+		urlPath = obj.getString("profile_path");
+		
+		return urlPath;
+		
 	}
 	
 	
