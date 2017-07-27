@@ -5,6 +5,8 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -56,8 +58,8 @@
       </Pane>
       <Pane layoutX="82.0" prefHeight="366.0" prefWidth="1078.0" style="-fx-background-color: white;">
          <children>
-            <JFXTextField fx:id="search1" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="14.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Movie/Actor/Genre" />
-            <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="885.0" layoutY="20.0" onMousePressed="#searchButtonClicked" pickOnBounds="true">
+            <JFXTextField fx:id="search1" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="14.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Search Movie" />
+            <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="604.0" layoutY="31.0" onMousePressed="#searchButtonClicked" pickOnBounds="true">
                <image>
                   <Image url="@Search@3x.png" />
                </image>
@@ -125,8 +127,7 @@
                   </Label>
                </children>
             </Pane>
-            <JFXTextField fx:id="search2" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="309.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Movie/Actor/Genre" />
-            <JFXTextField fx:id="search3" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="604.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Movie/Actor/Genre" />
+            <JFXTextField fx:id="search2" accessibleHelp="Type In A Movie, Actor, or Genre to begin searching" accessibleText="Search to find two actors in a movie with a specific genre to narrow down your search" focusColor="#00d373" labelFloat="true" layoutX="309.0" layoutY="20.0" prefHeight="34.0" prefWidth="273.0" promptText="Search Actor" />
             <Pane fx:id="alertPane" prefHeight="34.0" prefWidth="949.0" style="-fx-background-color: #ff8080;">
                <children>
                   <Label fx:id="alertLabel" layoutX="362.0" layoutY="8.0" text="You added the movie to your favorites">
@@ -136,6 +137,25 @@
                   </Label>
                </children>
             </Pane>
+            <TableView fx:id="resultsTable" editable="true" layoutY="64.0" onMouseClicked="#tableCellSelected" prefHeight="301.0" prefWidth="387.0">
+              <columns>
+                <TableColumn fx:id="resultsColumn" prefWidth="386.0" text="Results" />
+              </columns>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TableView>
+            <ImageView fx:id="searchResultPicture" fitHeight="301.0" fitWidth="264.0" layoutX="656.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <JFXTextField fx:id="infoFieldTwo" alignment="CENTER" editable="false" layoutX="405.0" layoutY="197.0" prefHeight="29.0" prefWidth="237.0" />
+            <JFXTextField fx:id="infoFieldThree" alignment="CENTER" layoutX="407.0" layoutY="274.0" prefHeight="29.0" prefWidth="237.0" />
+            <JFXTextField fx:id="infoFieldOne" alignment="CENTER" editable="false" layoutX="405.0" layoutY="119.0" prefHeight="29.0" prefWidth="237.0" />
          </children>
       </Pane>
       <Pane layoutX="81.0" layoutY="365.0" prefHeight="374.0" prefWidth="949.0" style="-fx-background-color: #cfcfcf;">

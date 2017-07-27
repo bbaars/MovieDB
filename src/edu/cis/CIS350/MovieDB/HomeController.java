@@ -4,7 +4,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -28,6 +32,8 @@ import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -51,8 +57,14 @@ public class HomeController implements Initializable {
 	/** Field for searching. **/
 	@FXML private TextField search2;
 	
-	/** Field for searching. **/
-	@FXML private TextField search3;
+	/** Field for displaying actor/movie info. **/
+	@FXML private TextField infoFieldOne;
+	
+	/** Field for displaying actor/movie info. **/
+	@FXML private TextField infoFieldTwo;
+	
+	/** Field for displaying actor/movie info. **/
+	@FXML private TextField infoFieldThree;
 	
 	/** Label for the runtime of the movie. **/
 	@FXML private javafx.scene.control.Label runTimeLabel;
@@ -93,6 +105,9 @@ public class HomeController implements Initializable {
 	/** Label for the genre of the movie. **/
 	@FXML private ImageView moviePoster;
 	
+	/** Label for the genre of the movie. **/
+	@FXML private ImageView searchResultPicture;
+	
 	/** The plus for watch list or favorites. **/
 	@FXML private ImageView plus;
 	
@@ -104,6 +119,12 @@ public class HomeController implements Initializable {
 	
 	/** the circle that allows the user to click on it. **/
 	@FXML private Circle circle;
+	
+	/** the circle that allows the user to click on it. **/
+	@FXML private TableView resultsTable;
+	
+	/** the circle that allows the user to click on it. **/
+	@FXML private TableColumn resultsColumn;
 	
 	/** how many times the user clicks on the circle. **/
 	private int clickedOn = 0;
@@ -135,7 +156,7 @@ public class HomeController implements Initializable {
 	@Override
 	public void initialize(final URL location,
 			final ResourceBundle resources) {
-		
+
 		loadMovieInfo(currentPopularMovie);
 		menuPane.setVisible(false);
 		eye.setVisible(false);
@@ -151,7 +172,7 @@ public class HomeController implements Initializable {
 	 * @param account API Manager that deals with the users account info.
 	 * @param signedIn whether a user has successfully signed in.
 	 **/
-	public void setMyData(final APIManager account, final boolean signedIn) {
+    public void setMyData(final APIManager account, final boolean signedIn) {
 		this.account = account;
 		isSignedIn = signedIn;
 	}
@@ -166,8 +187,8 @@ public class HomeController implements Initializable {
 		try {
 			
 			/** 
-			 * obtains the current scene by selecting any element and gett
-			 * their window.
+			 * obtains the current scene by selecting any element 
+			 * and gets their window.
 			 */
 			javafx.stage.Window source = circle.getScene().getWindow();
 			
@@ -180,8 +201,8 @@ public class HomeController implements Initializable {
 				System.out.println(ex.toString());
 			}
 			
-			MovieDetailController movieDetail = loader.getController();
-			movieDetail.setMyData(account, currentMovie, isSignedIn);
+		   MovieDetailController movieDetail = loader.getController();
+		   movieDetail.setMyData(account, currentMovie, isSignedIn);
 			
 			Parent root = loader.getRoot();
 			Stage stage = new Stage();
@@ -259,13 +280,61 @@ public class HomeController implements Initializable {
 	 * Search button.
 	 **/
 	public void searchButtonClicked() {
-		String searchFieldOne;
-		String searchFieldTwo;
-		String searchFieldThree;
+		String searchFieldOne = "";
+		String searchFieldTwo = "";
 		
-		searchFieldOne = search1.getText();
-		searchFieldTwo = search2.getText();
-		searchFieldThree = search3.getText();
+		if (!search1.getText().isEmpty()) {
+			searchFieldOne = search1.getText();
+			
+			Movie movie = new Movie(searchFieldOne);
+			
+			ArrayList<Movie> movies = movie.getMoviesFromTitle();
+			
+			ObservableList<Movie> movieList =
+				FXCollections.observableArrayList(movies);
+			
+			resultsColumn.setCellValueFactory(
+					new PropertyValueFactory<>("title"));
+			resultsTable.setItems(movieList);
+
+		}
+		if (!search2.getText().isEmpty()) {
+			searchFieldTwo = search2.getText();
+			
+			Actor actor = new Actor(searchFieldTwo);
+		}
+	}
+	
+	/**
+	 * Search button.
+	 **/
+	public void tableCellSelected() {
+		String imagePath;
+		ArrayList<String> genres;
+		String toRuntime;
+		int runTime;
+	   if (resultsTable.getSelectionModel().getSelectedItem() != null) {
+		Movie selected = 
+		(Movie) resultsTable.getSelectionModel().getSelectedItem();
+		infoFieldOne.setText(selected.getTitle());
+		
+		genres = selected.getGenres();
+		try {
+		infoFieldTwo.setText(genres.get(0)); 
+		} catch (Exception IndexOutOfBoundsException) {
+			infoFieldTwo.setText("No genre found");
+		}
+		
+		runTime = selected.getRuntime();
+		toRuntime = runTime / 60 + " hr " + runTime % 60 + " min";
+		infoFieldThree.setText(toRuntime);
+		
+		imagePath = selected.getPosterPath();
+		imagePath = URL + imagePath;
+		
+		Image image = new Image(imagePath, 650, 350, true, true, false);
+		searchResultPicture.setImage(image);
+		}
 	}
 	
 	/**
@@ -390,10 +459,10 @@ public class HomeController implements Initializable {
 			
 			clickedOn++;		
 			ScaleTransition st =
-					new ScaleTransition(Duration.millis(300), circle);
+			new ScaleTransition(Duration.millis(300), circle);
 			
 			RotateTransition rotate =
-					new RotateTransition(Duration.millis(300), plus);
+			new RotateTransition(Duration.millis(300), plus);
 			
 			if (clickedOn % 2 != 0) {
 				
