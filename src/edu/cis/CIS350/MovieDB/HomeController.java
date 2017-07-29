@@ -28,7 +28,11 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+
+import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.people.PersonCast;
+import info.movito.themoviedbapi.model.people.PersonPeople;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
@@ -136,6 +140,10 @@ public class HomeController implements Initializable {
 	/** Current Movie shown. **/
 	private Movie currentMovie;
 	
+	private Movie searchedMovie;
+	
+	private int searchedActor;
+
 	private boolean searchForMovie = false;
 	
 	private boolean searchForActor = false;
@@ -350,6 +358,8 @@ public class HomeController implements Initializable {
 		(Movie) resultsTable.getSelectionModel().getSelectedItem();
 		infoFieldOne.setText(selected.getTitle());
 		
+		searchedMovie = selected;
+		
 		genres = selected.getGenres();
 		try {
 		infoFieldTwo.setText(genres.get(0)); 
@@ -371,11 +381,13 @@ public class HomeController implements Initializable {
 		   {
 			   Actor selected = 
 						(Actor) resultsTable.getSelectionModel().getSelectedItem();
+			   		   
 			   try {
 				selected.setActorID();
 			} catch (Exception e1) {
 				infoFieldTwo.setText("No actor");
 			}
+			   			searchedActor = selected.getActorID();
 						infoFieldOne.setText(selected.getName());
 						try {
 							infoFieldTwo.setText(selected.getBirthday());
@@ -401,6 +413,77 @@ public class HomeController implements Initializable {
 		   }
 		   }
 	}
+	
+	public void resultPressed() {
+		System.out.println("result Pressed");
+		
+		if (searchForMovie) {
+			try {
+				/** 
+				 * obtains the current scene by selecting any element and get
+				 * their window.
+				 */
+				javafx.stage.Window source = circle.getScene().getWindow();
+
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+				try {
+					loader.load();
+				} catch (IOException ex) {
+					System.out.println(ex.toString());
+				}
+
+				MovieDetailController actorDetail = loader.getController();
+				actorDetail.setMyData(account, searchedMovie, isSignedIn);
+
+				Parent root = loader.getRoot();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.centerOnScreen();
+				stage.show();
+
+				source.hide();
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}	
+		}
+		
+		if (searchForActor) {
+			try {
+				/** 
+				 * obtains the current scene by selecting any element and get
+				 * their window.
+				 */
+				javafx.stage.Window source = circle.getScene().getWindow();
+
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource("ActorDetail.fxml"));
+
+				try {
+					loader.load();
+				} catch (IOException ex) {
+					System.out.println(ex.toString());
+				}
+
+				ActorController actorDetail = loader.getController();
+				actorDetail.setMyData(searchedActor, account, isSignedIn);
+
+				Parent root = loader.getRoot();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.centerOnScreen();
+				stage.show();
+
+				source.hide();
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}	
+		}
+	}
+	
 	
 	/**
 	 * Popular movie.
@@ -506,13 +589,6 @@ public class HomeController implements Initializable {
 	public void watchlistClicked() {
 		System.out.println("WatchList Button Clicked");
 		
-	}
-	
-	/**
-	 * Recommendations.
-	 **/
-	public void recommendationsClicked() {
-		System.out.println("RecommendationsButton Clicked");
 	}
 	
 	/**
@@ -781,6 +857,5 @@ public class HomeController implements Initializable {
 				
 			}
 		}, 5000);
-		
 	}
 }

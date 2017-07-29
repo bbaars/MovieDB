@@ -22,31 +22,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXHamburger>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="262.0" onMousePressed="#topRatedMovieButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Star@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="102.0" onMousePressed="#topRatedActorButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Actor@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="182.0" onMousePressed="#popularMovieButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Movie@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="342.0" onMousePressed="#twitterButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="104.0" onMousePressed="#twitterButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Twitter@3x.png" />
                </image>
@@ -102,13 +78,6 @@
                      <font>
                         <Font size="12.0" />
                      </font></Label>
-                  <Label fx:id="recLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="288.0" onMousePressed="#recommendationsClicked" prefHeight="34.0" prefWidth="118.0" text="Recommendations" textFill="#eeeded">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font size="12.0" />
-                     </font></Label>
                   <JFXButton layoutX="20.0" layoutY="347.0" onAction="#quizButtonClicked" opacity="0.88" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #00d373;" text="Quiz">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
@@ -145,7 +114,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TableView>
-            <ImageView fx:id="searchResultPicture" fitHeight="301.0" fitWidth="264.0" layoutX="656.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="searchResultPicture" fitHeight="301.0" fitWidth="264.0" layoutX="656.0" layoutY="48.0" onMousePressed="#resultPressed" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow />
                </effect>

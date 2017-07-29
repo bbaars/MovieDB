@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1166.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.ActorController">
+   <children>
+      <Pane layoutY="-5.0" prefHeight="747.0" prefWidth="82.0" style="-fx-background-color: #00d373;">
+         <children>
+            <JFXHamburger layoutX="25.0" layoutY="36.0" onMousePressed="#menuButtonClicked" prefHeight="34.0" prefWidth="33.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXHamburger>
+         </children>
+      </Pane>
+      <Label fx:id="actorName" layoutX="297.0" layoutY="63.0" prefHeight="55.0" prefWidth="644.0" text="Interstellar (2014)">
+         <font>
+            <Font name="Avenir Roman" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleOverviewLabel" layoutX="297.0" layoutY="118.0" prefHeight="26.0" prefWidth="340.0" text="Biography">
+         <font>
+            <Font name="Avenir Black" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="actorImage" fitHeight="271.0" fitWidth="212.0" layoutX="104.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@posterTest.jpg" />
+         </image>
+         <effect>
+            <DropShadow height="21.13" offsetX="5.0" offsetY="5.0" radius="9.335" width="18.21" />
+         </effect>
+      </ImageView>
+      <Label fx:id="actorBio" alignment="TOP_LEFT" layoutX="297.0" layoutY="144.0" prefHeight="236.0" prefWidth="855.0" text="Interstellar chronicles the adventures of a group of explorers who make use of a newly discoverd wormhole to surpass the limitations of human space travel and conquer the vast distances involved in an interstellar voyage." textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Avenir Roman" size="14.0" />
+         </font>
+      </Label>
+      <Pane fx:id="menuPane" layoutX="91.0" layoutY="10.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;">
+         <children>
+            <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">
+               <font>
+                  <Font name="Avenir Roman" size="23.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <JFXButton layoutX="465.0" layoutY="346.0" prefHeight="48.0" prefWidth="155.0" text="Account">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label fx:id="nameLabel1" alignment="CENTER" layoutX="466.0" layoutY="218.0" prefHeight="34.0" prefWidth="155.0" text="Welcome!" textFill="#111010">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+            </Label>
+            <Circle fill="#00d373" layoutX="544.0" layoutY="193.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="nameCharacterLabel1" layoutX="530.0" layoutY="184.0" text="JIMB">
+               <font>
+                  <Font name="Avenir Roman" size="13.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="467.0" layoutY="298.0" onAction="#homeButtonClicked" onMousePressed="#homeButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Home">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="467.0" layoutY="394.0" prefHeight="48.0" prefWidth="155.0" text="Quit">
+               <font>
+                  <Font name="Avenir Roman" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</Pane>

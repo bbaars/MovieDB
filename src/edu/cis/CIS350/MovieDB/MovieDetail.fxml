@@ -20,30 +20,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXHamburger>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="273.0" onMousePressed="#topRatedMovieButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Star@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="102.0" onMousePressed="#topRatedActorButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Actor@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="21.0" layoutY="182.0" onMousePressed="#popularMovieButtonClicked" pickOnBounds="true">
-               <image>
-                  <Image url="@Movie@3x.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
          </children>
       </Pane>
       <ImageView fx:id="backdropImage" fitHeight="610.0" fitWidth="1096.0" layoutX="82.0" layoutY="-74.0" opacity="0.73" pickOnBounds="true" preserveRatio="true">
@@ -145,7 +121,7 @@
             </Label>
             <Pane fx:id="castPane" layoutX="65.0" layoutY="220.0" prefHeight="255.0" prefWidth="940.0" style="-fx-background-color: white;">
                <children>
-                  <ImageView fx:id="cast1Image" fitHeight="156.0" fitWidth="120.0" layoutX="44.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast1Image" fitHeight="156.0" fitWidth="120.0" layoutX="44.0" layoutY="27.0" onMousePressed="#actor1Pressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
@@ -166,7 +142,7 @@
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cast2Image" fitHeight="156.0" fitWidth="120.0" layoutX="233.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast2Image" fitHeight="156.0" fitWidth="120.0" layoutX="233.0" layoutY="27.0" onMousePressed="#actor2Pressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
@@ -187,7 +163,7 @@
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cast3Image" fitHeight="156.0" fitWidth="120.0" layoutX="410.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast3Image" fitHeight="156.0" fitWidth="120.0" layoutX="410.0" layoutY="27.0" onMousePressed="#actor3Pressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
@@ -208,7 +184,7 @@
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cast4Image" fitHeight="156.0" fitWidth="120.0" layoutX="590.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast4Image" fitHeight="156.0" fitWidth="120.0" layoutX="590.0" layoutY="27.0" onMousePressed="#actor4Pressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
@@ -229,7 +205,7 @@
                         <Font name="Avenir Roman" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="cast5Image" fitHeight="156.0" fitWidth="120.0" layoutX="774.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="cast5Image" fitHeight="156.0" fitWidth="120.0" layoutX="774.0" layoutY="27.0" onMousePressed="#actor5Pressed" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@posterTest.jpg" />
                      </image>
@@ -283,6 +259,15 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Pane fx:id="alertPane" layoutX="81.0" layoutY="-3.0" prefHeight="34.0" prefWidth="1085.0" style="-fx-background-color: #ff8080;">
+         <children>
+            <Label fx:id="alertLabel" layoutX="430.0" layoutY="8.0" text="You added the movie to your favorites">
+               <font>
+                  <Font name="Avenir Roman" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <Pane fx:id="menuPane" layoutX="82.0" layoutY="1.0" prefHeight="739.0" prefWidth="1085.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Label alignment="CENTER" layoutX="1000.0" layoutY="29.0" onMousePressed="#menuDismissButtonClicked" prefHeight="34.0" prefWidth="41.0" text="X" textFill="#1b1313">

@@ -1,10 +1,14 @@
 package edu.cis.CIS350.MovieDB;
 
 
+import java.awt.print.Printable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import info.movito.themoviedbapi.model.people.PersonCast;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
@@ -88,6 +92,12 @@ public class MovieDetailController implements Initializable {
 	/** Label for the overview of the movie. **/
 	@FXML private javafx.scene.control.Label titleOverviewLabel;
 	
+	/** Label for the alert for when the user fav or adds to watchlist. **/
+	@FXML private javafx.scene.control.Label alertLabel;
+	
+	/** Our alert pane for user function. **/
+	@FXML private Pane alertPane;
+	
 	/** handles the user account information. **/
 	private APIManager account;
 	
@@ -166,7 +176,7 @@ public class MovieDetailController implements Initializable {
 		castPane.setVisible(false);
 		eye.setVisible(false);
 		favorite.setVisible(false);
-		
+		alertPane.setVisible(false);
 	}
 	
 	/**
@@ -267,7 +277,7 @@ public class MovieDetailController implements Initializable {
 		} else {
 			System.out.println("Must log in for this");
 			// TO DO POP UP THAT TELLS THE USER THEY NEED 
-			//TO LOG IN FOR THAT FEATURE
+			setAlert("You must log in for this");
 		}
 	}
 	
@@ -312,6 +322,7 @@ public class MovieDetailController implements Initializable {
 	public void addToWatchListButtonClicked() {
 		System.out.println("Added to watchlist");
 		account.addMovieToWatchList(movie.getID());
+		setAlert("You added " + movie.getTitle() + " to your watchlist");
 		
 	}
 	
@@ -321,27 +332,7 @@ public class MovieDetailController implements Initializable {
 	public void addToFavoritesButtonClickd() {
 		System.out.println("Added to favorites");
 		account.addMovieFavorite(movie.getID());
-	}
-	
-	/**
-	 * Top Rated Actor.
-	 **/
-	public void topRatedActorButtonClicked() {
-		System.out.println("Top Rated Actors Clicked");
-	}
-	
-	/**
-	 * Popular movie.
-	 **/
-	public void popularMovieButtonClicked() {
-		System.out.println("Popular Movie Button Clicked");
-	}
-	
-	/**
-	 * Top Rated Movie.
-	 **/
-	public void topRatedMovieButtonClicked() {
-		System.out.println("Top Rated Movie Clicked");
+		setAlert("You added " + movie.getTitle() + " to your favorites");
 	}
 	
 	/**
@@ -355,39 +346,39 @@ public class MovieDetailController implements Initializable {
 	 * Takes the user to the home screen.
 	 **/
 	public void homeButtonClicked() {
-	try {
-			
+		try {
+
 			/** 
 			 * obtains the current scene by selecting any element and get
 			 * their window.
 			 */
 			javafx.stage.Window source = circle.getScene().getWindow();
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Home.fxml"));
-			
+
 			try {
 				loader.load();
 			} catch (IOException ex) {
 				System.out.println(ex.toString());
 			}
-			
+
 			HomeController movieDetail = loader.getController();
 			movieDetail.setMyData(account, isSignedIn);
-			
+
 			Parent root = loader.getRoot();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
 			stage.centerOnScreen();
 			stage.show();
-			
+
 			source.hide();
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Loads the Movie Details and applies them to the screen.
 	 **/
@@ -536,5 +527,88 @@ public class MovieDetailController implements Initializable {
 		}
 	}
 	
+	public void actor1Pressed() {
+		System.out.println("Actor 1 Pressed");
+		loadActor(0);
+	}
 	
+	public void actor2Pressed() {
+		System.out.println("Actor 2 Pressed");
+		loadActor(1);
+	}
+	
+	public void actor3Pressed() {
+		System.out.println("Actor 3 Pressed");
+		loadActor(2);
+	}
+	
+	public void actor4Pressed() {
+		System.out.println("Actor 4 Pressed");
+		loadActor(3);
+	}
+	
+	public void actor5Pressed() {
+		System.out.println("Actor 5 Pressed");
+		loadActor(4);
+	}
+	
+	private void loadActor(int person) {
+		
+		try {
+
+			ArrayList<PersonCast> casts = movie.getCast();
+			
+			/** 
+			 * obtains the current scene by selecting any element and get
+			 * their window.
+			 */
+			javafx.stage.Window source = circle.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("ActorDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+			System.out.println(casts.get(person).getName());
+			
+			ActorController actorDetail = loader.getController();
+			actorDetail.setMyData(casts.get(person).getId(), account, isSignedIn);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * Sets the alert to the passed string.
+	 * @param alert
+	 */
+	private void setAlert(String alert) {
+		
+		alertPane.setVisible(true);
+		alertLabel.setText(alert);
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				alertPane.setVisible(false);
+				
+			}
+		}, 5000);
+	}
 }
