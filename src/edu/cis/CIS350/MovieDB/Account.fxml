@@ -52,7 +52,7 @@
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" onMousePressed="#previousButtonClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Left%20Arrow@3x.png" />
                      </image>
@@ -60,7 +60,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" onMousePressed="#nextButtonClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Right%20Arrow@3x.png" />
                      </image>
@@ -112,27 +112,27 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Label fx:id="titleLabel" alignment="CENTER" layoutX="47.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                  <Label fx:id="titleLabel" alignment="CENTER" layoutX="47.0" layoutY="271.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="titleLabel1" alignment="CENTER" layoutX="208.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                  <Label fx:id="titleLabel1" alignment="CENTER" layoutX="208.0" layoutY="271.0" prefHeight="67.0" prefWidth="118.0" text="Title">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="titleLabel2" alignment="CENTER" layoutX="374.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                  <Label fx:id="titleLabel2" alignment="CENTER" layoutX="374.0" layoutY="271.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="titleLabel3" alignment="CENTER" layoutX="543.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                  <Label fx:id="titleLabel3" alignment="CENTER" layoutX="543.0" layoutY="271.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="titleLabel4" alignment="CENTER" layoutX="717.0" layoutY="271.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+                  <Label fx:id="titleLabel4" alignment="CENTER" layoutX="717.0" layoutY="271.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
@@ -159,7 +159,7 @@
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" onMousePressed="#previousButtonClicked2" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Left%20Arrow@3x.png" />
                </image>
@@ -167,7 +167,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" onMousePressed="#nextButtonClicked2" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Right%20Arrow@3x.png" />
                </image>
@@ -219,27 +219,27 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="titleLabel5" alignment="CENTER" layoutX="43.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+            <Label fx:id="titleLabel5" alignment="CENTER" layoutX="43.0" layoutY="272.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel6" alignment="CENTER" layoutX="208.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+            <Label fx:id="titleLabel6" alignment="CENTER" layoutX="208.0" layoutY="272.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel7" alignment="CENTER" layoutX="374.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+            <Label fx:id="titleLabel7" alignment="CENTER" layoutX="374.0" layoutY="272.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel8" alignment="CENTER" layoutX="543.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+            <Label fx:id="titleLabel8" alignment="CENTER" layoutX="543.0" layoutY="272.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="titleLabel9" alignment="CENTER" layoutX="717.0" layoutY="272.0" prefHeight="34.0" prefWidth="118.0" text="Title">
+            <Label fx:id="titleLabel9" alignment="CENTER" layoutX="717.0" layoutY="272.0" prefHeight="67.0" prefWidth="118.0" text="Title" wrapText="true">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>

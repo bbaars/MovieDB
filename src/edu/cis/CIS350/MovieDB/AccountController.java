@@ -282,7 +282,7 @@ public class AccountController implements Initializable {
 				titleLabel4.setVisible(false);
 			}
 
-			} else if (favSize > 5 && page > 0) {
+			} else if (favSize >= 5 && page > 0) {
 
 			if (!isFull && (index + (page * 5)) < favSize) {
 
@@ -495,7 +495,7 @@ public class AccountController implements Initializable {
 				titleLabel9.setVisible(false);
 			}
 
-			} else if (watchSize > 5 && page2 > 0) {
+			} else if (watchSize >= 5 && page2 > 0) {
 
 			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
 
