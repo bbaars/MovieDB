@@ -580,7 +580,41 @@ public class HomeController implements Initializable {
 	 * Favorites button.
 	 **/
 	public void myFavoritedClicked() {
-		System.out.println("My Favorites Button Clicked");
+System.out.println("My Favorites Button Clicked");
+		
+		try {
+			
+			/** 
+			 * obtains the current scene by selecting any element 
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = circle.getScene().getWindow();
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Account.fxml"));
+			
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+			
+		   AccountController account2 = loader.getController();
+		   account2.setMyData(account);
+		   account2.displayMovie();
+		   account2.displayWatchList();
+			
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+			
+			source.hide();
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	/**
