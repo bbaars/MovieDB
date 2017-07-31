@@ -125,6 +125,18 @@ public class HomeController implements Initializable {
 	/** the circle that allows the user to click on it. **/
 	@FXML private Circle circle;
 	
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView searchPlus;
+	
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView searchFavorite;
+	
+	/** The plus for watch list or favorites. **/
+	@FXML private ImageView searchEye;
+	
+	/** the circle that allows the user to click on it. **/
+	@FXML private Circle searchCircle;
+	
 	/** the circle that allows the user to click on it. **/
 	@FXML private TableView resultsTable;
 	
@@ -160,6 +172,9 @@ public class HomeController implements Initializable {
 	/** stores our current movie ID. **/
 	private int currentID;
 	
+	/** stores our current movie ID. **/
+	private int selectedMovieID;
+	
 	/** if the user is currently signed in or not. **/
 	private boolean isSignedIn = false;
 	
@@ -174,6 +189,8 @@ public class HomeController implements Initializable {
 		menuPane.setVisible(false);
 		eye.setVisible(false);
 		favorite.setVisible(false);
+		searchEye.setVisible(false);
+		searchFavorite.setVisible(false);
 		alertPane.setVisible(false);
 	}
 
@@ -673,6 +690,51 @@ System.out.println("My Favorites Button Clicked");
 		}
 	}
 	
+public void plusButtonClicked2() {
+		
+		if (isSignedIn) {
+			
+			clickedOn++;		
+			ScaleTransition st =
+			new ScaleTransition(Duration.millis(300), searchCircle);
+			
+			RotateTransition rotate =
+			new RotateTransition(Duration.millis(300), searchPlus);
+			
+			if (clickedOn % 2 != 0) {
+				
+				st.setByX(1.5f);
+				st.setByY(1.5f);
+				st.setCycleCount(1);
+				st.play();
+			
+				searchEye.setVisible(true);
+				searchFavorite.setVisible(true);
+				
+				rotate.setFromAngle(0);
+				rotate.setToAngle(45);
+				rotate.play();
+				
+			} else {
+				st.setByX(-1.5f);
+				st.setByY(-1.5f);
+				st.setCycleCount(1);
+				st.play();
+				
+				rotate.setFromAngle(45);
+				rotate.setToAngle(0);
+				rotate.play();
+				
+				searchEye.setVisible(false);
+				searchFavorite.setVisible(false);
+			}
+		} else {
+			System.out.println("Must log in for this");
+			setAlert("You must log in for this");
+			
+		}
+	}
+	
 	/**
 	 * Adds the current movie to the watch list of the account.
 	 **/
@@ -689,6 +751,24 @@ System.out.println("My Favorites Button Clicked");
 		System.out.println("Added " + currentID + " to favorites");
 		account.addMovieFavorite(currentID);
 		setAlert("Added " + currentMovie.getTitle() + " to favorites");
+	}
+	
+	/**
+	 * Adds the current movie to the watch list of the account.
+	 **/
+	public void addToWatchListButtonClicked2() {
+		System.out.println("Added " + searchedMovie.getID() + " to watchlist");
+		account.addMovieToWatchList(searchedMovie.getID());
+		setAlert("Added " + searchedMovie.getTitle() + " to watchlist");
+	}
+	
+	/**
+	 * Adds the current movie to the favorites of the account.
+	 **/
+	public void addToFavoritesButtonClickd2() {
+		System.out.println("Added " + searchedMovie.getID() + " to favorites");
+		account.addMovieFavorite(searchedMovie.getID());
+		setAlert("Added " + searchedMovie.getTitle() + " to favorites");
 	}
 	
 	/**
