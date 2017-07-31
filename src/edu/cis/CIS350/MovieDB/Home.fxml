@@ -289,7 +289,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <JFXButton layoutX="465.0" layoutY="346.0" prefHeight="48.0" prefWidth="155.0" text="Account">
+            <JFXButton layoutX="465.0" layoutY="346.0" onAction="#accountButtonClicked" prefHeight="48.0" prefWidth="155.0" text="Account">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
