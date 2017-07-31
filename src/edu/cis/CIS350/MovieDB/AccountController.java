@@ -16,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -57,6 +58,9 @@ public class AccountController implements Initializable {
 
 	/** Label for the genre of the movie. **/
 	@FXML private ImageView moviePoster9;
+	
+	/** Go back pane **/
+	@FXML private Pane goBack;
 
 	/** handles the user account information. **/
 	private APIManager account;
@@ -118,6 +122,36 @@ public class AccountController implements Initializable {
 
 	/** index of watchlist list . **/
 	private int index2;
+	
+	/** index of movie in element 0 in favorites. **/
+	private int index_0;
+	
+	/** index of movie in element 1 in favorites. **/
+	private int index_1;
+	
+	/** index of movie in element 2 in favorites. **/
+	private int index_2;
+	
+	/** index of movie in element 3 in favorites. **/
+	private int index_3;
+	
+	/** index of movie in element 4 in favorites. **/
+	private int index_4;
+	
+	/** index of movie in element 5 in watchlist. **/
+	private int index_5;
+	
+	/** index of movie in element 6 in watchlist. **/
+	private int index_6;
+	
+	/** index of movie in element 7 in watchlist. **/
+	private int index_7;
+	
+	/** index of movie in element 8 in watchlist. **/
+	private int index_8;
+	
+	/** index of movie in element 9 in watchlist. **/
+	private int index_9;
 
 
 	/**
@@ -126,30 +160,6 @@ public class AccountController implements Initializable {
 	@Override
 	public void initialize(final URL location,
 			final ResourceBundle resources) {
-
-//		//Favorite movie list
-//		moviePoster.setVisible(false);
-//		moviePoster1.setVisible(false);
-//		moviePoster2.setVisible(false);
-//		moviePoster3.setVisible(false);
-//		moviePoster4.setVisible(false);
-//		titleLabel.setVisible(false);
-//		titleLabel1.setVisible(false);
-//		titleLabel2.setVisible(false);
-//		titleLabel3.setVisible(false);
-//		titleLabel4.setVisible(false);
-//
-//		//Watchlist
-//		moviePoster5.setVisible(false);
-//		moviePoster6.setVisible(false);
-//		moviePoster7.setVisible(false);
-//		moviePoster8.setVisible(false);
-//		moviePoster9.setVisible(false);
-//		titleLabel5.setVisible(false);
-//		titleLabel6.setVisible(false);
-//		titleLabel7.setVisible(false);
-//		titleLabel8.setVisible(false);
-//		titleLabel9.setVisible(false);
 
 	}
 
@@ -164,6 +174,16 @@ public class AccountController implements Initializable {
 		page = 0;
 		index = 0;
 		index2 = 0;
+		index_0 = 0;
+		index_1 = 0;
+		index_2 = 0;
+		index_3 = 0;
+		index_4 = 0;
+		index_5 = 0;
+		index_6 = 0;
+		index_7 = 0;
+		index_8 = 0;
+		index_9 = 0;
 		favoriteMovies = this.account.getFavoriteMovies();
 		watchList = this.account.getMovieWatchList();
 		isFull = false;
@@ -194,6 +214,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster.setVisible(true);
 				moviePoster.setImage(image);
+				index_0 = index;
 				index++;
 
 				}
@@ -214,6 +235,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster1.setVisible(true);
 				moviePoster1.setImage(image);
+				index_1 = index;
 				index++;
 
 				}
@@ -234,6 +256,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster2.setVisible(true);
 				moviePoster2.setImage(image);
+				index_2 = index;
 				index++;
 
 				}
@@ -254,6 +277,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster3.setVisible(true);
 				moviePoster3.setImage(image);
+				index_3 = index;
 				index++;
 
 				}
@@ -274,6 +298,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster4.setVisible(true);
 				moviePoster4.setImage(image);
+				index_4 = index;
 				index++;
 
 				}
@@ -299,6 +324,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster.setVisible(true);
 				moviePoster.setImage(image);
+				index_0 = index;
 				index++;
 				}
 				}
@@ -322,6 +348,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster1.setVisible(true);
 				moviePoster1.setImage(image);
+				index_1 = index;
 				index++;
 				}
 				}
@@ -343,6 +370,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster2.setVisible(true);
 				moviePoster2.setImage(image);
+				index_2 = index;
 				index++;
 				}
 				}
@@ -365,6 +393,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster3.setVisible(true);
 				moviePoster3.setImage(image);
+				index_3 = index;
 				index++;
 				}
 				}
@@ -386,6 +415,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster4.setVisible(true);
 				moviePoster4.setImage(image);
+				index_4 = index;
 				index++;
 				}
 				}
@@ -419,6 +449,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster5.setVisible(true);
 				moviePoster5.setImage(image);
+				index_5 = index2;
 				index2++;
 
 				}
@@ -436,6 +467,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster6.setVisible(true);
 				moviePoster6.setImage(image);
+				index_6 = index2;
 				index2++;
 
 				}
@@ -453,6 +485,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster7.setVisible(true);
 				moviePoster7.setImage(image);
+				index_7 = index2;
 				index2++;
 
 				}
@@ -470,6 +503,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster8.setVisible(true);
 				moviePoster8.setImage(image);
+				index_8 = index2;
 				index2++;
 
 				}
@@ -487,6 +521,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster9.setVisible(true);
 				moviePoster9.setImage(image);
+				index_9 = index2;
 				index2++;
 
 				}
@@ -511,6 +546,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster5.setVisible(true);
 				moviePoster5.setImage(image);
+				index_5 = index2;
 				index2++;
 				}
 				}
@@ -534,6 +570,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster6.setVisible(true);
 				moviePoster6.setImage(image);
+				index_6 = index2;
 				index2++;
 				}
 				}
@@ -557,6 +594,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster7.setVisible(true);
 				moviePoster7.setImage(image);
+				index_7 = index2;
 				index2++;
 				}
 				}
@@ -580,6 +618,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster8.setVisible(true);
 				moviePoster8.setImage(image);
+				index_8 = index2;
 				index2++;
 				}
 				}
@@ -603,6 +642,7 @@ public class AccountController implements Initializable {
 				Image image = new Image(imagePath, 650, 350, true, true, false);
 				moviePoster9.setVisible(true);
 				moviePoster9.setImage(image);
+				index_9 = index2;
 				index2++;
 				}
 				}
@@ -661,44 +701,451 @@ public class AccountController implements Initializable {
 	}
 
 
-//	/**
-//	 * Obtains the current movie and transitions to the next screen.
-//	 **/
-//	public void movieClicked() {
-//		System.out.println("Movie clicked");
-//
-//		try {
-//
-//			/**
-//			 * obtains the current scene by selecting any element
-//			 * and gets their window.
-//			 */
-//			javafx.stage.Window source = circle.getScene().getWindow();
-//
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
-//
-//			try {
-//				loader.load();
-//			} catch (IOException ex) {
-//				System.out.println(ex.toString());
-//			}
-//
-//		   MovieDetailController movieDetail = loader.getController();
-//		   movieDetail.setMyData(account, currentMovie, isSignedIn);
-//
-//			Parent root = loader.getRoot();
-//			Stage stage = new Stage();
-//			stage.setScene(new Scene(root));
-//			stage.centerOnScreen();
-//			stage.show();
-//
-//			source.hide();
-//
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
-//
-//	}
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (favoriteMovies.get(index_0 + (page * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked1() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (favoriteMovies.get(index_1 + (page * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked2() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (favoriteMovies.get(index_2 + (page * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked3() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (favoriteMovies.get(index_3 + (page * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked4() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (favoriteMovies.get(index_4 + (page * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked5() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (watchList.get(index_5 + (page2 * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked6() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (watchList.get(index_6 + (page2 * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked7() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (watchList.get(index_7 + (page2 * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked8() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (watchList.get(index_8 + (page2 * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Obtains the current movie and transitions to the next screen.
+	 **/
+	public void movieClicked9() {
+		System.out.println("Movie clicked");
+
+		try {
+
+			/**
+			 * obtains the current scene by selecting any element
+			 * and gets their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+		   MovieDetailController movieDetail = loader.getController();
+		   Movie movie = new Movie (watchList.get(index_9 + (page2 * 5)).getId());
+		   movieDetail.setMyData(account, movie, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
+	/**
+	 * Takes the user to the home screen.
+	 **/
+	public void homeButtonClicked() {
+		try {
+
+			/** 
+			 * obtains the current scene by selecting any element and get
+			 * their window.
+			 */
+			javafx.stage.Window source = titleLabel.getScene().getWindow();
+
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Home.fxml"));
+
+			try {
+				loader.load();
+			} catch (IOException ex) {
+				System.out.println(ex.toString());
+			}
+
+			HomeController movieDetail = loader.getController();
+			movieDetail.setMyData(account, true);
+
+			Parent root = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
+			stage.show();
+
+			source.hide();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 
 }

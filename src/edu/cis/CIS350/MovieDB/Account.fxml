@@ -11,12 +11,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1166.0" style="-fx-background-color: #616161;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.cis.CIS350.MovieDB.AccountController">
    <children>
-      <Pane prefHeight="816.0" prefWidth="82.0" style="-fx-background-color: #00d373;" />
+      <Pane prefHeight="749.0" prefWidth="82.0" style="-fx-background-color: #00d373;" />
       <Pane layoutX="82.0" prefHeight="396.0" prefWidth="1078.0" style="-fx-background-color: gray;">
          <children>
-            <Pane layoutX="948.0" prefHeight="816.0" prefWidth="130.0" style="-fx-background-color: #00d373;">
+            <Pane layoutX="948.0" prefHeight="741.0" prefWidth="130.0" style="-fx-background-color: #00d373;">
                <children>
-                  <JFXButton layoutX="20.0" layoutY="97.0" opacity="0.88" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: gray;" text="Go Back">
+                  <JFXButton layoutX="20.0" layoutY="97.0" onAction="#homeButtonClicked" opacity="0.88" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: gray;" text="Go Back">
                      <font>
                         <Font name="Avenir Roman" size="13.0" />
                      </font>
@@ -36,7 +36,7 @@
             </Pane>
             <Pane layoutY="69.0" prefHeight="374.0" prefWidth="948.0" style="-fx-background-color: white;">
                <children>
-                  <ImageView fx:id="moviePoster" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" onMousePressed="#movieClicked" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
@@ -47,12 +47,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="222.0" text="Favorite Movies">
+                  <Label alignment="CENTER" layoutX="-5.0" layoutY="14.0" prefHeight="34.0" prefWidth="222.0" text="Favorite Movies">
                      <font>
                         <Font name="Avenir Roman" size="17.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" onMousePressed="#previousButtonClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="16.0" layoutY="285.0" onMousePressed="#previousButtonClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Left%20Arrow@3x.png" />
                      </image>
@@ -60,7 +60,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" onMousePressed="#nextButtonClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="873.0" layoutY="285.0" onMousePressed="#nextButtonClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Right%20Arrow@3x.png" />
                      </image>
@@ -68,7 +68,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="moviePoster1" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster1" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" onMousePressed="#movieClicked1" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
@@ -79,7 +79,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="moviePoster2" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster2" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" onMousePressed="#movieClicked2" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
@@ -90,7 +90,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="moviePoster3" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster3" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" onMousePressed="#movieClicked3" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
@@ -101,7 +101,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="moviePoster4" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="moviePoster4" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" onMousePressed="#movieClicked4" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                      </effect>
@@ -141,9 +141,9 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="81.0" layoutY="442.0" prefHeight="374.0" prefWidth="948.0" style="-fx-background-color: white;">
+      <Pane layoutX="81.0" layoutY="398.0" prefHeight="347.0" prefWidth="948.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="moviePoster5" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moviePoster5" fitHeight="195.0" fitWidth="130.0" layoutX="36.0" layoutY="66.0" onMousePressed="#movieClicked5" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                </effect>
@@ -154,12 +154,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label alignment="CENTER" prefHeight="34.0" prefWidth="222.0" text="Watchlist">
+            <Label alignment="CENTER" layoutX="-9.0" layoutY="14.0" prefHeight="34.0" prefWidth="222.0" text="Watchlist">
                <font>
                   <Font name="Avenir Roman" size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="15.0" layoutY="312.0" onMousePressed="#previousButtonClicked2" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="41.0" layoutY="286.0" onMousePressed="#previousButtonClicked2" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Left%20Arrow@3x.png" />
                </image>
@@ -167,7 +167,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="848.0" layoutY="302.0" onMousePressed="#nextButtonClicked2" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="47.0" fitWidth="41.0" layoutX="871.0" layoutY="286.0" onMousePressed="#nextButtonClicked2" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Right%20Arrow@3x.png" />
                </image>
@@ -175,7 +175,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="moviePoster6" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moviePoster6" fitHeight="216.0" fitWidth="130.0" layoutX="202.0" layoutY="66.0" onMousePressed="#movieClicked6" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                </effect>
@@ -186,7 +186,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="moviePoster7" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moviePoster7" fitHeight="212.0" fitWidth="130.0" layoutX="368.0" layoutY="66.0" onMousePressed="#movieClicked7" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                </effect>
@@ -197,7 +197,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="moviePoster8" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moviePoster8" fitHeight="204.0" fitWidth="130.0" layoutX="537.0" layoutY="66.0" onMousePressed="#movieClicked8" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                </effect>
@@ -208,7 +208,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="moviePoster9" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="moviePoster9" fitHeight="204.0" fitWidth="130.0" layoutX="711.0" layoutY="66.0" onMousePressed="#movieClicked9" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <DropShadow height="17.39" offsetX="5.0" offsetY="5.0" radius="8.4025" width="18.22" />
                </effect>
