@@ -146,6 +146,9 @@ public class HomeController implements Initializable {
 	/** how many times the user clicks on the circle. **/
 	private int clickedOn = 0;
 	
+	/** how many times the user clicks on the circle. **/
+	private int searchClickedOn = 0;
+	
 	/** Index of current Popular Movie. */
 	private int currentPopularMovie = 0;
 	
@@ -764,14 +767,14 @@ public void plusButtonClicked2() {
 		
 		if (isSignedIn) {
 			
-			clickedOn++;		
+			searchClickedOn++;		
 			ScaleTransition st =
 			new ScaleTransition(Duration.millis(300), searchCircle);
 			
 			RotateTransition rotate =
 			new RotateTransition(Duration.millis(300), searchPlus);
 			
-			if (clickedOn % 2 != 0) {
+			if (searchClickedOn % 2 != 0) {
 				
 				st.setByX(1.5f);
 				st.setByY(1.5f);
