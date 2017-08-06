@@ -1,7 +1,6 @@
 package edu.cis.CIS350.MovieDB;
 
 
-import java.awt.print.Printable;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -185,7 +184,8 @@ public class MovieDetailController implements Initializable {
 	 * 
 	 * @param account API Manager that deals with the users account info.
 	 * @param movie Movie that the detail will show
-	 * @param isSignedIn whether or not the user can add to favorites/watchlist.
+	 * @param isSignedIn whether or not the user can add to 
+	 * favorites/watchlist.
 	 **/
 	public void setMyData(final APIManager account, final Movie movie, final
 			Boolean isSignedIn) {
@@ -202,8 +202,8 @@ public class MovieDetailController implements Initializable {
 	public void menuDismissButtonClicked() {
 		System.out.print("Dismiss Menu Clicked");
 	
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+			new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(1.0);
 		fTransition.setToValue(0);
 		fTransition.setCycleCount(1);
@@ -225,8 +225,8 @@ public class MovieDetailController implements Initializable {
 		System.out.println("Menu Button Clicked");
 		menuPane.setVisible(true);
 		
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+			new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(0);
 		fTransition.setToValue(1.0);
 		fTransition.setCycleCount(1);
@@ -242,10 +242,10 @@ public class MovieDetailController implements Initializable {
 			
 			clickedOn++;
 			ScaleTransition st =
-					new ScaleTransition(Duration.millis(300), circle);
+			   new ScaleTransition(Duration.millis(300), circle);
 			
 			RotateTransition rotate =
-					new RotateTransition(Duration.millis(300), plus);
+			   new RotateTransition(Duration.millis(300), plus);
 			
 			if (clickedOn % 2 != 0) {
 				
@@ -299,7 +299,7 @@ public class MovieDetailController implements Initializable {
 			stage.centerOnScreen();
 			stage.show();
 			
-			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				 @Override
 		            public void handle(final WindowEvent event) {
@@ -322,7 +322,7 @@ public class MovieDetailController implements Initializable {
 	public void addToWatchListButtonClicked() {
 		System.out.println("Added to watchlist");
 		account.addMovieToWatchList(movie.getID());
-		setAlert("You added " + movie.getTitle() + " to your watchlist");
+	    setAlert("You added " + movie.getTitle() + " to your watchlist");
 		
 	}
 	
@@ -332,7 +332,7 @@ public class MovieDetailController implements Initializable {
 	public void addToFavoritesButtonClickd() {
 		System.out.println("Added to favorites");
 		account.addMovieFavorite(movie.getID());
-		setAlert("You added " + movie.getTitle() + " to your favorites");
+	    setAlert("You added " + movie.getTitle() + " to your favorites");
 	}
 	
 	/**
@@ -349,10 +349,11 @@ public class MovieDetailController implements Initializable {
 		try {
 
 			/** 
-			 * obtains the current scene by selecting any element and get
+			 * obtains the current scene by selecting 
+			 * any element and get
 			 * their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+		    javafx.stage.Window source = circle.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Home.fxml"));
@@ -389,10 +390,10 @@ public class MovieDetailController implements Initializable {
 			 * obtains the current scene by selecting any element 
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+		    javafx.stage.Window source = circle.getScene().getWindow();
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Account.fxml"));
+		    loader.setLocation(getClass().getResource("Account.fxml"));
 			
 			try {
 				loader.load();
@@ -441,7 +442,7 @@ public class MovieDetailController implements Initializable {
 		Image image = new Image(imagePath, 650, 350, true, true, false);
 		posterImage.setImage(image);
 		
-		Image backdrop = new Image(backdropPath, 1900, 1280, true, true, false);
+        Image backdrop = new Image(backdropPath, 1900, 1280, true, true, false);
 		backdropImage.setImage(backdrop);
 				
 		runtime = movie.getRuntime();
@@ -506,35 +507,35 @@ public class MovieDetailController implements Initializable {
 		if (casts.size() > 5) {
 			imagePath = casts.get(0).getProfilePath();
 			imagePath = URL + imagePath;
-			Image image = new Image(imagePath, 650, 350, true, true, false);
+            Image image = new Image(imagePath, 650, 350, true, true, false);
 			cast1Image.setImage(image);
 			cast1Name.setText(casts.get(0).getName());
 			cast1Character.setText(casts.get(0).getCharacter());
 			
 			imagePath = casts.get(1).getProfilePath();
 			imagePath = URL + imagePath;
-			Image image1 = new Image(imagePath, 650, 350, true, true, false);
+            Image image1 = new Image(imagePath, 650, 350, true, true, false);
 			cast2Image.setImage(image1);
 			cast2Name.setText(casts.get(1).getName());
 			cast2Character.setText(casts.get(1).getCharacter());
 			
 			imagePath = casts.get(2).getProfilePath();
 			imagePath = URL + imagePath;
-			Image image2 = new Image(imagePath, 650, 350, true, true, false);
+            Image image2 = new Image(imagePath, 650, 350, true, true, false);
 			cast3Image.setImage(image2);
 			cast3Name.setText(casts.get(2).getName());
 			cast3Character.setText(casts.get(2).getCharacter());
 			
 			imagePath = casts.get(3).getProfilePath();
 			imagePath = URL + imagePath;
-			Image image3 = new Image(imagePath, 650, 350, true, true, false);
+            Image image3 = new Image(imagePath, 650, 350, true, true, false);
 			cast4Image.setImage(image3);
 			cast4Name.setText(casts.get(3).getName());
 			cast4Character.setText(casts.get(3).getCharacter());
 			
 			imagePath = casts.get(4).getProfilePath();
 			imagePath = URL + imagePath;
-			Image image4 = new Image(imagePath, 650, 350, true, true, false);
+            Image image4 = new Image(imagePath, 650, 350, true, true, false);
 			cast5Image.setImage(image4);
 			cast5Name.setText(casts.get(4).getName());
 			cast5Character.setText(casts.get(4).getCharacter());
@@ -558,53 +559,73 @@ public class MovieDetailController implements Initializable {
 	
 		if (movie.getReviews().size() > 0) {
 			titleOverviewLabel.setText("Review by: "
-					+ movie.getReviews().get(0).getAuthor());
-			overviewLabel.setText(movie.getReviews().get(0).getContent());
+				+ movie.getReviews().get(0).getAuthor());
+		 overviewLabel.setText(movie.getReviews().get(0).getContent());
 		} else {
 			titleOverviewLabel.setText("Sorry, no reviews exist");
 			overviewLabel.setText("");
 		}
 	}
 	
+	/**
+	 * Loads actor 0 when button pressed.
+	 **/
 	public void actor1Pressed() {
 		System.out.println("Actor 1 Pressed");
 		loadActor(0);
 	}
 	
+	/**
+	 * Loads actor 1 when button pressed.
+	 **/
 	public void actor2Pressed() {
 		System.out.println("Actor 2 Pressed");
 		loadActor(1);
 	}
 	
+	/**
+	 * Loads actor 2 when button pressed.
+	 **/
 	public void actor3Pressed() {
 		System.out.println("Actor 3 Pressed");
 		loadActor(2);
 	}
 	
+	/**
+	 * Loads actor 3 when button pressed.
+	 **/
 	public void actor4Pressed() {
 		System.out.println("Actor 4 Pressed");
 		loadActor(3);
 	}
 	
+	/**
+	 * Loads actor 4 when button pressed.
+	 **/
 	public void actor5Pressed() {
 		System.out.println("Actor 5 Pressed");
 		loadActor(4);
 	}
 	
-	private void loadActor(int person) {
+	/**
+	 * Loads actor info based on id passed in.
+	 * @param person is actor id
+	 **/
+	private void loadActor(final int person) {
 		
 		try {
 
 			ArrayList<PersonCast> casts = movie.getCast();
 			
 			/** 
-			 * obtains the current scene by selecting any element and get
+			 * obtains the current scene by selecting
+             * any element and get
 			 * their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+		    javafx.stage.Window source = circle.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("ActorDetail.fxml"));
+	        loader.setLocation(getClass().getResource("ActorDetail.fxml"));
 
 			try {
 				loader.load();
@@ -615,7 +636,7 @@ public class MovieDetailController implements Initializable {
 			System.out.println(casts.get(person).getName());
 			
 			ActorController actorDetail = loader.getController();
-			actorDetail.setMyData(casts.get(person).getId(), account, isSignedIn);
+          actorDetail.setMyData(casts.get(person).getId(), account, isSignedIn);
 
 			Parent root = loader.getRoot();
 			Stage stage = new Stage();
@@ -633,9 +654,9 @@ public class MovieDetailController implements Initializable {
 	
 	/**
 	 * Sets the alert to the passed string.
-	 * @param alert
+	 * @param alert displayed to user when adding to watchlist
 	 */
-	private void setAlert(String alert) {
+	private void setAlert(final String alert) {
 		
 		alertPane.setVisible(true);
 		alertLabel.setText(alert);

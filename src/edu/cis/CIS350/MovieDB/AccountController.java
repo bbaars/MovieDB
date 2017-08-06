@@ -11,17 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.ConfigurationBuilder;
 
 /***************************************************************************
  * Handles the account screen for user.
@@ -59,7 +52,7 @@ public class AccountController implements Initializable {
 	/** Label for the genre of the movie. **/
 	@FXML private ImageView moviePoster9;
 	
-	/** Go back pane **/
+	/** Go back pane. **/
 	@FXML private Pane goBack;
 
 	/** handles the user account information. **/
@@ -121,37 +114,37 @@ public class AccountController implements Initializable {
 	private int index;
 
 	/** index of watchlist list . **/
-	private int index2;
+	private int watchlistIndex2;
 	
 	/** index of movie in element 0 in favorites. **/
-	private int index_0;
+	private int index0;
 	
 	/** index of movie in element 1 in favorites. **/
-	private int index_1;
+	private int index1;
 	
 	/** index of movie in element 2 in favorites. **/
-	private int index_2;
+	private int index2;
 	
 	/** index of movie in element 3 in favorites. **/
-	private int index_3;
+	private int index3;
 	
 	/** index of movie in element 4 in favorites. **/
-	private int index_4;
+	private int index4;
 	
 	/** index of movie in element 5 in watchlist. **/
-	private int index_5;
+	private int index5;
 	
 	/** index of movie in element 6 in watchlist. **/
-	private int index_6;
+	private int index6;
 	
 	/** index of movie in element 7 in watchlist. **/
-	private int index_7;
+	private int index7;
 	
 	/** index of movie in element 8 in watchlist. **/
-	private int index_8;
+	private int index8;
 	
 	/** index of movie in element 9 in watchlist. **/
-	private int index_9;
+	private int index9;
 
 
 	/**
@@ -173,24 +166,24 @@ public class AccountController implements Initializable {
 		this.account = account;
 		page = 0;
 		index = 0;
+		watchlistIndex2 = 0;
+		index0 = 0;
+		index1 = 0;
 		index2 = 0;
-		index_0 = 0;
-		index_1 = 0;
-		index_2 = 0;
-		index_3 = 0;
-		index_4 = 0;
-		index_5 = 0;
-		index_6 = 0;
-		index_7 = 0;
-		index_8 = 0;
-		index_9 = 0;
+		index3 = 0;
+		index4 = 0;
+		index5 = 0;
+		index6 = 0;
+		index7 = 0;
+		index8 = 0;
+		index9 = 0;
 		favoriteMovies = this.account.getFavoriteMovies();
 		watchList = this.account.getMovieWatchList();
 		isFull = false;
 	}
 
 	/**
-	 * Displays the users favorites list
+	 * Displays the users favorites list.
 	 *
 	 **/
 	public void displayMovie() {
@@ -208,17 +201,19 @@ public class AccountController implements Initializable {
 					isFull = true;
 				}
 				titleLabel.setVisible(true);
-				titleLabel.setText(favoriteMovies.get(index).getTitle());
-				imagePath = favoriteMovies.get(index).getPosterPath();
+				titleLabel.setText(
+					favoriteMovies.get(index).getTitle());
+				imagePath = 
+				  favoriteMovies.get(index).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster.setVisible(true);
 				moviePoster.setImage(image);
-				index_0 = index;
+				index0 = index;
 				index++;
 
-				}
-			else {
+				} else {
 				moviePoster.setVisible(false);
 				titleLabel.setVisible(false);
 			}
@@ -229,17 +224,19 @@ public class AccountController implements Initializable {
 					isFull = true;
 				}
 				titleLabel1.setVisible(true);
-				titleLabel1.setText(favoriteMovies.get(index).getTitle());
-				imagePath = favoriteMovies.get(index).getPosterPath();
+				titleLabel1.setText(
+					favoriteMovies.get(index).getTitle());
+				imagePath = 
+				   favoriteMovies.get(index).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster1.setVisible(true);
 				moviePoster1.setImage(image);
-				index_1 = index;
+				index1 = index;
 				index++;
 
-				}
-			else {
+				} else {
 				moviePoster1.setVisible(false);
 				titleLabel1.setVisible(false);
 			}
@@ -250,17 +247,19 @@ public class AccountController implements Initializable {
 					isFull = true;
 				}
 				titleLabel2.setVisible(true);
-				titleLabel2.setText(favoriteMovies.get(index).getTitle());
-				imagePath = favoriteMovies.get(index).getPosterPath();
+				titleLabel2.setText(
+					favoriteMovies.get(index).getTitle());
+				imagePath = 
+				  favoriteMovies.get(index).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster2.setVisible(true);
 				moviePoster2.setImage(image);
-				index_2 = index;
+				index2 = index;
 				index++;
 
-				}
-			else {
+				} else {
 				moviePoster2.setVisible(false);
 				titleLabel2.setVisible(false);
 			}
@@ -271,17 +270,18 @@ public class AccountController implements Initializable {
 					isFull = true;
 				}
 				titleLabel3.setVisible(true);
-				titleLabel3.setText(favoriteMovies.get(index).getTitle());
-				imagePath = favoriteMovies.get(index).getPosterPath();
+				titleLabel3.setText(
+					favoriteMovies.get(index).getTitle());
+				imagePath = favoriteMovies.get(index)
+						.getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster3.setVisible(true);
 				moviePoster3.setImage(image);
-				index_3 = index;
+				index3 = index;
 				index++;
-
-				}
-			else {
+				} else {
 				moviePoster3.setVisible(false);
 				titleLabel3.setVisible(false);
 			}
@@ -292,17 +292,18 @@ public class AccountController implements Initializable {
 					isFull = true;
 				}
 				titleLabel4.setVisible(true);
-				titleLabel4.setText(favoriteMovies.get(index).getTitle());
-				imagePath = favoriteMovies.get(index).getPosterPath();
+				titleLabel4.setText(
+					favoriteMovies.get(index).getTitle());
+				imagePath = favoriteMovies.get(index)
+					.getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster4.setVisible(true);
 				moviePoster4.setImage(image);
-				index_4 = index;
+				index4 = index;
 				index++;
-
-				}
-			else {
+				} else {
 				moviePoster4.setVisible(false);
 				titleLabel4.setVisible(false);
 			}
@@ -313,23 +314,22 @@ public class AccountController implements Initializable {
 
 				if ((index + (page * 5)) >= favSize) {
 					isFull = true;
-				}
-				else {
+				} else {
 
 				titleLabel.setVisible(true);
 				titleLabel.setText(favoriteMovies.get(index
 						+ (page * 5)).getTitle());
-				imagePath = favoriteMovies.get(index + (page * 5)).getPosterPath();
+				imagePath = favoriteMovies.
+					get(index + (page * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster.setVisible(true);
 				moviePoster.setImage(image);
-				index_0 = index;
+				index0 = index;
 				index++;
 				}
-				}
-
-			else {
+				} else {
 				moviePoster.setVisible(false);
 				titleLabel.setVisible(false);
 			}
@@ -343,16 +343,17 @@ public class AccountController implements Initializable {
 				titleLabel1.setVisible(true);
 				titleLabel1.setText(favoriteMovies.get(index
 						+ (page * 5)).getTitle());
-				imagePath = favoriteMovies.get(index + (page * 5)).getPosterPath();
+				imagePath = favoriteMovies.get(
+					index + (page * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster1.setVisible(true);
 				moviePoster1.setImage(image);
-				index_1 = index;
+				index1 = index;
 				index++;
 				}
-				}
-			else {
+				} else {
 				moviePoster1.setVisible(false);
 				titleLabel1.setVisible(false);
 			}
@@ -365,16 +366,17 @@ public class AccountController implements Initializable {
 				titleLabel2.setVisible(true);
 				titleLabel2.setText(favoriteMovies.get(index
 						+ (page * 5)).getTitle());
-				imagePath = favoriteMovies.get(index + (page * 5)).getPosterPath();
+				imagePath = favoriteMovies.get(
+					index + (page * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster2.setVisible(true);
 				moviePoster2.setImage(image);
-				index_2 = index;
+				index2 = index;
 				index++;
 				}
-				}
-			else {
+				} else {
 				moviePoster2.setVisible(false);
 				titleLabel2.setVisible(false);
 			}
@@ -383,21 +385,21 @@ public class AccountController implements Initializable {
 
 				if ((index + (page * 5)) >= favSize) {
 					isFull = true;
-				}
-				else {
+				} else {
 				titleLabel3.setVisible(true);
 				titleLabel3.setText(favoriteMovies.get(index
 						+ (page * 5)).getTitle());
-				imagePath = favoriteMovies.get(index + (page * 5)).getPosterPath();
+				imagePath = favoriteMovies.get(
+					index + (page * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster3.setVisible(true);
 				moviePoster3.setImage(image);
-				index_3 = index;
+				index3 = index;
 				index++;
 				}
-				}
-			else {
+				} else {
 				moviePoster3.setVisible(false);
 				titleLabel3.setVisible(false);
 			}
@@ -410,16 +412,17 @@ public class AccountController implements Initializable {
 				titleLabel4.setVisible(true);
 				titleLabel4.setText(favoriteMovies.get(index
 						+ (page * 5)).getTitle());
-				imagePath = favoriteMovies.get(index + (page * 5)).getPosterPath();
+				imagePath = favoriteMovies.get(
+					index + (page * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster4.setVisible(true);
 				moviePoster4.setImage(image);
-				index_4 = index;
+				index4 = index;
 				index++;
 				}
-				}
-			else {
+				} else {
 				moviePoster4.setVisible(false);
 				titleLabel4.setVisible(false);
 			}
@@ -428,12 +431,12 @@ public class AccountController implements Initializable {
 	}
 
 	/******************************************************************
-	* displays the user's watchlist
+	* displays the user's watchlist.
 	*
 	*****************************************************************/
 	public void displayWatchList() {
 		int watchSize;
-		index2 = 0;
+		watchlistIndex2 = 0;
 		String imagePath;
 
 		watchSize = watchList.size();
@@ -443,210 +446,226 @@ public class AccountController implements Initializable {
 			if (watchSize > 0) {
 
 				titleLabel5.setVisible(true);
-				titleLabel5.setText(watchList.get(index2).getTitle());
-				imagePath = watchList.get(index2).getPosterPath();
+				titleLabel5.setText(
+				watchList.get(watchlistIndex2).getTitle());
+			   imagePath = watchList.get(watchlistIndex2).
+					   getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster5.setVisible(true);
 				moviePoster5.setImage(image);
-				index_5 = index2;
-				index2++;
+				index5 = watchlistIndex2;
+				watchlistIndex2++;
 
-				}
-			else {
+				} else {
 				moviePoster5.setVisible(false);
 				titleLabel5.setVisible(false);
 			}
 
-			if (!isFull2 && index2 < watchSize) {
+			if (!isFull2 && watchlistIndex2 < watchSize) {
 
 				titleLabel6.setVisible(true);
-				titleLabel6.setText(watchList.get(index2).getTitle());
-				imagePath = watchList.get(index2).getPosterPath();
+				titleLabel6.setText(
+				watchList.get(watchlistIndex2).getTitle());
+				imagePath = 
+				watchList.get(watchlistIndex2).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster6.setVisible(true);
 				moviePoster6.setImage(image);
-				index_6 = index2;
-				index2++;
-
-				}
-			else {
+				index6 = watchlistIndex2;
+				watchlistIndex2++;
+				} else {
 				moviePoster6.setVisible(false);
 				titleLabel6.setVisible(false);
 			}
 
-			if (!isFull2 && index2 < watchSize) {
+			if (!isFull2 && watchlistIndex2 < watchSize) {
 
 				titleLabel7.setVisible(true);
-				titleLabel7.setText(watchList.get(index2).getTitle());
-				imagePath = watchList.get(index2).getPosterPath();
+				titleLabel7.setText(
+				watchList.get(watchlistIndex2).getTitle());
+				imagePath = 
+				watchList.get(watchlistIndex2).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster7.setVisible(true);
 				moviePoster7.setImage(image);
-				index_7 = index2;
-				index2++;
+				index7 = watchlistIndex2;
+				watchlistIndex2++;
 
-				}
-			else {
+				} else {
 				moviePoster7.setVisible(false);
 				titleLabel7.setVisible(false);
 			}
 
-			if (!isFull2 && index2 < watchSize) {
+			if (!isFull2 && watchlistIndex2 < watchSize) {
 
 				titleLabel8.setVisible(true);
-				titleLabel8.setText(watchList.get(index2).getTitle());
-				imagePath = watchList.get(index2).getPosterPath();
+				titleLabel8.setText(
+				watchList.get(watchlistIndex2).getTitle());
+				imagePath = 
+				watchList.get(watchlistIndex2).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster8.setVisible(true);
 				moviePoster8.setImage(image);
-				index_8 = index2;
-				index2++;
+				index8 = watchlistIndex2;
+				watchlistIndex2++;
 
-				}
-			else {
+				} else {
 				moviePoster8.setVisible(false);
 				titleLabel8.setVisible(false);
 			}
 
-			if (!isFull2 && index2 < watchSize) {
+			if (!isFull2 && watchlistIndex2 < watchSize) {
 
 				titleLabel9.setVisible(true);
-				titleLabel9.setText(watchList.get(index2).getTitle());
-				imagePath = watchList.get(index2).getPosterPath();
+				titleLabel9.setText(
+				watchList.get(watchlistIndex2).getTitle());
+				imagePath = 
+				watchList.get(watchlistIndex2).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster9.setVisible(true);
 				moviePoster9.setImage(image);
-				index_9 = index2;
-				index2++;
+				index9 = watchlistIndex2;
+				watchlistIndex2++;
 
-				}
-			else {
+				} else {
 				moviePoster9.setVisible(false);
 				titleLabel9.setVisible(false);
 			}
 
 			} else if (watchSize >= 5 && page2 > 0) {
 
-			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
+			if (!isFull2 && (watchlistIndex2 
+					+ (page2 * 5)) < watchSize) {
 
-				if ((index2 + (page2 * 5)) >= watchSize) {
+				if ((watchlistIndex2 
+						+ (page2 * 5)) >= watchSize) {
 					isFull2 = true;
-				}
-				else {
+				} else {
 				titleLabel5.setVisible(true);
-				titleLabel5.setText(watchList.get(index2
+			    titleLabel5.setText(watchList.get(watchlistIndex2
 						+ (page2 * 5)).getTitle());
-				imagePath = watchList.get(index2 + (page2 * 5)).getPosterPath();
+				imagePath = watchList.get(
+				watchlistIndex2 + (page2 * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster5.setVisible(true);
 				moviePoster5.setImage(image);
-				index_5 = index2;
-				index2++;
+				index5 = watchlistIndex2;
+				watchlistIndex2++;
 				}
-				}
-			else {
+				} else {
 				moviePoster5.setVisible(false);
 				titleLabel5.setVisible(false);
 			}
 
-			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
+			if (!isFull2 && (watchlistIndex2 
+					+ (page2 * 5)) < watchSize) {
 
-				if ((index2 + (page2 * 5)) >= watchSize) {
+				if ((watchlistIndex2 
+						+ (page2 * 5)) >= watchSize) {
 					isFull2 = true;
-				}
-
-				else {
+				} else {
 				titleLabel6.setVisible(true);
-				titleLabel6.setText(watchList.get(index2
+				titleLabel6.setText(
+						watchList.get(watchlistIndex2
 						+ (page2 * 5)).getTitle());
-				imagePath = watchList.get(index2 + (page2 * 5)).getPosterPath();
+				imagePath = watchList.get(
+				watchlistIndex2 + (page2 * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster6.setVisible(true);
 				moviePoster6.setImage(image);
-				index_6 = index2;
-				index2++;
+				index6 = watchlistIndex2;
+				watchlistIndex2++;
 				}
-				}
-			else {
+				} else {
 				moviePoster6.setVisible(false);
 				titleLabel6.setVisible(false);
 			}
 
-			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
+			if (!isFull2 && (watchlistIndex2 
+					+ (page2 * 5)) < watchSize) {
 
-				if ((index2 + (page2 * 5)) >= watchSize) {
+				if ((watchlistIndex2 
+						+ (page2 * 5)) >= watchSize) {
 					isFull2 = true;
-				}
-
-				else {
+				} else {
 				titleLabel7.setVisible(true);
-				titleLabel7.setText(watchList.get(index2
+			    titleLabel7.setText(watchList.get(watchlistIndex2
 						+ (page2 * 5)).getTitle());
-				imagePath = watchList.get(index2 + (page2 * 5)).getPosterPath();
+				imagePath = watchList.get(
+				watchlistIndex2 + (page2 * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster7.setVisible(true);
 				moviePoster7.setImage(image);
-				index_7 = index2;
-				index2++;
+				index7 = watchlistIndex2;
+				watchlistIndex2++;
 				}
-				}
-			else {
+				} else {
 				moviePoster7.setVisible(false);
 				titleLabel7.setVisible(false);
 			}
 
-			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
+			if (!isFull2 && (watchlistIndex2 
+					+ (page2 * 5)) < watchSize) {
 
-				if ((index2 + (page2 * 5)) >= watchSize) {
+				if ((watchlistIndex2 
+						+ (page2 * 5)) >= watchSize) {
 					isFull2 = true;
-				}
-
-				else {
+				} else {
 				titleLabel8.setVisible(true);
-				titleLabel8.setText(watchList.get(index2
+			    titleLabel8.setText(watchList.get(watchlistIndex2
 						+ (page2 * 5)).getTitle());
-				imagePath = watchList.get(index2 + (page2 * 5)).getPosterPath();
+				imagePath = watchList.get(
+				watchlistIndex2 + (page2 * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster8.setVisible(true);
 				moviePoster8.setImage(image);
-				index_8 = index2;
-				index2++;
+				index8 = watchlistIndex2;
+				watchlistIndex2++;
 				}
-				}
-			else {
+				} else {
 				moviePoster8.setVisible(false);
 				titleLabel8.setVisible(false);
 			}
 
-			if (!isFull2 && (index2 + (page2 * 5)) < watchSize) {
+			if (!isFull2 && (watchlistIndex2 
+					+ (page2 * 5)) < watchSize) {
 
-				if ((index2 + (page2 * 5)) >= watchSize) {
+				if ((watchlistIndex2 
+						+ (page2 * 5)) >= watchSize) {
 					isFull2 = true;
-				}
-
-				else {
+				} else {
 				titleLabel9.setVisible(true);
-				titleLabel9.setText(watchList.get(index2
+			    titleLabel9.setText(watchList.get(watchlistIndex2
 						+ (page2 * 5)).getTitle());
-				imagePath = watchList.get(index2 + (page2 * 5)).getPosterPath();
+				imagePath = watchList.get(
+				watchlistIndex2 + (page2 * 5)).getPosterPath();
 				imagePath = URL + imagePath;
-				Image image = new Image(imagePath, 650, 350, true, true, false);
+				Image image = new Image(
+					imagePath, 650, 350, true, true, false);
 				moviePoster9.setVisible(true);
 				moviePoster9.setImage(image);
-				index_9 = index2;
-				index2++;
+				index9 = watchlistIndex2;
+				watchlistIndex2++;
 				}
-				}
-			else {
+				} else {
 				moviePoster9.setVisible(false);
 				titleLabel9.setVisible(false);
 			}
@@ -689,7 +708,8 @@ public class AccountController implements Initializable {
 	}
 
 	/**
-	 * When previous button for watch list is clicked then go to previous page.
+	 * When previous button for watch list is 
+	 * clicked then go to previous page.
 	 *
 	 **/
 	public void previousButtonClicked2() {
@@ -713,10 +733,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+				getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -725,7 +747,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (favoriteMovies.get(index_0 + (page * 5)).getId());
+		   Movie movie = new Movie(
+			favoriteMovies.get(index0 + (page * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -754,10 +777,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			 getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -766,7 +791,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (favoriteMovies.get(index_1 + (page * 5)).getId());
+		   Movie movie = new Movie(
+			favoriteMovies.get(index1 + (page * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -795,10 +821,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+				getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -807,7 +835,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (favoriteMovies.get(index_2 + (page * 5)).getId());
+		   Movie movie = new Movie(
+             favoriteMovies.get(index2 + (page * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -836,10 +865,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			   getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -848,7 +879,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (favoriteMovies.get(index_3 + (page * 5)).getId());
+		   Movie movie = new Movie(
+			 favoriteMovies.get(index3 + (page * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -877,10 +909,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			  getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -889,7 +923,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (favoriteMovies.get(index_4 + (page * 5)).getId());
+		   Movie movie = new Movie(
+			favoriteMovies.get(index4 + (page * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -918,10 +953,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(getClass().
+				getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -930,7 +967,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (watchList.get(index_5 + (page2 * 5)).getId());
+		   Movie movie = new Movie(
+				 watchList.get(index5 + (page2 * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -959,10 +997,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(getClass().
+			  getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -971,7 +1011,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (watchList.get(index_6 + (page2 * 5)).getId());
+		   Movie movie = new Movie(
+				watchList.get(index6 + (page2 * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -1000,10 +1041,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			   getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -1012,7 +1055,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (watchList.get(index_7 + (page2 * 5)).getId());
+		   Movie movie = new Movie(
+			watchList.get(index7 + (page2 * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -1041,10 +1085,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -1053,7 +1099,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (watchList.get(index_8 + (page2 * 5)).getId());
+		   Movie movie = new Movie(
+				watchList.get(index8 + (page2 * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -1082,10 +1129,12 @@ public class AccountController implements Initializable {
 			 * obtains the current scene by selecting any element
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+			  titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(
+			   getClass().getResource("MovieDetail.fxml"));
 
 			try {
 				loader.load();
@@ -1094,7 +1143,8 @@ public class AccountController implements Initializable {
 			}
 
 		   MovieDetailController movieDetail = loader.getController();
-		   Movie movie = new Movie (watchList.get(index_9 + (page2 * 5)).getId());
+		   Movie movie = new Movie(
+			 watchList.get(index9 + (page2 * 5)).getId());
 		   movieDetail.setMyData(account, movie, true);
 
 			Parent root = loader.getRoot();
@@ -1118,10 +1168,11 @@ public class AccountController implements Initializable {
 		try {
 
 			/** 
-			 * obtains the current scene by selecting any element and get
-			 * their window.
+			 * obtains the current scene by selecting any element
+			 * and get their window.
 			 */
-			javafx.stage.Window source = titleLabel.getScene().getWindow();
+			javafx.stage.Window source = 
+				titleLabel.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Home.fxml"));

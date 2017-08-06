@@ -72,7 +72,8 @@ public class LoginController {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Whoops");
 				alert.setHeaderText(null);
-				alert.setContentText("Invalid username or password");
+				alert.setContentText(
+					"Invalid username or password");
 				alert.showAndWait();
 			}
 

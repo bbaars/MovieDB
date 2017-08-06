@@ -2,15 +2,11 @@ package edu.cis.CIS350.MovieDB;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import info.movito.themoviedbapi.TmdbApi;
-import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.people.PersonPeople;
 import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,19 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
+/**
+ * Controls actor menu.
+ **/
 public class ActorController implements Initializable {
 	
 	/** Base URL String. **/
@@ -49,6 +41,7 @@ public class ActorController implements Initializable {
 	/** Label for the bio of the actor. **/
 	@FXML private javafx.scene.control.Label actorBio;
 	
+	/** Actor number. **/
 	private int actor;
 	
 	/** handles the user account information. **/
@@ -73,17 +66,21 @@ public class ActorController implements Initializable {
 	 * for us to this controller.
 	 * 
 	 * @param account API Manager that deals with the users account info.
-	 * @param movie Movie that the detail will show
-	 * @param isSignedIn whether or not the user can add to favorites/watchlist.
+	 * @param isSignedIn whether or not the 
+	 * user can add to favorites/watchlist.
+	 * @param actorID actor id number
 	 **/
 	public void setMyData(final int actorID, 
-			APIManager account, boolean isSignedIn) {
+			final APIManager account, final boolean isSignedIn) {
 		this.account = account;
 		this.isSignedIn = isSignedIn;
 		this.actor = actorID;
 		loadGUIComponents();
 	}
 	
+	/**
+	 * Loads GUI components on screen.
+	 **/
 	private void loadGUIComponents() {
 		
 		String imagePath;
@@ -109,8 +106,8 @@ public class ActorController implements Initializable {
 	public void menuDismissButtonClicked() {
 		System.out.print("Dismiss Menu Clicked");
 	
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+		new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(1.0);
 		fTransition.setToValue(0);
 		fTransition.setCycleCount(1);
@@ -132,8 +129,8 @@ public class ActorController implements Initializable {
 		System.out.println("Menu Button Clicked");
 		menuPane.setVisible(true);
 		
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+			new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(0);
 		fTransition.setToValue(1.0);
 		fTransition.setCycleCount(1);
@@ -155,10 +152,12 @@ public class ActorController implements Initializable {
 		try {
 
 			/** 
-			 * obtains the current scene by selecting any element and get
+			 * obtains the current scene by 
+			 * selecting any element and get
 			 * their window.
 			 */
-			javafx.stage.Window source = actorImage.getScene().getWindow();
+			javafx.stage.Window source = 
+				actorImage.getScene().getWindow();
 
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Home.fxml"));

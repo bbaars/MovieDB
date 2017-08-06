@@ -15,8 +15,6 @@ import org.json.JSONObject;
 
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbPeople.PersonResultsPage;
-import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.people.Person;
 
 
@@ -27,6 +25,7 @@ import info.movito.themoviedbapi.model.people.Person;
 *****************************************************************/
 public class Actor {
 	
+	/** Tmdb api objects. **/
 	 private TmdbApi tmdbApi;
 	 
      /** our API Manager object to hold our tmdp api key. **/
@@ -42,7 +41,7 @@ public class Actor {
    /******************************************************************
 	 * A constructor that initializes the actor.
 	 * 
-	 * @param actor - genre of movie.
+	 * @param name - name of actor.
 	 *****************************************************************/
 	public Actor(final String name) {
 		this.name = name;
@@ -68,10 +67,7 @@ public class Actor {
 		
 		
 		JSONObject obj = new JSONObject(json);
-		//String n = obj.getString("page");
-
-//		System.out.println("Page: " + a);  // prints "Page 1"
-		
+				
 		JSONArray result = obj.getJSONArray("results");
 		JSONObject firstResult = result.getJSONObject(0);
 		
@@ -81,7 +77,10 @@ public class Actor {
 	    
 	}
 	
-	
+	/******************************************************************
+	 *	Returns actors matching search criteria.
+	 *	@return arraylist of matching actors
+	 *****************************************************************/
     public ArrayList<Actor> getActorsFromName() {
 
      	ArrayList<Actor> actors = new ArrayList<Actor>();
@@ -126,8 +125,9 @@ public class Actor {
 		String ids = Integer.toString(id);
 		String birthday;
 		
-		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
-				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		String json = 
+		readUrl("https://api.themoviedb.org/3/person/" + ids 
+		+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
 		
 		JSONObject obj = new JSONObject(json);
 		
@@ -146,8 +146,9 @@ public class Actor {
 		String ids = Integer.toString(id);
 		String birthPlace;
 		
-		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
-				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		String json =
+		readUrl("https://api.themoviedb.org/3/person/" + ids 
+		+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
 		
 		JSONObject obj = new JSONObject(json);
 		
@@ -166,8 +167,9 @@ public class Actor {
 		String ids = Integer.toString(id);
 		String biography;
 		
-		String json = readUrl("https://api.themoviedb.org/3/person/" + ids 
-				+  "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		String json = 
+		readUrl("https://api.themoviedb.org/3/person/" + ids 
+		+  "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
 		
 		JSONObject obj = new JSONObject(json);
 		
@@ -186,8 +188,9 @@ public class Actor {
 		String ids = Integer.toString(id);
 		String urlPath;
 		
-		String json = readUrl("https://api.themoviedb.org/3/person/" + ids
-				+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
+		String json = 
+		readUrl("https://api.themoviedb.org/3/person/" + ids
+		+ "?api_key=6615c9824f812a6fb9b8b4ea5f49a285&language=en-US");
 		
 		JSONObject obj = new JSONObject(json);
 		

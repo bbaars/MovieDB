@@ -8,7 +8,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -19,20 +18,15 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
-import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.people.PersonCast;
-import info.movito.themoviedbapi.model.people.PersonPeople;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
@@ -155,12 +149,16 @@ public class HomeController implements Initializable {
 	/** Current Movie shown. **/
 	private Movie currentMovie;
 	
+	/** Movie that user searched for. **/
 	private Movie searchedMovie;
 	
+	/** Actor that user searched for.**/
 	private int searchedActor;
 
+	/** Variable to see if the user is searching for actor or movie. **/
 	private boolean searchForMovie = false;
 	
+	/** Variable to see if the user is searching for actor or movie.**/
 	private boolean searchForActor = false;
 	
 	/** Lower bounds for random id. **/
@@ -223,10 +221,12 @@ public class HomeController implements Initializable {
 			 * obtains the current scene by selecting any element 
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+			javafx.stage.Window source = 
+					circle.getScene().getWindow();
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+			loader.setLocation(getClass().
+					getResource("MovieDetail.fxml"));
 			
 			try {
 				loader.load();
@@ -279,8 +279,8 @@ public class HomeController implements Initializable {
 		System.out.println("Menu Button Clicked");
 		menuPane.setVisible(true);
 		
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+		new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(0);
 		fTransition.setToValue(1.0);
 		fTransition.setCycleCount(1);
@@ -293,8 +293,8 @@ public class HomeController implements Initializable {
 	public void menuDismissButtonClicked() {
 		System.out.print("Dismiss Menu Clicked");
 	
-		FadeTransition 
-			fTransition = new FadeTransition(Duration.millis(400), menuPane);
+		FadeTransition fTransition = 
+		new FadeTransition(Duration.millis(400), menuPane);
 		fTransition.setFromValue(1.0);
 		fTransition.setToValue(0);
 		fTransition.setCycleCount(1);
@@ -316,7 +316,8 @@ public class HomeController implements Initializable {
 		String searchFieldOne = "";
 		String searchFieldTwo = "";
 		
-		if (!search1.getText().isEmpty() && search2.getText().isEmpty()) {
+		if (!search1.getText().isEmpty() 
+				&& search2.getText().isEmpty()) {
 			searchFieldOne = search1.getText();
 			
 			Movie movie = new Movie(searchFieldOne);
@@ -332,23 +333,20 @@ public class HomeController implements Initializable {
 			searchForMovie = true;
 			searchForActor = false;
 		}
-		if (!search2.getText().isEmpty() && search1.getText().isEmpty()) {
+		if (!search2.getText().isEmpty() 
+				&& search1.getText().isEmpty()) {
 			searchFieldTwo = search2.getText();
 			
 			Actor actor = new Actor(searchFieldTwo);
 			try {
-				ArrayList<Actor> actors = actor.getActorsFromName();
+				ArrayList<Actor> actors = 
+						actor.getActorsFromName();
 				
 				ObservableList<Actor> actorList =
-						FXCollections.observableArrayList(actors);
-				
-				/*for(int i=0; i<actorList.size();i++)
-				{
-					System.out.println(actorList.get(i).getActorName());
-				}*/
+				FXCollections.observableArrayList(actors);
 				
 				resultsColumn.setCellValueFactory(
-						new PropertyValueFactory<Actor, String>("name"));
+			   new PropertyValueFactory<Actor, String>("name"));
 				resultsTable.setItems(actorList);
 		        
 		        
@@ -356,7 +354,7 @@ public class HomeController implements Initializable {
 				searchForActor = true;
 				searchForMovie = false;
 						
-			} catch(Exception E) {
+			} catch (Exception E) {
 				System.out.println(E);
 				//search2.setText("Invalid Actor");
 			}
@@ -373,7 +371,7 @@ public class HomeController implements Initializable {
 		int runTime;
 	   if (resultsTable.getSelectionModel().getSelectedItem() != null) {
 		   
-		   if(searchForMovie) {
+		   if (searchForMovie) {
 		Movie selected = 
 		(Movie) resultsTable.getSelectionModel().getSelectedItem();
 		infoFieldOne.setText(selected.getTitle());
@@ -397,56 +395,63 @@ public class HomeController implements Initializable {
 		Image image = new Image(imagePath, 650, 350, true, true, false);
 		searchResultPicture.setImage(image);
 		   }
-		   if(searchForActor)
-		   {
+		   if (searchForActor) {
 			   Actor selected = 
-						(Actor) resultsTable.getSelectionModel().getSelectedItem();
+			   (Actor) resultsTable.getSelectionModel().
+			   getSelectedItem();
 			   		   
 			   try {
 				selected.setActorID();
 			} catch (Exception e1) {
 				infoFieldTwo.setText("No actor");
 			}
-			   			searchedActor = selected.getActorID();
-						infoFieldOne.setText(selected.getName());
-						try {
-							infoFieldTwo.setText(selected.getBirthday());
+			   	searchedActor = selected.getActorID();
+				infoFieldOne.setText(selected.getName());
+				try {
+				infoFieldTwo.setText(selected.getBirthday());
 						} catch (Exception e) {
-							infoFieldTwo.setText("No birthday provided.");
+				infoFieldTwo.setText("No birthday provided.");
 						}
 						
-						try {
-							infoFieldThree.setText(selected.getBirthPlace());
+				try {
+			    infoFieldThree.setText(selected.getBirthPlace());
 						} catch (Exception e) {
-							infoFieldTwo.setText("No birthplace provided.");
+				infoFieldTwo.setText("No birthplace provided.");
 						}
 						
-						try {
-							imagePath = selected.getPic();
-							imagePath = URL + imagePath;
-							Image image = new Image(imagePath, 650, 350, true, true, false);
-							searchResultPicture.setImage(image);
+					try {
+					imagePath = selected.getPic();
+					imagePath = URL + imagePath;
+					Image image = new Image(
+					imagePath, 650, 350, true, true, false);
+					searchResultPicture.setImage(image);
 						} catch (Exception e) {
-							//infoFieldTwo.setText("No birthplace provided.");
+							
 						}
 						
 		   }
 		   }
 	}
 	
+	/** 
+	 * obtains results when search button is pressed.
+	 */
 	public void resultPressed() {
 		System.out.println("result Pressed");
 		
 		if (searchForMovie) {
 			try {
 				/** 
-				 * obtains the current scene by selecting any element and get
+				 * obtains the current scene by selecting any
+				 *  element and get
 				 * their window.
 				 */
-				javafx.stage.Window source = circle.getScene().getWindow();
+				javafx.stage.Window source = 
+					circle.getScene().getWindow();
 
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("MovieDetail.fxml"));
+				loader.setLocation(getClass().
+					getResource("MovieDetail.fxml"));
 
 				try {
 					loader.load();
@@ -454,8 +459,10 @@ public class HomeController implements Initializable {
 					System.out.println(ex.toString());
 				}
 
-				MovieDetailController actorDetail = loader.getController();
-				actorDetail.setMyData(account, searchedMovie, isSignedIn);
+				MovieDetailController actorDetail
+				= loader.getController();
+				actorDetail.setMyData(
+					account, searchedMovie, isSignedIn);
 
 				Parent root = loader.getRoot();
 				Stage stage = new Stage();
@@ -473,13 +480,16 @@ public class HomeController implements Initializable {
 		if (searchForActor) {
 			try {
 				/** 
-				 * obtains the current scene by selecting any element and get
+				 * obtains the current scene by
+				 *  selecting any element and get
 				 * their window.
 				 */
-				javafx.stage.Window source = circle.getScene().getWindow();
+				javafx.stage.Window source 
+				= circle.getScene().getWindow();
 
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource("ActorDetail.fxml"));
+				loader.setLocation(getClass().
+					getResource("ActorDetail.fxml"));
 
 				try {
 					loader.load();
@@ -487,8 +497,10 @@ public class HomeController implements Initializable {
 					System.out.println(ex.toString());
 				}
 
-				ActorController actorDetail = loader.getController();
-				actorDetail.setMyData(searchedActor, account, isSignedIn);
+				ActorController actorDetail =
+						loader.getController();
+				actorDetail.setMyData(
+					searchedActor, account, isSignedIn);
 
 				Parent root = loader.getRoot();
 				Stage stage = new Stage();
@@ -606,10 +618,12 @@ public class HomeController implements Initializable {
 			 * obtains the current scene by selecting any element 
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+			javafx.stage.Window source =
+				circle.getScene().getWindow();
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Account.fxml"));
+			loader.setLocation(getClass().
+				getResource("Account.fxml"));
 			
 			try {
 				loader.load();
@@ -646,10 +660,12 @@ public class HomeController implements Initializable {
 			 * obtains the current scene by selecting any element 
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+			javafx.stage.Window source = 
+				circle.getScene().getWindow();
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Account.fxml"));
+			loader.setLocation(getClass().
+				getResource("Account.fxml"));
 			
 			try {
 				loader.load();
@@ -685,10 +701,12 @@ public class HomeController implements Initializable {
 			 * obtains the current scene by selecting any element 
 			 * and gets their window.
 			 */
-			javafx.stage.Window source = circle.getScene().getWindow();
+			javafx.stage.Window source = 
+				circle.getScene().getWindow();
 			
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Account.fxml"));
+			loader.setLocation(getClass().
+				getResource("Account.fxml"));
 			
 			try {
 				loader.load();
@@ -762,7 +780,9 @@ public class HomeController implements Initializable {
 			
 		}
 	}
-	
+/**
+ * If user clicks button to add to watchlist or favorites.
+ */
 public void plusButtonClicked2() {
 		
 		if (isSignedIn) {
@@ -830,7 +850,8 @@ public void plusButtonClicked2() {
 	 * Adds the current movie to the watch list of the account.
 	 **/
 	public void addToWatchListButtonClicked2() {
-		System.out.println("Added " + searchedMovie.getID() + " to watchlist");
+		System.out.println("Added " 
+	    + searchedMovie.getID() + " to watchlist");
 		account.addMovieToWatchList(searchedMovie.getID());
 		setAlert("Added " + searchedMovie.getTitle() + " to watchlist");
 	}
@@ -839,7 +860,8 @@ public void plusButtonClicked2() {
 	 * Adds the current movie to the favorites of the account.
 	 **/
 	public void addToFavoritesButtonClickd2() {
-		System.out.println("Added " + searchedMovie.getID() + " to favorites");
+		System.out.println("Added " 
+	    + searchedMovie.getID() + " to favorites");
 		account.addMovieFavorite(searchedMovie.getID());
 		setAlert("Added " + searchedMovie.getTitle() + " to favorites");
 	}
@@ -915,7 +937,8 @@ public void plusButtonClicked2() {
 			Scene scene = new Scene(root, 500, 300);
 			primaryStage.setTitle("MovieDB Quiz");
 			primaryStage.getIcons().add(
-			new Image(Main.class.getResourceAsStream("MovieDBLogo@3x.png")));
+			new Image(Main.class.
+				getResourceAsStream("MovieDBLogo@3x.png")));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -1001,7 +1024,8 @@ public void plusButtonClicked2() {
 			WebView webView = new WebView();
 			WebEngine webEngine = webView.getEngine();
 			webEngine.load("https://www.youtube.com/embed/"
-			+ currentMovie.getVideos().get(0).getKey() + "?autoplay=1");
+			+ currentMovie.getVideos().get(0).getKey()
+			+ "?autoplay=1");
 			
 			Scene scene = new Scene(webView, 640, 390);
 			Stage stage = new Stage();
@@ -1009,7 +1033,7 @@ public void plusButtonClicked2() {
 			stage.centerOnScreen();
 			stage.show();
 			
-			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				
 				 @Override
 		            public void handle(final WindowEvent event) {
@@ -1028,9 +1052,9 @@ public void plusButtonClicked2() {
 	
 	/**
 	 * Sets the alert to the passed string.
-	 * @param alert
+	 * @param alert setting alert for adding to watchlist
 	 */
-	private void setAlert(String alert) {
+	private void setAlert(final String alert) {
 		
 		alertPane.setVisible(true);
 		alertLabel.setText(alert);
